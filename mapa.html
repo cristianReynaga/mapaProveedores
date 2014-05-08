@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <style>
+      html, body, #map {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+    <script src="lib/jquery-2.1.0.min.js" type="text/javascript"></script>
+	<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+  </head>
+  <body>
+    <div id="map"> </div>
+
+    <script>
+
+		function cargaUSIG(){
+			console.log( "cargo usig" );
+			$.getScript( "http://servicios.usig.buenosaires.gov.ar/usig-js/3.0/usig.AutoCompleterFull.min.js" )
+			.done(function( script, statusCarga) {
+				console.log( statusCarga );
+			});
+			
+		}
+
+		/*
+		 * Usando el autocompletado de usig tenemos que usar la api vieja de cartoDB (v2) 
+		 * ya que aparentemente con cartoDB v3 primero deben terminar de renderear
+		 * todas las layers del mapa para llamar a la libreria.  
+		 * 
+		 */  
+		
+		
+        $.when( cartodb.createVis('map', 'http://gcba.cartodb.com/api/v2/viz/196d1632-d0ad-11e3-bbd2-0e230854a1cb/viz.json') )
+		.done( cargaUSIG() );
+        
+        
+
+    </script>
+       
+    
+    <script>
+
+/*
+		$.noConflict();
+		jQuery(document).ready(function($) {
+			window.setTimeout( function (){
+				console.log ("cargo Usig");
+				$.getScript( "http://servicios.usig.buenosaires.gov.ar/usig-js/3.0/usig.AutoCompleterFull.min.js" )
+					.done(function( script, statusCarga) {
+						console.log( "Carga de usig: ", statusCarga );
+					}
+				);
+			},5000);			
+		});
+*/
+    </script>
+
+
+  </body>
+</html>
