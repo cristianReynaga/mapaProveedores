@@ -79,6 +79,28 @@ function busquedaKeyword(key) {
  * a la base de datos por el campo tipo
  */
 
+var layerUrl = 'http://documentation.cartodb.com/api/v2/viz/9af23dd8-ea10-11e2-b5ac-5404a6a683d5/viz.json';
+
+  var sublayers = [];
+
+  cartodb.createLayer(map, layerUrl)
+    .addTo(map)
+    .on('done', function(layer) {
+      // change the query for the first layer
+      var subLayerOptions = {
+        sql: "SELECT * FROM ne_10m_populated_p_2",
+        cartocss: "#ne_10m_populated_p_2{marker-fill: #F84F40; marker-width: 8; marker-line-color: white; marker-line-width: 2; marker-clip: false; marker-allow-overlap: true;}"
+      }
+
+      var sublayer = layer.getSubLayer(0);
+
+      sublayer.set(subLayerOptions);
+
+      sublayers.push(sublayer);
+    }).on('error', function() {
+      //log the error
+    });
+
 var list_querys = {
     all: function(){
       sublayers[0].setSQL("SELECT * FROM mapa_emprendedores");
@@ -108,7 +130,7 @@ var list_querys = {
 
 
 var asd = function(button){
-	$('#'+button).click(function(){
+	$('.button').click(function(){
 		$('.button').removeClass('selected');
 		$(this).addClass('selected');
 		list_querys[$(this).attr('id')]();
@@ -129,7 +151,6 @@ function generateTypeList() {
 			tipoForm.append("<option>" + data.rows[i].tipo + "</option>");
 			//console.log(data.rows[i].tipo[0])
 			contenido.append("<li><a href=" + data.rows[i].tipo[0] + ">" + data.rows[i].tipo + "</a></li>");
-			asd(data.rows[i].tipo[0])
 		}
 		
 	}).error(function(errors) {
