@@ -6,11 +6,14 @@
 var express = require('express')
   , ejs = require('ejs')
   , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
-
+  , path = require('path')
+  , fs = require('fs');
+  //, mongo = require('mongoose');
+  
 var app = express();
+//var db = mongo.createConnection('mongodb://localhost/newtest');
+//var schema = require('models');
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -30,15 +33,8 @@ app.configure('development', function(){
 });
 
 app.get('/', function(req, res){
-  res.render("index");
+  res.render("index", {title : "En todo estás vos"});
 })
-
-
-app.get('/universidad', function(req, res){
-  res.render("index" + req.params, {title: "Buenos Aires - Mapa Universidades"});
-})
-
-app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

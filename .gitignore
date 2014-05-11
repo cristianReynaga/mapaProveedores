@@ -1,6 +1,7 @@
 .git/
 .project
 .sass-cache/
+.models/
 node_modules/
 bower_components/
 <<<<<<< HEAD

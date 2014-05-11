@@ -10,7 +10,9 @@
     "ejs": "^1.0.0",
     "express": "~3.3.4",
     "grunt-contrib-sass": "^0.7.3",
-    "jade": "~0.34.0"
+    "jade": "~0.34.0",
+    "foreman": "^0.3.0",
+    "mongoose": "^3.8.9"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
