@@ -57,6 +57,35 @@ $("button").click(function(d) {
 
 
 /*
+ * Query SQL para ver los detalles de la empresa seleccionada.
+ */
+function verDetallesEmpresa (par) {
+	$('#modal-list').modal('show');		
+	var contenido = $('#modal-list .modal-body');
+	var idEmpresa = par.replace('emp', ''); 
+	var q = "SELECT * FROM mapa_emprendedores WHERE cartodb_id = " + idEmpresa ;
+	contenido.children('div').remove();
+	sql.execute(q).done(function(data) {
+		for (var i = 0; i < data.total_rows; i++) {
+			contenido.append(
+				"<div class='list-group'>"+
+					"<span class='list-group-item'>" +
+						"<h4 class='list-group-item-heading'>" + data.rows[i].nombre +
+						" <small> (" + data.rows[i].tipo + ")</small></h4>" + 
+					    "<p class='list-group-item-text'>" + data.rows[i].descripcion + "</p>" +
+					"</span>" +
+				"</div>"
+			);
+			contenido.children('.loading').remove();
+		}
+	}).error(function(errors) {
+		console.log("SQL ERR:", errors);
+	});
+}
+
+
+
+/*
  * Query SQL para el listado total.
  */
 function busquedaListado() {
@@ -64,12 +93,21 @@ function busquedaListado() {
 	var contenido = $('#modal-list .modal-body');
 
 	var q = "SELECT * FROM mapa_emprendedores WHERE pendiente_revision = true";
-	console.log("vacio tipos");
 	contenido.children('div').remove();
+	
 	sql.execute(q).done(function(data) {
 		for (var i = 0; i < data.total_rows; i++) {
-			contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
+
+			contenido.append(
+				"<div id='emp" + data.rows[i].cartodb_id + "' onclick='verDetallesEmpresa(this.id)'><a href='#' class='list-group-item'> "+ 
+					"<span>" +
+						data.rows[i].nombre +
+						" <small>(" + data.rows[i].tipo + ")</small>" +
+					"<span></a></div>"
+			);
+
 			contenido.children('.loading').remove();
+
 		}
 	}).error(function(errors) {
 		console.log("SQL ERR:", errors);
@@ -81,18 +119,28 @@ function busquedaListado() {
  * escriba en el input CASE SENSITIVE
  */
 function busquedaKeyword(key) {
+	var contenido = $('#busquedaList');
+
 	if ( $('#busquedaEmprendedores').val() == ''){
 			$('#busquedaList').text("");
-			console.log ( $('#busquedaEmprendedores').val() );
 	}else{
 		key = key.toLowerCase();
 		var q = "SELECT * FROM mapa_emprendedores  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
 		sql.execute(q).done(function(data) {
 			$('#busquedaList').text("");
 			for (var i = 0; i < data.total_rows; i++) {
-				$('#busquedaList').append('<a class="list-group-item">' + data.rows[i].nombre + '<span class="badge">' + data.rows[i].tipo + '</span></a>');
-			}
+				$('#busquedaList').append(
+  					"<a href='#' class='list-group-item' id='emp" + data.rows[i].cartodb_id + "' onclick='verDetallesEmpresa(this.id)'>" + 
+    					"<h4 class='list-group-item-heading'>" + data.rows[i].nombre +
+    						"<span class='badge'>" + data.rows[i].tipo + "</span>" +
+    					"</h4>" + 
+					    "<p class='list-group-item-text'>" + 
+						    data.rows[i].servicios  +
+					    "</p>" + 
+					  "</a>"  
+				);
 			
+			}
 		}).error(function(errors) {
 			console.log("SQL ERR:", errors);
 		});
