@@ -5206,6 +5206,9 @@ button.close {
   bottom: 0;
   width: 100%; }
 
+body {
+  overflow: hidden; }
+
 .header-gcba {
   height: 50px;
   padding: 10px 0;
