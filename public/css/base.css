@@ -5347,3 +5347,11 @@ footer .modernizacion {
   text-align: left; }
 footer .desarrollo-economico {
   text-align: right; }
+
+.list-group {
+  height: 201px; }
+
+#minimapa {
+  height: 150px;
+  width: 100%;
+  border: 1px #c0c0c0 solid; }
