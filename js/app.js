@@ -123,12 +123,17 @@ function busquedaKeyword(key) {
 
 	if ( $('#busquedaEmprendedores').val() == ''){
 			$('#busquedaList').text("");
+			$('#busquedaList').css("display: none;");
 	}else{
+		$('#busquedaList').css("display", "inline");
+		console.log("muestro lista");
 		key = key.toLowerCase();
 		var q = "SELECT * FROM mapa_emprendedores  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
 		sql.execute(q).done(function(data) {
 			$('#busquedaList').text("");
 			for (var i = 0; i < data.total_rows; i++) {
+				
+				
 				$('#busquedaList').append(
   					"<a href='#' class='list-group-item' id='emp" + data.rows[i].cartodb_id + "' onclick='verDetallesEmpresa(this.id)'>" + 
     					"<h4 class='list-group-item-heading'>" + data.rows[i].nombre +

@@ -5209,6 +5209,9 @@ button.close {
 body {
   overflow: hidden; }
 
+#busquedaList {
+  display: none; }
+
 .header-gcba {
   height: 50px;
   padding: 10px 0;
