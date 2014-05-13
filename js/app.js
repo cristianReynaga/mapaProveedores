@@ -1,4 +1,3 @@
-var urlViz = "http://gcba.cartodb.com/api/v2/viz/6b2c9166-d015-11e3-a1ad-0e73339ffa50/viz.json";
 var sql = cartodb.SQL({
 	user : 'gcba'
 });
@@ -76,6 +75,11 @@ function verDetallesEmpresa (par) {
 					"</span>" +
 				"</div>"
 			);
+
+			// console.log("Y U NO PAN", map);
+			// var pantoDefined = new google.maps.LatLng(50, 40);
+			// map.panTo(pantoDefined);
+
 			contenido.children('.loading').remove();
 		}
 	}).error(function(errors) {
@@ -126,14 +130,11 @@ function busquedaKeyword(key) {
 			$('#busquedaList').css("display: none;");
 	}else{
 		$('#busquedaList').css("display", "inline");
-		console.log("muestro lista");
 		key = key.toLowerCase();
 		var q = "SELECT * FROM mapa_emprendedores  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
 		sql.execute(q).done(function(data) {
 			$('#busquedaList').text("");
 			for (var i = 0; i < data.total_rows; i++) {
-				
-				
 				$('#busquedaList').append(
   					"<a href='#' class='list-group-item' id='emp" + data.rows[i].cartodb_id + "' onclick='verDetallesEmpresa(this.id)'>" + 
     					"<h4 class='list-group-item-heading'>" + data.rows[i].nombre +
@@ -144,7 +145,6 @@ function busquedaKeyword(key) {
 					    "</p>" + 
 					  "</a>"  
 				);
-			
 			}
 		}).error(function(errors) {
 			console.log("SQL ERR:", errors);

@@ -14,10 +14,9 @@
 		<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.ie.css" />
 		<![endif]-->
 		<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
-	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 		<script src="lib/jquery-2.1.0.min.js"></script>
 		<script src="lib/bootstrap.min.js" type="text/javascript"></script>
-		<!-- script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script -->
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
 	    <script type="infowindow/html" id="infowindow_template">
 	      <div class="cartodb-popup">
@@ -231,9 +230,13 @@
 		</footer>
 
 		<script>
-			window.onload = function() {
-				cartodb.createVis('map', 'http://gcba.cartodb.com/api/v2/viz/196d1632-d0ad-11e3-bbd2-0e230854a1cb/viz.json');
-			};
+		
+			var basemap;
+			cartodb.createVis('map', 'http://gcba.cartodb.com/api/v2/viz/196d1632-d0ad-11e3-bbd2-0e230854a1cb/viz.json').done(function(vis, layers) {
+				basemap = layers;
+			}).error(function(err) {
+				console.log("An error occurred: " + err);
+			});
 
 		</script>
 

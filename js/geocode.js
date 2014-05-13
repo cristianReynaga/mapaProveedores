@@ -1,5 +1,5 @@
 var geocoder;
-var map;
+var minimapa;
 
 function init() {
 	geocoder = new google.maps.Geocoder();
@@ -10,7 +10,7 @@ function init() {
 		streetViewControl : false,
 		center : latlng
 	};
-	map = new google.maps.Map(document.getElementById('minimapa'), mapOptions);
+	minimapa = new google.maps.Map(document.getElementById('minimapa'), mapOptions);
 }
 
 function buscarDireccion() {
@@ -19,9 +19,9 @@ function buscarDireccion() {
 		'address' : direccion + ",ciudad autonoma de buenos aires"
 	}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
-			map.setCenter(results[0].geometry.location);
+			minimapa.setCenter(results[0].geometry.location);
 			var marker = new google.maps.Marker({
-				map : map,
+				map : minimapa,
 				position : results[0].geometry.location				
 			});
 			console.log();
