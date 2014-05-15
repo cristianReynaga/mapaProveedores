@@ -6,8 +6,8 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<link rel="shortcut icon" href="lib/favicon.ico" />
 
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 		<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
-
 		<link rel="stylesheet" href="css/base.css" />
 
 		<!--[if lte IE 8]>
@@ -16,7 +16,9 @@
 		<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
 		<script src="lib/jquery-2.1.0.min.js"></script>
 		<script src="lib/bootstrap.min.js" type="text/javascript"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+
 
 	    <script type="infowindow/html" id="infowindow_template">
 	      <div class="cartodb-popup">
@@ -230,15 +232,33 @@
 		</footer>
 
 		<script>
-		
-			var basemap;
-			cartodb.createVis('map', 'http://gcba.cartodb.com/api/v2/viz/196d1632-d0ad-11e3-bbd2-0e230854a1cb/viz.json').done(function(vis, layers) {
-				basemap = layers;
-			}).error(function(err) {
-				console.log("An error occurred: " + err);
-			});
 
-		</script>
+
+    	var map;
+
+     	function main() {
+        	cartodb.createVis('map', 'http://gcba.cartodb.com/api/v2/viz/196d1632-d0ad-11e3-bbd2-0e230854a1cb/viz.json', {
+            	center_lat: -34.6158527,
+            	center_lon: -58.4332985,
+            	zoom: 12
+        	})
+	        .done( function(vis, layers) {
+	        	layers[1].setInteraction(true);
+				layers[1].on('featureOver', function(e, pos, latlng, data) {
+					cartodb.log.log(e, pos, latlng, data);
+				});
+				map = vis.getNativeMap();
+				// map.setCenter(new google.maps.Latlng(...))
+        	})
+        	.error(function(err) {
+          		console.log(err);
+        	});
+      	}
+
+      	window.onload = main;
+
+    </script>
+
 
 		<script src="js/app.js" type="text/javascript"></script>
 		<script src="js/geocode.js" type="text/javascript"></script>
