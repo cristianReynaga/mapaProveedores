@@ -79,12 +79,13 @@ function verDetallesEmpresa (par) {
 			console.log ();
 
 			
-			//Tarda demasiado
+			
 			$.get("http://gcba.cartodb.com/api/v1/sql?q=select st_y(the_geom) as lat, st_x(the_geom) as lon from mapa_emprendedores WHERE cartodb_id = " + idEmpresa , function(data) {
 				for(var i = 0; i < data.rows.length; ++i) {
 					var row = data.rows[i];
 				    console.log("point", row.lat, row.lon);
-					mapaPrincipal.setZoomAround(L.latLng(row.lat, row.lon),15);
+					mapaPrincipal.panTo(L.latLng(row.lat, row.lon));
+					mapaPrincipal.setZoom(15);
 				}
 			});			
 			
