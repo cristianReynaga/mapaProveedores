@@ -234,7 +234,7 @@
 		<script>
 
 
-    	var map;
+    	var mapaPrincipal;
 
      	function main() {
         	cartodb.createVis('map', 'http://gcba.cartodb.com/api/v2/viz/196d1632-d0ad-11e3-bbd2-0e230854a1cb/viz.json', {
@@ -247,8 +247,8 @@
 				layers[1].on('featureOver', function(e, pos, latlng, data) {
 					cartodb.log.log(e, pos, latlng, data);
 				});
-				map = vis.getNativeMap();
-				// map.setCenter(new google.maps.Latlng(...))
+				mapaPrincipal = vis.getNativeMap();
+				
         	})
         	.error(function(err) {
           		console.log(err);

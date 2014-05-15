@@ -27,7 +27,7 @@ function buscarDireccion() {
 			console.log();
 			$("#latLong_frm").val(marker.position.A  + "," +  marker.position.k);
 		} else {
-			alert('Geocode fallo por: ' + status);
+			console.log('No se pudo geocodificar la direccion. Error : ' + status);
 		}
 	});
 }
