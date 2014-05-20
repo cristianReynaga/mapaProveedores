@@ -65,22 +65,20 @@ function init(asd) {
             return "all";
         } else if (path == "Universidad") {
             return "universidades";
-        } else if (path == "Universidad") {
-            return "universidades";
         } else if (path == "Makerspace") {
             return "makerspace";
         } else if (path == "Incubadora") {
-            return "incubadora"
+            return "incubadora";
         } else if (path == "Espacio") {
             return "coworking";
         } else if (path == "Fondo") {
-            return "fondo_inversion"
+            return "fondo_inversion";
         } else if (path == "Emprendimiento") {
-            return "emprendimiento"
+            return "emprendimiento";
         } else if (path == "Aceleradora") {
-            return "aceleradora"
+            return "aceleradora";
         } else if (path == "Organización") {
-            return "organización"
+            return "organizacion";
         }
     }
 
@@ -154,6 +152,18 @@ function init(asd) {
         },
         fondo_inversion: function () {
             sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Fondo de Inversión')");
+            return true;
+        },
+        aceleradora: function () {
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Aceleradora')");
+            return true;
+        },
+        emprendimiento: function () {
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Emprendimiento')");
+            return true;
+        },
+        organizacion: function () {
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Organización')");
             return true;
         }
     }
