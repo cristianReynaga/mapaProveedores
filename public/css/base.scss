@@ -13,7 +13,14 @@ $font-family-sans-serif:  "Gotham", "Helvetica Neue", Helvetica, Arial, sans-ser
 
 #map { position:absolute; top:0; bottom:0; width:100%; }
 
-      
+body{
+  overflow: hidden;
+}
+
+#busquedaList{
+  display: none;
+}
+
 .header-gcba {
   height:50px;
   padding:10px 0;
@@ -134,9 +141,6 @@ opacity:.7
 Hacks para el mapa de CartoDB + Mapbox
 
 */
-
-
-
 .leaflet-control-container {
   .leaflet-left {
   

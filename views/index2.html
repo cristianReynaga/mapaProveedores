@@ -1,0 +1,37 @@
+
+
+
+
+
+	<body>
+		<script>
+    	var mapaPrincipal;
+
+     	function main() {
+        	cartodb.createVis('map', 'http://gcba.cartodb.com/api/v2/viz/196d1632-d0ad-11e3-bbd2-0e230854a1cb/viz.json', {
+            	center_lat: -34.6158527,
+            	center_lon: -58.4332985,
+            	zoom: 12
+        	})
+	        .done( function(vis, layers) {
+	        	layers[1].setInteraction(true);
+				layers[1].on('featureOver', function(e, pos, latlng, data) {
+					cartodb.log.log(e, pos, latlng, data);
+				});
+				mapaPrincipal = vis.getNativeMap();
+				
+        	})
+        	.error(function(err) {
+          		console.log(err);
+        	});
+      	}
+
+      	window.onload = main;
+
+    </script>
+
+		<script src="js/app.js" type="text/javascript"></script>
+		<script src="js/geocode.js" type="text/javascript"></script>
+	</body>
+
+</html>
