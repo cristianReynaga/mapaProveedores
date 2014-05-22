@@ -16,7 +16,7 @@ function init(asd) {
         attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>"
     }).addTo(map);
 
-    var layerUrl = 'http://gcba.cartodb.com/api/v2/viz/196d1632-d0ad-11e3-bbd2-0e230854a1cb/viz.json';
+    var layerUrl = 'http://gcba.cartodb.com/api/v2/viz/bb7a556c-e132-11e3-af08-0edbca4b5057/viz.json';
 
     var sublayers = [];
 
@@ -32,7 +32,7 @@ function init(asd) {
 
         var contenido = $('#modal-list .modal-body');
 
-        var q = "SELECT * FROM mapa_emprendedores";
+        var q = "SELECT * FROM mapa_emprendedores_testeo_testeo";
         sql.execute(q).done(function (data) {
             for (var i = 0; i < data.total_rows; i++) {
                 contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
@@ -47,7 +47,7 @@ function init(asd) {
 
         var contenido = $('#modal-list .modal-body');
 
-        var q = "SELECT * FROM mapa_emprendedores";
+        var q = "SELECT * FROM mapa_emprendedores_testeo_testeo";
         sql.execute(q).done(function (data) {
             for (var i = 0; i < data.total_rows; i++) {
                 contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
@@ -83,8 +83,8 @@ function init(asd) {
     }
 
     function generateTypeList() {
-        var queryList = "SELECT distinct tipo FROM mapa_emprendedores";
-        //SELECT * FROM mapa_emprendedores WHERE tipo IN ('Espacio de Coworking','Emprendimiento','Aceleradora','Fondo de Inversión','Incubadora','Makerspace','Universidad')
+        var queryList = "SELECT distinct tipo FROM mapa_emprendedores_testeo";
+        //SELECT * FROM mapa_emprendedores_testeo WHERE tipo IN ('Espacio de Coworking','Emprendimiento','Aceleradora','Fondo de Inversión','Incubadora','Makerspace','Universidad')
         var contenido = $('#lista-emprendimientos');
         var tipoForm = $('#tipo_frm');
 
@@ -131,39 +131,39 @@ function init(asd) {
 
     var LayerActions = {
         all: function () {
-            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores ");
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores_testeo ");
             return true;
         },
         universidades: function () {
-            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Universidad')");
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores_testeo WHERE tipo IN ('Universidad')");
             return true;
         },
         makerspace: function () {
-            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Makerspace')");
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores_testeo WHERE tipo IN ('Makerspace')");
             return true;
         },
         incubadora: function () {
-            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Incubadora')");
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores_testeo WHERE tipo IN ('Incubadora')");
             return true;
         },
         coworking: function () {
-            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Espacio de Coworking')");
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores_testeo WHERE tipo IN ('Espacio de Coworking')");
             return true;
         },
         fondo_inversion: function () {
-            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Fondo de Inversión')");
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores_testeo WHERE tipo IN ('Fondo de Inversión')");
             return true;
         },
         aceleradora: function () {
-            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Aceleradora')");
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores_testeo WHERE tipo IN ('Aceleradora')");
             return true;
         },
         emprendimiento: function () {
-            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Emprendimiento')");
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores_testeo WHERE tipo IN ('Emprendimiento')");
             return true;
         },
         organizacion: function () {
-            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores WHERE tipo IN ('Organización')");
+            sublayers[0].setSQL("SELECT * FROM mapa_emprendedores_testeo WHERE tipo IN ('Organización')");
             return true;
         }
     }
@@ -173,7 +173,7 @@ function init(asd) {
         .on('done', function (layer) {
             // change the query for the first layer
             var subLayerOptions = {
-                sql: "SELECT * FROM mapa_emprendedores",
+                sql: "SELECT * FROM mapa_emprendedores_testeo",
             }
 
             var sublayer = layer.getSubLayer(0);
@@ -198,7 +198,7 @@ function busquedaListado() {
 
     var contenido = $('#modal-list .modal-body');
 
-    var q = "SELECT * FROM mapa_emprendedores WHERE pendiente_revision = true";
+    var q = "SELECT * FROM mapa_emprendedores_testeo WHERE pendiente_revision = true";
     contenido.children('div').remove();
 
     sql.execute(q).done(
@@ -223,7 +223,7 @@ function verDetallesEmpresa(par) {
     $('#modal-list').modal('show');
     var contenido = $('#modal-list .modal-body');
     var idEmpresa = par.replace('emp', '');
-    var q = "SELECT * FROM mapa_emprendedores WHERE cartodb_id = " + idEmpresa;
+    var q = "SELECT * FROM mapa_emprendedores_testeo WHERE cartodb_id = " + idEmpresa;
     contenido.children('div').remove();
     sql.execute(q).done(function (data) {
         for (var i = 0; i < data.total_rows; i++) {
@@ -237,7 +237,7 @@ function verDetallesEmpresa(par) {
                 "</div>"
             );
 
-            $.get("http://gcba.cartodb.com/api/v1/sql?q=select st_y(the_geom) as lat, st_x(the_geom) as lon from mapa_emprendedores WHERE cartodb_id = " + idEmpresa, function (data) {
+            $.get("http://gcba.cartodb.com/api/v1/sql?q=select st_y(the_geom) as lat, st_x(the_geom) as lon from mapa_emprendedores_testeo WHERE cartodb_id = " + idEmpresa, function (data) {
                 for (var i = 0; i < data.rows.length; ++i) {
                     var row = data.rows[i];
                     console.log("point", row.lat, row.lon);
@@ -263,7 +263,7 @@ function busquedaKeyword(key) {
 	}else{
 		$('#busquedaList').css("display", "inline");
 		key = key.toLowerCase();
-		var q = "SELECT * FROM mapa_emprendedores  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
+		var q = "SELECT * FROM mapa_emprendedores_testeo  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
 		sql.execute(q).done(function(data) {
 			$('#busquedaList').text("");
 			for (var i = 0; i < data.total_rows; i++) {

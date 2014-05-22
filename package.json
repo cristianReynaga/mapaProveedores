@@ -6,7 +6,7 @@
     "start": "node app"
   },
   "dependencies": {
-    "cartodb": "^0.1.1",
+    "cartodb": "<0.1.1",
     "ejs": "^1.0.0",
     "express": "~3.3.4",
     "grunt-contrib-sass": "^0.7.3",
