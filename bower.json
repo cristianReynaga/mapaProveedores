@@ -1,9 +1,8 @@
 {
-  "name": "simple",
-  "version": "0.0.1",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "components"
-  ]
+  "name": "Mapa-de-Emprendedores",
+  "version": "0.0.2",
+  "main": "css/base.css",
+  "dependencies": {
+    "bootstrap-sass-official": "*"
+  }
 }

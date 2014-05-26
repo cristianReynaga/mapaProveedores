@@ -13,11 +13,11 @@ git config --global url."https://".insteadOf git://
 
 Utilizamos `grunt` para compilar SASS con `grunt-contrib-sass` y `grunt-contrib-watch`.
 
-Utilizamos `bower` para traer Bootstrap 3 SASS usando [`bootstrap-sass-official`](https://github.com/twbs/bootstrap-sass).
+Utilizamos `bower` para traer Bootstrap 3 SASS usando `bootstrap-sass-official`.
 
 ```
 npm install
 npm update -g bower
 bower install
-grunt
+grunt serve
 ```
