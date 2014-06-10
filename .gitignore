@@ -4,12 +4,10 @@
 .models/
 node_modules/
 bower_components/
-<<<<<<< HEAD
 testing/
 css/bootstrap.css
-=======
 .DS_Store
 src/
 testing/
 viz.json
->>>>>>> a607c220565378062d24534b7cab965104bff091
+assets/
