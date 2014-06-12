@@ -17,6 +17,16 @@ module.exports = function (grunt) {
         file: 'app.js'
       }
     },
+
+    sass: {
+        dist: {
+            files: {
+                'public/css/base.css': 'public/css/base.scss'
+            }
+        }
+    },
+
+
     watch: {
       options: {
         nospawn: true,
@@ -37,6 +47,7 @@ module.exports = function (grunt) {
       },
       css: {
         files: ['public/css/*.scss'],
+        tasks: ['sass'],
         options: {
           livereload: reloadPort
         }
