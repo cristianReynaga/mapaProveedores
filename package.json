@@ -1,21 +1,25 @@
 {
-  "name": "Mapa-de-Emprendedores",
+  "name": "simple",
   "version": "0.0.1",
-  "description": "Prototipo de Mapa de Emprendedores",
-  "repository" :
-	{ 
-	 "type" : "git",
-	 "url" : "https://github.com/gcba/mapa-emprendedores.git"
-	},
-  "main": "index.html",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app"
   },
-  "author": "Nicolás Lound, David Galavotti",
-  "license": "MIT",
   "dependencies": {
-    "grunt-contrib-sass": "~0.7.3",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt": "^0.4.4"
+    "cartodb": "<0.1.1",
+    "ejs": "^1.0.0",
+    "express": "~3.3.4",
+    "grunt-contrib-sass": "^0.7.3",
+    "jade": "~0.34.0",
+    "foreman": "^0.3.0",
+    "mongoose": "^3.8.9"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-develop": "~0.2.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "request": "~2.27.0",
+    "time-grunt": "~0.1.1",
+    "load-grunt-tasks": "~0.2.0"
   }
 }

@@ -5253,7 +5253,7 @@ body {
 
 .search {
   position: absolute;
-  z-index: 1;
+  z-index: 999;
   top: 50%;
   left: 33%;
   overflow: hidden; }

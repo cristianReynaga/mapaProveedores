@@ -1,9 +1,13 @@
 .git/
 .project
 .sass-cache/
+.models/
 node_modules/
 bower_components/
+testing/
+css/bootstrap.css
 .DS_Store
 src/
 testing/
 viz.json
+assets/
