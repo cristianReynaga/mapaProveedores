@@ -29,8 +29,6 @@ html, body {
 }
 
 
-
-
 header {
     overflow: hidden;
     z-index: 999;
@@ -116,7 +114,14 @@ header {
             color: #FFFFFF;        
             text-align: center;
             font-size: 1em;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                .fino {
+                    font-family: "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    font-weight: thin;
+                }
+                .grueso{
+                    font-family: "Gotham Rounded Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                }
+
         }
 
         #panel{
