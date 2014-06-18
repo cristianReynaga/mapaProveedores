@@ -1,14 +1,14 @@
 <?php
 
 function getConfig() {
-  $config = array();
+	$config = array();
 
-  $config['key'] = 'key';
-  $config['secret'] = 'secret';
-  $config['email'] = 'email';
-  $config['password'] = 'pass';
-  $config['subdomain'] = 'subdomain';
+	$config['key'] = 'CRTcfMA1IfTpy36CtGfQzBPweEUtEOtPVi8refEp';
+	$config['secret'] = 'CRTcfMA1IfTpy36CtGfQzBPweEUtEOtPVi8refEp';
+	$config['email'] = 'licencias.sw@buenosaires.gob.ar';
+	$config['password'] = 'ronaldregan';
+	$config['subdomain'] = 'gcba';
 
-  return $config;
-  
+return $config;
+ 
 }

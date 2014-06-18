@@ -3,6 +3,8 @@
 
 @include font-face('Gotham', 'fonts/Gotham-Medium');
 @include font-face('Gotham Black', 'fonts/Gotham-Black');
+@include font-face('Gotham Rounded', 'fonts/GothamRnd-Medium');
+@include font-face('Gotham Rounded Bold', 'fonts/GothamRnd-Bold');
 
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 

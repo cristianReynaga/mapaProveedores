@@ -10,6 +10,18 @@
   font-style: normal;
   src: url("fonts/Gotham-Black.eot");
   src: url("fonts/Gotham-Black.eot?#iefix") format("embedded-opentype"), url("fonts/Gotham-Black.woff") format("woff"), url("fonts/Gotham-Black.ttf") format("truetype"), url("fonts/Gotham-Black.svg#Gotham Black") format("svg"); }
+@font-face {
+  font-family: "Gotham Rounded";
+  font-weight: normal;
+  font-style: normal;
+  src: url("fonts/GothamRnd-Medium.eot");
+  src: url("fonts/GothamRnd-Medium.eot?#iefix") format("embedded-opentype"), url("fonts/GothamRnd-Medium.woff") format("woff"), url("fonts/GothamRnd-Medium.ttf") format("truetype"), url("fonts/GothamRnd-Medium.svg#Gotham Rounded") format("svg"); }
+@font-face {
+  font-family: "Gotham Rounded Bold";
+  font-weight: normal;
+  font-style: normal;
+  src: url("fonts/GothamRnd-Bold.eot");
+  src: url("fonts/GothamRnd-Bold.eot?#iefix") format("embedded-opentype"), url("fonts/GothamRnd-Bold.woff") format("woff"), url("fonts/GothamRnd-Bold.ttf") format("truetype"), url("fonts/GothamRnd-Bold.svg#Gotham Rounded Bold") format("svg"); }
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
