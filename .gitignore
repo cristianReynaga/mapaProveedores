@@ -6,3 +6,6 @@ node_modules/
 .git/
 libs/cartodb.config.php
 .DS_Store
+testing/
+src/
+css/bootstrap.css
