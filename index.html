@@ -22,7 +22,6 @@
     <link rel="icon" href="favicon.ico"/>
 </head>
 
-<<<<<<< HEAD
 <body>
     <!-- Header -->
     <header>
@@ -43,23 +42,36 @@
     <!-- Main -->
     <div id="contenidos">
         <div id="mapa"> </div>
+
         <div id="sidebar">
+            <div class="btn-group btn-group-justified">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default activo">Inicio</button>
+                </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">Filtrar</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">Crear</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">Acerca</button>
+            </div>
+        </div>
 
-            <ul class="nav nav-pills">
-              <li class="active"><a href="#">Inicio</a></li>
-              <li><a href="#">Filtrar</a></li>
-              <li><a href="#">Crear</a></li>
-              <li><a href="#">Acerca</a></li>
-            </ul>
-
-
+        <div id="logo">
+            Mapa de <strong>Emprendedores</strong>
+        </div>
+        
+        <div id="panel">
+            Aca van todos los paneles de busqueda / filtro / Creacion / Acerca
         </div>
 
     </div>
 
 
 <!-- init form -->
-    <div id="formulario">
+    <div id="formulario" style="display: none;">
         <form role="form">
             <div class="form-group">
                 <label for="nombre_frm">Nombre</label>
@@ -161,131 +173,5 @@
     </div>
 
     <script src="js/init.js"></script>
-=======
-	<nav>
-		<button id="listado_btn"> </button>
-		<br>
-		<button id="busqueda_btn"> </button>
-		<br>
-		<button id="agregar_btn"> </button>
-	</nav>
-
-
-  <div id="map"> </div>
-
-
-		<!-- contenido puede estar hide y ser un div flotante por css -->
-		<div id="contenidoListado">
-			Listado de todas las empresas
-		</div>
-		<div id="contenidoBusqueda">
-			Buscar tipo/nombre/tags:
-			<input type="text" id="key"/>
-			<div id="resultadoBusqueda"> </div>
-		</div>
-
-		<div id="formularioAlta">
-			Formulario de Alta:
-			<form id="altaDeEmprendedor">
-				<table>
-					<tr>
-						<td>Nombre:</td>
-						<td>
-						<input type="text" name="nombre">
-						</td>
-					</tr>
-					<tr>
-						<td>Calle y Altura:</td>
-						<td>
-						<input id="input-dir" type="text">
-						</td>
-
-					</tr>
-					<tr>
-						<td>Esquina:</td>
-						<td>
-						<input type="text" id="input-esquina">
-						</td>
-					</tr>
-					<tr>
-						<td>Piso y Departamento</td>
-						<td>
-						<input type="text" name="piso_dpto">
-						</td>
-					</tr>
-
-					<tr>
-						<td>Descripcion</td>
-						<td>
-						<input type="text" name="descripcion">
-						</td>
-					</tr>
-
-					<tr>
-						<td>Inicio de actividades</td>
-						<td>
-						<input type="text" name="inicio_de_actividades">
-						</td>
-					</tr>
-					<tr>
-						<td>Mail institucional</td>
-						<td>
-						<input type="text" name="mail_institucional">
-						</td>
-					</tr>
-					<tr>
-						<td>Mail del responsable</td>
-						<td>
-						<input type="text" name="mail_responsable">
-						</td>
-					</tr>
-					<tr>
-						<td>Responsable del proyecto</td>
-						<td>
-						<input type="text" name="responsable_proyecto">
-						</td>
-					</tr>
-					<tr>
-						<td>Servicios</td>
-						<td>
-						<input type="text" name="servicios">
-						</td>
-					</tr>
-					<tr>
-						<td>Tags</td>
-						<td>
-						<input type="text" name="tags">
-						</td>
-					</tr>
-					<tr>
-						<td>Teléfono</td>
-						<td>
-						<input type="text" name="telefono">
-						</td>
-					</tr>
-					<tr>
-						<td>Tipo</td>
-						<td>
-						<input type="text" name="tipo">
-						</td>
-					</tr>
-					<tr>
-						<td>Web</td>
-						<td>
-						<input type="text" name="web">
-						</td>
-					</tr>
-					
-				</table>
-				<button id="nuevo_registro">Agregar</button>
-
-			</form>
-		</div>
-
-
-	<script src="js/mapaemprendedores.js"></script>
-	<script src="js/app.js"></script>
->>>>>>> 79536a02a90ec16fd8ab81ed69d6b9447978d712
-
 </body>
 </html>

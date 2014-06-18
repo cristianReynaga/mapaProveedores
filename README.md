@@ -41,6 +41,18 @@ Testeado usando
 
 ---
 
+
+######Bugs conocidos:
+
+
+Al cargar el mapa tira errores en consola con Firebug activado puede dar los siguientes errores:
+	ReferenceError: jl is not defined main.js
+	ReferenceError: HO is not defined main.js
+
+Fix:
+Cerrar el firebug y regargar la página.
+
+
 Licencia 
 --------
 
