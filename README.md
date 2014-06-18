@@ -42,10 +42,10 @@ Testeado usando
 ---
 
 
-######Bugs conocidos:
-
+##### Bugs conocidos:
 
 Al cargar el mapa tira errores en consola con Firebug activado puede dar los siguientes errores:
+	ReferenceError: rd is not defined
 	ReferenceError: jl is not defined main.js
 	ReferenceError: HO is not defined main.js
 
