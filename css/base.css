@@ -5338,7 +5338,87 @@ header {
     width: 270px;
     float: left; }
 
-.cartodb-zoom {
-  margin: 20px !important;
-  position: fixed !important;
-  bottom: 0px !important; }
+div.cartodb-popup.emprendedores {
+  width: 617px;
+  padding-top: 5px;
+  background: url("img/map/infowindow-top.png") no-repeat; }
+  div.cartodb-popup.emprendedores div.cartodb-popup-content-wrapper {
+    width: 407px;
+    max-width: 407px;
+    padding: 0 5px;
+    background: url("img/map/infowindow-content.png") repeat-y; }
+  div.cartodb-popup.emprendedores div.cartodb-popup-tip-container {
+    width: 417px;
+    background: url("img/map/infowindow-bottom.png") no-repeat; }
+  div.cartodb-popup.emprendedores div.row {
+    display: block;
+    overflow: auto; }
+    div.cartodb-popup.emprendedores div.row div.label,
+    div.cartodb-popup.emprendedores div.row div.info {
+      border: 1px solid red;
+      padding: 20px 0;
+      margin: 0 20px; }
+    div.cartodb-popup.emprendedores div.row div.label {
+      float: left;
+      width: 60px; }
+    div.cartodb-popup.emprendedores div.row div.info {
+      float: right;
+      width: 267px; }
+      div.cartodb-popup.emprendedores div.row div.info.border {
+        border-bottom: 1px solid #E1E2E4; }
+    div.cartodb-popup.emprendedores div.row.no-pad div.info,
+    div.cartodb-popup.emprendedores div.row.no-pad div.label {
+      padding-top: 0; }
+  div.cartodb-popup.emprendedores a.cartodb-popup-close-button {
+    display: inline-block;
+    top: 10px;
+    right: 10px;
+    width: 20px !important;
+    height: auto !important;
+    padding: 5px 0;
+    text-align: center;
+    background: 0;
+    text-indent: 0;
+    font: bold 11px "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    text-decoration: none; }
+    div.cartodb-popup.emprendedores a.cartodb-popup-close-button:hover {
+      text-decoration: underline; }
+  div.cartodb-popup.emprendedores label {
+    display: block;
+    margin-top: 2px;
+    font: bold 11px "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    line-height: 12px;
+    color: #4CA7CC; }
+  div.cartodb-popup.emprendedores img {
+    max-width: 180px !important; }
+  div.cartodb-popup.emprendedores p {
+    display: block;
+    max-width: none !important;
+    width: auto !important;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 14px;
+    color: #999999; }
+    div.cartodb-popup.emprendedores p strong {
+      font-weight: bold; }
+    div.cartodb-popup.emprendedores p .cartodb-zoom {
+      margin: 20px !important;
+      position: fixed !important;
+      bottom: 0px !important; }
+    div.cartodb-popup.emprendedores p.margin {
+      margin-top: 12px; }
+    div.cartodb-popup.emprendedores p a {
+      color: #459CBE;
+      text-decoration: none; }
+      div.cartodb-popup.emprendedores p a:hover {
+        text-decoration: underline; }
+  div.cartodb-popup.emprendedores a.more {
+    font: bold 13px "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    color: #333C47;
+    text-decoration: none; }
+    div.cartodb-popup.emprendedores a.more:hover {
+      text-decoration: underline; }
+  div.cartodb-popup.emprendedores i.doc_icon {
+    display: inline-block;
+    width: 28px;
+    height: 32px;
+    background: url("img/map/doc-icon.png") no-repeat; }

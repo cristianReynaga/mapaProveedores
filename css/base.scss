@@ -160,6 +160,101 @@ header {
 
 }
 
+  // INFOWINDOW
+  div.cartodb-popup.emprendedores {
+    width:617px;
+    padding-top:5px;
+    background:url("img/map/infowindow-top.png") no-repeat;
+   
+    div.cartodb-popup-content-wrapper {
+      width:407px;
+      max-width:407px;
+      padding:0 5px;
+      background:url("img/map/infowindow-content.png") repeat-y;
+    }
+
+    div.cartodb-popup-tip-container {
+      width:417px;
+      background:url("img/map/infowindow-bottom.png") no-repeat;
+    }
+
+    // New content
+
+    div.row {
+      display:block;
+      overflow:auto;
+
+      div.label,
+      div.info {
+        border: 1px solid red;
+        padding: 20px 0;
+        margin:0 20px;
+      }
+
+      div.label {
+        float:left;
+        width:60px;
+      }
+      div.info {
+        float:right;
+        width:267px;
+        
+        &.border {
+          border-bottom:1px solid #E1E2E4;  
+        }
+      }
+
+      // Row types
+
+      // - without padding
+      &.no-pad {
+        div.info,
+        div.label {
+          padding-top:0;
+        }
+      }
+    }
+
+    // Elements
+
+    a.cartodb-popup-close-button {
+      @include inline-block();
+      top:10px;
+      right:10px;
+      width:20px!important;
+      height:auto!important;
+      padding:5px 0;
+      text-align: center;
+      background:0;
+      text-indent: 0;
+      font:bold 11px $helvetica;
+      text-decoration:none;
+      &:hover {
+        text-decoration:underline;
+      }
+    }
+
+    label {
+      display:block;
+      margin-top:2px;
+      font:bold 11px $helvetica;
+      line-height:12px;
+      color:#4CA7CC;
+    }
+
+    img {
+      max-width:180px!important;
+    }
+
+    p {
+      display:block;
+      max-width:none!important;
+      width:auto!important;
+      font-family:$georgia;
+      font-size:14px;
+      color:#999999;
+
+      strong { font-weight:bold }
 
 
 //cambio de lugar los controles de zoom de cartodb
@@ -169,3 +264,27 @@ header {
     position: fixed !important; 
     bottom: 0px !important;
 }
+      &.margin { margin-top:12px }
+
+      a {
+        color:#459CBE;
+        text-decoration:none;
+        &:hover { text-decoration:underline }
+      }
+    }
+
+    a.more {
+      font:bold 13px $helvetica;
+      color:#333C47;
+      text-decoration:none;
+
+      &:hover { text-decoration:underline }
+    }
+
+    i.doc_icon {
+      @include inline-block();
+      width:28px;
+      height:32px;
+      background:url('img/map/doc-icon.png') no-repeat;
+    }
+  }
