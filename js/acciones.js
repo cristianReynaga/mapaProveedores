@@ -19,7 +19,7 @@ function manejoBase(accion){
 		//no hay un update definido pero va con los parametros de "A".
 
 		/*
-		Al asp va:
+		Al php va:
 		UPDATE tabla_php
 		SET columna1=valor1,columna2=valor2, y así
 		WHERE cartodb_id = ID_del_registro_seleccionado;

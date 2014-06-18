@@ -8,6 +8,10 @@
 
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 
+$width-sidebar:270px;
+
+
+
 
 html {
     -webkit-font-smoothing: antialiased;
@@ -27,38 +31,6 @@ html, body {
     background-color: #FFFFFF;
     overflow: hidden;
 }
-
-#contenedor{
-    width: 100%;
-    height: 100%;
-    border: 1px solid red;
-    .encabezado{
-        width: 100%;
-        height: 50px;
-        border: 1px solid blue;
-    }   
-
-    .contenidos{
-        width: 100%;
-        height: 100%;
-        border: 1px solid green;
-        .mapa{
-            float: left;
-            width: 100%;
-            height: 100%;
-        }
-        .side{
-            float: right;
-            width: 300px;
-            height: 100%;
-        }
-
-    }
-}
-
-
-
-
 
 header {
     z-index: 999;
@@ -108,7 +80,7 @@ header {
     height: 100%;
 
         #sidebar{
-        width: 270px;
+        width: $width-sidebar;
         height: 100%;
         background-color: #0070eb;
         opacity: 0.8;
@@ -150,17 +122,50 @@ header {
         }
 
         #panel{
-            background-color: red;
             height: 100%;
             width: 100%;
-            border: 6px solid blue;
+            overflow: hidden;
         }
     }
 }
 
+#paneles{
+    position:relative;
+    left:0;
+    width: $width-sidebar * 3;
+    height: 100%;
+    display: block;
+    h1{
+        font-size: 0.9em
+    }
+    p{
+        font-size: 0.8em
+    }
+    #inicio{
+        width: $width-sidebar;
+        float: left;
+    }
+    #filtrar{
+        width: $width-sidebar;
+        float: left;
+    }
+    #acerca{
+        padding-left: 20px;
+        padding-right: 20px;
+        width: $width-sidebar;
+        float: left;
+    }
 
-#cartodb-gmaps-attribution{
-    right: 270px !important;
+
+
 }
 
 
+
+//cambio de lugar los controles de zoom de cartodb
+
+.cartodb-zoom{
+    margin: 20px !important;   
+    position: fixed !important; 
+    bottom: 0px !important;
+}

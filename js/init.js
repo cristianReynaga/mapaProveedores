@@ -15,7 +15,26 @@ $("#menuSidebar .btn-default").click(function (e) {
     return false;
 });
 
+//corre la pantalla que debo mostrar.
 function abroPantalla(pantalla){
+	var pantalla_1 = 0,
+		pantalla_2 = $("#inicio").width(),
+		pantalla_3 = $("#inicio").width() * 2,
+		destino = 0;
 
-	console.log("Abro la pantalla de: " + pantalla);
+	switch (pantalla){
+		case "inicio": destino = pantalla_1;
+			break;
+		case "filtrar": destino = pantalla_2;
+			break;
+		case "acerca": destino = pantalla_3;
+			break;
+	}
+
+	destino = destino * -1;
+
+	$("#paneles").animate({left: destino}, 250);
+
 }
+
+
