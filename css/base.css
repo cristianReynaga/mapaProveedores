@@ -1,9 +1,15 @@
 @font-face {
   font-family: "Gotham";
-  src: url("fonts/gotham.eot");
-  src: url("fonts/gotham.eot?#iefix") format("embedded-opentype"), url("fonts/gotham.woff") format("woff"), url("fonts/gotham.ttf") format("truetype"), url("fonts/gotham.svg#Gotham-Medium") format("svg");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+  src: url("fonts/Gotham-Medium.eot");
+  src: url("fonts/Gotham-Medium.eot?#iefix") format("embedded-opentype"), url("fonts/Gotham-Medium.woff") format("woff"), url("fonts/Gotham-Medium.ttf") format("truetype"), url("fonts/Gotham-Medium.svg#Gotham") format("svg"); }
+@font-face {
+  font-family: "Gotham Black";
+  font-weight: normal;
+  font-style: normal;
+  src: url("fonts/Gotham-Black.eot");
+  src: url("fonts/Gotham-Black.eot?#iefix") format("embedded-opentype"), url("fonts/Gotham-Black.woff") format("woff"), url("fonts/Gotham-Black.ttf") format("truetype"), url("fonts/Gotham-Black.svg#Gotham Black") format("svg"); }
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -255,8 +261,8 @@ th {
     border: 1px solid #ddd !important; } }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url("../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/glyphicons-halflings-regular.eot");
-  src: url("../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
+  src: url("bootstrap/glyphicons-halflings-regular.eot");
+  src: url("bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
 .glyphicon {
   position: relative;
   top: 1px;
@@ -884,7 +890,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #333333;
@@ -5200,164 +5206,111 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
-#map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%; }
-
-body {
-  overflow: hidden; }
-
-#busquedaList {
-  display: none; }
-
-.header-gcba {
-  height: 50px;
-  padding: 10px 0;
-  overflow: visible;
-  background-color: #ffd300; }
-
-.header-inner {
-  padding-right: 20px;
-  padding-left: 20px; }
-
-.header-gcba .logo {
-  float: left;
-  width: 172px;
-  height: 33px;
-  background: url("../img/logo-normal.png") no-repeat center center; }
-
-.header-gcba h2.slogan {
-  float: right;
-  font-weight: bold;
-  margin-top: 0.75em;
-  font-size: 0.85em;
-  font-size: 12px;
-  letter-spacing: -1px;
-  color: #000;
-  text-transform: uppercase; }
-
-.header-gcba .logo, .header-gcba h2 {
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
-  filter: alpha(opacity=70);
-  -moz-opacity: .7;
-  -khtml-opacity: .7;
-  opacity: 0.7; }
-
-.navbar-floating {
-  float: right;
-  margin-right: 20px; }
-  .navbar-floating .input-group .icon-addon .form-control {
-    border-radius: 0; }
-
-.search {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 33%;
-  overflow: hidden; }
-  .search .icon-addon {
-    position: relative;
-    color: #555;
-    display: block; }
-    .search .icon-addon:after, .search .icon-addon:before {
-      display: table;
-      content: " "; }
-    .search .icon-addon:after {
-      clear: both; }
-    .search .icon-addon.addon-md .glyphicon, .search .icon-addon .glyphicon, .search .icon-addon.addon-md .fa, .search .icon-addon .fa {
-      position: absolute;
-      z-index: 2;
-      left: 10px;
-      font-size: 14px;
-      width: 20px;
-      margin-left: -2.5px;
-      text-align: center;
-      padding: 10px 0;
-      top: 1px; }
-    .search .icon-addon.addon-lg .form-control {
-      line-height: 1.33;
-      height: 46px;
-      font-size: 18px;
-      padding: 10px 16px 10px 40px; }
-    .search .icon-addon.addon-sm .form-control {
-      height: 30px;
-      padding: 5px 10px 5px 28px;
-      font-size: 12px;
-      line-height: 1.5; }
-    .search .icon-addon.addon-lg .fa, .search .icon-addon.addon-lg .glyphicon {
-      font-size: 18px;
-      margin-left: 0;
-      left: 11px;
-      top: 4px; }
-    .search .icon-addon.addon-md .form-control, .search .icon-addon .form-control {
-      padding-left: 30px;
-      float: left;
-      font-weight: normal; }
-    .search .icon-addon.addon-sm .fa, .search .icon-addon.addon-sm .glyphicon {
-      margin-left: 0;
-      font-size: 12px;
-      left: 5px;
-      top: -1px; }
-    .search .icon-addon .form-control:focus + .glyphicon, .search .icon-addon:hover .glyphicon, .search .icon-addon .form-control:focus + .fa, .search .icon-addon:hover .fa {
-      color: #2580db; }
-
-/* 
-
-Hacks para el mapa de CartoDB + Mapbox
-
-*/
-.leaflet-control-container .leaflet-top {
-  top: 50px; }
-.leaflet-control-container #agregar_btn {
-  background-image: url("../img/agregar.png"); }
-
-.cartodb-logo {
-  bottom: 60px !important; }
-
-.cartodb-zoom {
-  margin: 70px 0 0 20px !important;
-  width: 30px !important; }
-
-.cartodb-tiles-loader .loader {
-  top: 120px !important;
-  width: 30px !important;
-  height: 30px !important; }
-
-/* 
-
-Sticky footer
-
-*/
 html {
   -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-rendering: optimizelegibility;
-  position: relative;
-  min-height: 100%; }
-  html body {
-    margin-bottom: 60px; }
-  html body > footer {
-    color: #FFF;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #333333; }
+  text-rendering: optimizeLegibility;
+  -webkit-backface-visibility: hidden;
+  moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -webkit-touch-callout: none; }
 
-footer .ministerio {
-  padding: 20px 50px; }
-footer .modernizacion {
-  text-align: left; }
-footer .desarrollo-economico {
-  text-align: right; }
-
-.list-group {
-  height: 201px; }
-
-#minimapa {
-  height: 150px;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   width: 100%;
-  border: 1px #c0c0c0 solid; }
+  font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #FFFFFF; }
+
+header {
+  overflow: hidden;
+  z-index: 999;
+  position: fixed;
+  color: #FFF;
+  top: 0px;
+  width: 100%;
+  height: 50px;
+  background-color: #ffcc00; }
+  header .logo {
+    float: left;
+    margin-top: 8px;
+    width: 172px;
+    height: 33px;
+    background-image: url("img/logo-normal.png"); }
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+      header .logo {
+        background-image: url("img/logo-normal_2x.png");
+        background-size: 172px 34px; } }
+  header .slogan {
+    padding-top: 8px;
+    text-align: right;
+    float: right;
+    font-family: 'Gotham Black';
+    margin-top: 0.75em;
+    font-size: 0.85em;
+    letter-spacing: -1px;
+    color: #000000;
+    text-transform: uppercase; }
+
+#contenidos {
+  z-index: 999;
+  overflow: horizontal;
+  padding-top: 50px;
+  background-color: #FFFFFF;
+  width: 100%;
+  height: 100%; }
+
+#mapa {
+  z-index: 500;
+  float: left;
+  width: 100%;
+  padding-right: 270px;
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+#sidebar {
+  width: 270px;
+  height: 100%;
+  background-color: #0070eb;
+  alpha: 0.8;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+  position: absolute;
+  top: 50px;
+  right: 0; }
+  #sidebar li {
+    max-width: 24%; }
+  #sidebar a {
+    background: transparent;
+    border: 0px;
+    outline: none; }
+
+#cartodb-gmaps-attribution {
+  right: 270px !important; }
+
+#formulario {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #FFFFFF;
+  background-color: #333333;
+  z-index: 999;
+  width: 300px;
+  padding-left: 10px;
+  padding-right: 10px; }
+  #formulario label, #formulario input {
+    font-size: 0.7em; }
+
+footer {
+  overflow: hidden;
+  position: fixed;
+  color: #FFF;
+  bottom: 0px;
+  width: 100%;
+  height: 50px;
+  background-color: #333333; }
+  footer .modernizacion {
+    padding-top: 20px;
+    text-align: left; }
+  footer .gobierno {
+    padding-top: 20px;
+    text-align: right; }

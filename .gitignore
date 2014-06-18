@@ -1,9 +1,8 @@
-.git/
-.project
-.sass-cache/
-node_modules/
+assets/
 bower_components/
+node_modules/
+.sass-cache/
+.git/
+libs/cartodb.config.php
 .DS_Store
-src/
-testing/
-viz.json
+
