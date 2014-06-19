@@ -1,8 +1,9 @@
 'use strict'
 
+var listado;
+
 function manejoBase(accion){
 	accion = accion.toUpperCase();
-
 
 	if (accion === "A"){
 		var arg1 = $('#ldesc').val(),
@@ -16,56 +17,28 @@ function manejoBase(accion){
 	}
 
 	if (accion === "M"){
-		//no hay un update definido pero va con los parametros de "A".
-
-		/*
-		Al php va:
-		UPDATE tabla_php
-		SET columna1=valor1,columna2=valor2, y así
-		WHERE cartodb_id = ID_del_registro_seleccionado;
-
-		*/
-
+		// no hay un update definido pero va con los parametros de "A".
+		
 	}
 
 	if (accion === "L"){
-
-		var arg1 = $('#lbusc').val(),
-			query =  "funciones.php?action=buscaRegistro&arg1=" + arg1 ;
-		}
-		
-		var resultado = consultaSQL(query);
-
+		query =  "funciones.php?action=listarRegistro";
+	}
+	
+	var resultado = consultaSQL(query, accion);
 }
 
-
-function busquedaKeyword(key){
-    key = key.toLowerCase();
-    var q = "SELECT * FROM mapa_emprendedores WHERE LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key +"%' OR LOWER(tipo) LIKE '%" + key +"%'";
-    sql.execute(q)
-        .done(function(data) {
-            $('#resultadoBusqueda').text("");
-            for (var i = 0; i < data.total_rows; i++) {
-                $('#resultadoBusqueda').append('<div> <span>' + 
-                    data.rows[i].nombre + 
-                    ' (' + 
-                    data.rows[i].tipo +
-                    ')');
-            }
-        })
-     
-        .error(function(errors) {
-           console.log("SQL ERR:",errors);
-        });
-}
-
-function consultaSQL(param){
+function consultaSQL(param, listado){
 	$.ajax({
 		url: param
 	}).success(function(data) {
 		if (data !== ''){
 			var resultado = jQuery.parseJSON( data );
-			console.log ( "Cantidad de registros", resultado.return.rows.length );
+			if (listado === "L"){
+				listado = resultado.return.rows ;
+				console.log ("Listado cargado.");
+			}
+			console.log ("Comando realizado con éxito");
 		}
 	}).error(function(){
 		console.log("No se pudo completar el comando");

@@ -5,13 +5,11 @@
 @include font-face('Gotham Black', 'fonts/Gotham-Black');
 @include font-face('Gotham Rounded', 'fonts/GothamRnd-Medium');
 @include font-face('Gotham Rounded Bold', 'fonts/GothamRnd-Bold');
+//@include font-face('Glyphicons Halflings', 'fonts/glyphicons-halflings');
 
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 
 $width-sidebar:270px;
-
-
-
 
 html {
     -webkit-font-smoothing: antialiased;
@@ -136,18 +134,61 @@ header {
     height: 100%;
     display: block;
     h1{
-        font-size: 0.9em
+        font-size: 0.9em;
     }
+    h5{
+        font-size: 0.7em;
+        width: $width-sidebar;
+        font-size: 0.8em;
+        text-align: right;
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+
     p{
         font-size: 0.8em
     }
     #inicio{
         width: $width-sidebar;
         float: left;
+
+        border-radius: 0px;
+        .input-group {
+            width: $width-sidebar;
+            * {
+                height: 40px;
+                background-color: #ffffff;
+                border: 0px;
+                border-radius: 0px;
+            }
+        }
     }
+    
     #filtrar{
         width: $width-sidebar;
         float: left;
+
+        * {
+            border-radius: 0px;
+            width: $width-sidebar;
+            height: 40px;
+
+        }
+
+        button {
+            color: #ffffff;
+            background-color: transparent;
+            border: 0px;
+            border-radius: 0px;
+        }
+
+        .activo {
+            color: #333333;
+            background-color: #FFFFFF;
+        }
+
     }
     #acerca{
         padding-left: 20px;
@@ -155,10 +196,21 @@ header {
         width: $width-sidebar;
         float: left;
     }
-
-
-
 }
+
+
+//cambio de lugar los controles de zoom de cartodb
+
+.cartodb-zoom{
+    margin: 20px !important;   
+    position: fixed !important; 
+    bottom: 0px !important;
+}
+
+
+
+
+
 
   // INFOWINDOW
   div.cartodb-popup.emprendedores {
@@ -255,20 +307,6 @@ header {
       color:#999999;
 
       strong { font-weight:bold }
-
-
-//cambio de lugar los controles de zoom de cartodb
-
-.cartodb-zoom{
-    margin: 20px !important;   
-    position: fixed !important; 
-    bottom: 0px !important;
-}
-
-
-
-
-//What is this?
 
       &.margin { margin-top:12px }
 

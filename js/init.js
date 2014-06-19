@@ -45,6 +45,9 @@ $("#menuSidebar .btn-default").click(function (e) {
     return false;
 });
 
+//cargo JSON con listado
+manejoBase("L");
+
 //corre la pantalla que debo mostrar.
 function abroPantalla(pantalla){
 	var pantalla_1 = 0,

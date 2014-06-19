@@ -67,12 +67,16 @@
                 <div id="paneles">
 
                     <div id="inicio">
-                        1    
+                        <h5>Buscar por nombre, descripción o tag</h5>
+                        <div class="input-group">
+                            <span class="input-group-addon glyphicon glyphicon-search"> </span>
+                            <input type="text" class="form-control" placeholder="Buscar">
+                        </div>
                     </div>
 
                     <div id="filtrar">
                         <div class="btn-group-vertical">
-                            <button type="button" class="btn btn-default">Ver Todos</button>
+                            <button type="button" class="btn btn-default activo">Ver Todos</button>
                             <button type="button" class="btn btn-default">Aceleradora</button>
                             <button type="button" class="btn btn-default">Espacio de Coworking</button>
                             <button type="button" class="btn btn-default">Gobierno Nacional</button>
@@ -91,16 +95,54 @@
                     </div>
 
                 </div>
-
-
-
-
-
-
             </div>
         </div>
 
     </div>
+
+    <script src="js/acciones.js"></script>
+    <script src="js/init.js"></script>
+
+    <script type="infowindow/html" id="client_infowindow_template">
+      <div class="cartodb-popup emprendedores">
+        <a href="#close" class="cartodb-popup-close-button close">x</a>
+        <div class="cartodb-popup-content-wrapper">
+          <div class="cartodb-popup-content">
+
+            <div class="row">
+              <div class="label">
+                <label>Nombre</label>
+              </div>
+              <div class="info">
+                <p>{{nombre}}</p>
+              </div>
+            </div>
+
+            <h4>calle</h4>
+            <p>{{calle}}</p>
+            {{#piso_dpto}}
+              <h4>piso_dpto</h4>
+              <p>{{piso_dpto}}</p>
+            {{/piso_dpto}}
+            {{#telefono}}
+              <h4>telefono</h4>
+              <p>{{telefono}}</p>
+            {{/telefono}}
+            <p>{{tipo}}</p>
+            <p>{{descripcion}}</p>
+            <h4>localidad</h4>
+            <p>{{localidad}}</p>
+            <h4>servicios</h4>
+            <p>{{servicios}}</p>
+            <h4>tags</h4>
+            <p>{{tags}}</p>
+          </div>
+        </div>
+        <div class="cartodb-popup-tip-container"></div>
+      </div>
+    </script>
+
+    
 <!-- init form -->
     <div id="formulario" style="visibility: hidden">
         <form role="form">
@@ -204,46 +246,5 @@
         </form>
     </div>
 
-
-    <script src="js/init.js"></script>
-
-    <script type="infowindow/html" id="client_infowindow_template">
-      <div class="cartodb-popup emprendedores">
-        <a href="#close" class="cartodb-popup-close-button close">x</a>
-        <div class="cartodb-popup-content-wrapper">
-          <div class="cartodb-popup-content">
-
-            <div class="row">
-              <div class="label">
-                <label>Nombre</label>
-              </div>
-              <div class="info">
-                <p>{{nombre}}</p>
-              </div>
-            </div>
-
-            <h4>calle</h4>
-            <p>{{calle}}</p>
-            {{#piso_dpto}}
-              <h4>piso_dpto</h4>
-              <p>{{piso_dpto}}</p>
-            {{/piso_dpto}}
-            {{#telefono}}
-              <h4>telefono</h4>
-              <p>{{telefono}}</p>
-            {{/telefono}}
-            <p>{{tipo}}</p>
-            <p>{{descripcion}}</p>
-            <h4>localidad</h4>
-            <p>{{localidad}}</p>
-            <h4>servicios</h4>
-            <p>{{servicios}}</p>
-            <h4>tags</h4>
-            <p>{{tags}}</p>
-          </div>
-        </div>
-        <div class="cartodb-popup-tip-container"></div>
-      </div>
-    </script>
 </body>
 </html>
