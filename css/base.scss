@@ -44,6 +44,7 @@ header {
         height:33px;
         @include retina-image("img/logo-normal", 172px 34px);
     }
+    
     .slogan {
         padding-top: 8px;
         text-align: right;

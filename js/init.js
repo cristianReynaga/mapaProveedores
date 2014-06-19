@@ -1,6 +1,6 @@
 // Instacio el mapa
 
-var visualizacion = cartodb.createVis('mapa', 'http://gcba.cartodb.com/api/v2/viz/3e8ccade-f59c-11e3-ba2c-0e230854a1cb/viz.json');
+var visualizacion = cartodb.createVis('mapa', 'http://gcba.cartodb.com/api/v2/viz/623b9526-f7ec-11e3-95ab-0e230854a1cb/viz.json');
 
 // Bindeo listeners a botones activos top menu sidebar
 $("#menuSidebar .btn-default").click(function(e) {
@@ -31,7 +31,6 @@ function muestroMarkers( tipo ){
         $('#filtrar button[value="' +  tipo + '"]').addClass("activo")
         $('#filtrar button').removeClass("activo")
         //muestro todos los puntos
-        //..
 
     }else{
         $('#filtrar #todos_btn').removeClass("activo")
@@ -55,6 +54,7 @@ function muestroMarkers( tipo ){
         // ..
 
     }
+
 }
 
 
