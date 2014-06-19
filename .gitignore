@@ -8,5 +8,5 @@ libs/cartodb.config.php
 .DS_Store
 testing/
 src/
-css/bootstrap.css
+css/base.css
 reference/

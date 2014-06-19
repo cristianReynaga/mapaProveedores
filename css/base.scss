@@ -8,6 +8,7 @@
 
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 
+$width-sidebar:270px;
 
 html {
     -webkit-font-smoothing: antialiased;
@@ -27,38 +28,6 @@ html, body {
     background-color: #FFFFFF;
     overflow: hidden;
 }
-
-#contenedor{
-    width: 100%;
-    height: 100%;
-    border: 1px solid red;
-    .encabezado{
-        width: 100%;
-        height: 50px;
-        border: 1px solid blue;
-    }   
-
-    .contenidos{
-        width: 100%;
-        height: 100%;
-        border: 1px solid green;
-        .mapa{
-            float: left;
-            width: 100%;
-            height: 100%;
-        }
-        .side{
-            float: right;
-            width: 300px;
-            height: 100%;
-        }
-
-    }
-}
-
-
-
-
 
 header {
     z-index: 999;
@@ -108,7 +77,7 @@ header {
     height: 100%;
 
         #sidebar{
-        width: 270px;
+        width: $width-sidebar;
         height: 100%;
         background-color: #0070eb;
         opacity: 0.8;
@@ -128,14 +97,19 @@ header {
             .activo{
                 filter: alpha(opacity=100);
                 opacity: 1;   
+                border-top: 3px solid transparent;
+                border-bottom: 3px solid rgba(255,255,255,0.25);
             }
         }
 
 
         #logo{
+            border-top: 1px solid rgba(255,255,255,0.25);
+            border-bottom: 1px solid rgba(255,255,255,0.25);
+
             width: 100%;
             height: 130px;
-            line-height: 8em;
+            line-height: 9em;
             color: #FFFFFF;        
             text-align: center;
             font-size: 1em;
@@ -150,18 +124,100 @@ header {
         }
 
         #panel{
-            background-color: red;
             height: 100%;
             width: 100%;
-            border: 6px solid blue;
+            overflow: hidden;
         }
     }
 }
 
+#paneles{
+    position:relative;
+    left:0;
+    width: $width-sidebar * 3;
+    height: 100%;
+    display: block;
+    h1{
+        font-size: 0.9em;
+    }
+    h5{
+        font-size: 0.7em;
+        width: $width-sidebar;
+        font-size: 0.8em;
+        text-align: right;
+        padding-left: 20px;
+        padding-right: 20px;
 
-#cartodb-gmaps-attribution{
-    right: 270px !important;
+    }
+
+
+    p{
+        font-size: 0.8em;
+        line-height: 1.5em;  
+    }
+
+    #inicio{
+        width: $width-sidebar;
+        float: left;
+
+        border-radius: 0px;
+        .input-group {
+            width: $width-sidebar;
+            * {
+                height: 40px;
+                background-color: #ffffff;
+                border: 0px;
+                border-radius: 0px;
+            }
+        }
+    }
+    
+    #filtrar{
+        width: $width-sidebar;
+        float: left;
+
+        * {
+            border-radius: 0px;
+            width: $width-sidebar;
+            height: 40px;
+
+        }
+
+        button {
+            text-align: left; 
+            color: #ffffff;
+            background-color: transparent;
+            border: 0px;
+            border-radius: 0px;
+        }
+
+        .activo {
+            color: #333333;
+            background-color: #FFFFFF;
+        }
+
+    }
+    #acerca{
+        padding-left: 20px;
+        padding-right: 20px;
+        width: $width-sidebar;
+        float: left;
+    }
 }
+
+
+//cambio de lugar los controles de zoom de cartodb
+
+.cartodb-zoom{
+    margin: 20px !important;   
+    position: fixed !important; 
+    bottom: 0px !important;
+}
+
+
+
+
+
 
   // INFOWINDOW
   div.cartodb-popup.emprendedores {
