@@ -38,6 +38,27 @@ function manejoBase(accion){
 
 }
 
+
+function busquedaKeyword(key){
+    key = key.toLowerCase();
+    var q = "SELECT * FROM mapa_emprendedores WHERE LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key +"%' OR LOWER(tipo) LIKE '%" + key +"%'";
+    sql.execute(q)
+        .done(function(data) {
+            $('#resultadoBusqueda').text("");
+            for (var i = 0; i < data.total_rows; i++) {
+                $('#resultadoBusqueda').append('<div> <span>' + 
+                    data.rows[i].nombre + 
+                    ' (' + 
+                    data.rows[i].tipo +
+                    ')');
+            }
+        })
+     
+        .error(function(errors) {
+           console.log("SQL ERR:",errors);
+        });
+}
+
 function consultaSQL(param){
 	$.ajax({
 		url: param
