@@ -5348,7 +5348,10 @@ header {
         height: 40px;
         background-color: #ffffff;
         border: 0px;
-        border-radius: 0px; }
+        border-radius: 0px;
+        margin-top: 1px;
+        margin-bottom: -1px;
+        padding-top: 7px; }
   #paneles #filtrar {
     width: 270px;
     float: left; }
