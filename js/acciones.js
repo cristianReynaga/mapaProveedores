@@ -1,7 +1,6 @@
 'use strict'
 
-var listado;
-
+// Selecciona el tipo de query a correr de ABM
 function manejoBase(accion){
 	accion = accion.toUpperCase();
 
@@ -17,7 +16,7 @@ function manejoBase(accion){
 	}
 
 	if (accion === "M"){
-		// no hay un update definido pero va con los parametros de "A".
+		// Aun no hay un update definido pero va con los parametros de "A".
 		
 	}
 
@@ -28,6 +27,7 @@ function manejoBase(accion){
 	var resultado = consultaSQL(query, accion);
 }
 
+// Corre via PHP el query de ABM
 function consultaSQL(param, listado){
 	$.ajax({
 		url: param
@@ -46,10 +46,9 @@ function consultaSQL(param, listado){
 }
 
 
-function muestroMarkers( tipo ){
-
+// Maneja los estilos de los filtros
+function seleccionoMarkers( tipo ){
     var condicion = false;
-    
     if (tipo === "todos"){
         $('#filtrar button[value="' +  tipo + '"]').addClass("activo")
         $('#filtrar button').removeClass("activo")
@@ -77,12 +76,27 @@ function muestroMarkers( tipo ){
         // ..
 
     }
-
 }
 
-//corre la pantalla que debo mostrar.
 
-function abroPantalla(pantalla) {
+// Corre la query 
+function muestroMarcadores (query) {
+
+    var contenido = $('#modal-list .modal-body');
+
+    var q = "SELECT * FROM mapa_emprendedores_testeo_testeo";
+    sql.execute(q).done(function (data) {
+        for (var i = 0; i < data.total_rows; i++) {
+            contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
+            contenido.children('.loading').remove();
+        }
+    }).error(function (errors) {
+        console.log("SQL ERR:", errors);
+    });
+}
+
+// Corre la pantalla que debo mostrar en el sidebar
+function abroSlide(pantalla) {
     var pantalla_1 = 0,
         pantalla_2 = $("#inicio").width(),
         pantalla_3 = $("#inicio").width() * 2,
@@ -110,37 +124,19 @@ function abroPantalla(pantalla) {
 
 
 // Implementar en filtros
-    function filtrarPor(query) {
+	function filtrarPor(query) {
 
-        var contenido = $('#modal-list .modal-body');
+	    var contenido = $('#modal-list .modal-body');
 
-        var q = "SELECT * FROM mapa_emprendedores_testeo_testeo";
-        sql.execute(q).done(function (data) {
-            for (var i = 0; i < data.total_rows; i++) {
-                contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
-                contenido.children('.loading').remove();
-            }
-        }).error(function (errors) {
-            console.log("SQL ERR:", errors);
-        });
-    }
-
-
-// Implementar en buscador
-    function listarMaps(query) {
-
-        var contenido = $('#modal-list .modal-body');
-
-        var q = "SELECT * FROM mapa_emprendedores_testeo_testeo";
-        sql.execute(q).done(function (data) {
-            for (var i = 0; i < data.total_rows; i++) {
-                contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
-                contenido.children('.loading').remove();
-            }
-        }).error(function (errors) {
-            console.log("SQL ERR:", errors);
-        });
-    }
-
+	    var q = "SELECT * FROM mapa_emprendedores_testeo_testeo";
+	    sql.execute(q).done(function (data) {
+	        for (var i = 0; i < data.total_rows; i++) {
+	            contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
+	            contenido.children('.loading').remove();
+	        }
+	    }).error(function (errors) {
+	        console.log("SQL ERR:", errors);
+	    });
+	}
 
 

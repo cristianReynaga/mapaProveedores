@@ -11,7 +11,7 @@ $("#menuSidebar .btn-default").click(function(e) {
         // manejo menu
         $("#menuSidebar .activo").removeClass("activo");
         $(e.target).addClass("activo");
-        abroPantalla($("#menuSidebar .activo").val());
+        abroSlide($("#menuSidebar .activo").val());
     }
     return false; //para que no recarge chrome (known issue)
 });
@@ -19,6 +19,6 @@ $("#menuSidebar .btn-default").click(function(e) {
 
 // Bindeo listeners a botones de filtros
 $("#filtrar .btn-default").click(function(e) {
-    muestroMarkers (e.target.value);
+    seleccionoMarkers (e.target.value);
     return false; //para que no recarge chrome (known issue)
 });
