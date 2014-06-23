@@ -137,7 +137,7 @@ header {
 #paneles{
     position:relative;
     left:0;
-    width: $width-sidebar * 3;
+    width: $width-sidebar * 4;
     height: 100%;
     display: block;
     h1{
@@ -200,6 +200,13 @@ header {
         }
 
     }
+    #crear{
+        padding-left: 20px;
+        padding-right: 20px;
+        width: $width-sidebar;
+        float: left;
+    }
+
     #acerca{
         padding-left: 20px;
         padding-right: 20px;
