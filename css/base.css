@@ -5351,6 +5351,9 @@ header {
         margin-top: 1px;
         margin-bottom: -1px;
         padding-top: 7px; }
+    #paneles #inicio .contenido {
+      padding-left: 20px;
+      padding-right: 20px; }
   #paneles #filtrar {
     width: 270px;
     float: left; }

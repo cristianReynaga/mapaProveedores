@@ -67,10 +67,9 @@
                 <div id="paneles">
 
                     <div id="inicio">
-                        <h5>Buscar por nombre, descripción o tag</h5>
-                        <div class="input-group">
-                            <span class="input-group-addon glyphicon glyphicon-search"></span>
-                            <input type="text" class="form-control" placeholder="Buscar">
+                        <div class="contenido">
+                            <h3>Bienvenidos al mapa emprendedor</h3>
+                            <p>En la Ciudad estamos desarrollando el Mapa Emprendedor, una plataforma virtual que agrupa a todos los actores que forman parte del ecosistema.</p>
                         </div>
                     </div>
 
@@ -108,18 +107,11 @@
         <a href="#close" class="cartodb-popup-close-button close">x</a>
         <div class="cartodb-popup-content-wrapper">
           <div class="cartodb-popup-content">
-
-            <div class="row">
-              <div class="label">
-                <label>Nombre</label>
-              </div>
-              <div class="info">
-                <p>{{nombre}}</p>
-              </div>
-            </div>
-
-            <h4>calle</h4>
-            <p>{{calle}}</p>
+          <p style="font-weight: bold; font-size: 1.3em;">{{nombre}}</p>
+            {{#calle}}
+            <h4>Dirección</h4>
+            <p>{{calle}} {{altura}}</p>
+            {{/calle}}
             {{#piso_dpto}}
               <h4>piso_dpto</h4>
               <p>{{piso_dpto}}</p>
@@ -128,14 +120,14 @@
               <h4>telefono</h4>
               <p>{{telefono}}</p>
             {{/telefono}}
+            <h4>Tipo</h4>
             <p>{{tipo}}</p>
+            <h4>Descripcion</h4>
             <p>{{descripcion}}</p>
-            <h4>localidad</h4>
-            <p>{{localidad}}</p>
-            <h4>servicios</h4>
-            <p>{{servicios}}</p>
+            {{#tags}}
             <h4>tags</h4>
             <p>{{tags}}</p>
+            {{/tags}}
           </div>
         </div>
         <div class="cartodb-popup-tip-container"></div>
