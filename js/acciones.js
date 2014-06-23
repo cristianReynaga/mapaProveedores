@@ -53,6 +53,9 @@ function seleccionoMarkers( tipo ){
     if (tipo === "todos"){
         $('#filtrar button[value="' +  tipo + '"]').addClass("activo")
         $('#filtrar button').removeClass("activo")
+
+//        layer.setOptions({           query: "SELECT * FROM emprendedores WHERE tipo = 'Aceleradora'"        });
+
         //muestro todos los puntos
         // ..
 
@@ -79,15 +82,10 @@ function seleccionoMarkers( tipo ){
         //muestro todos los puntos
         // ..
     }
-
-
-
 }
-
 
 // Corre la query 
 function muestroMarcadores (query) {
-
     var q = "SELECT * FROM mapa_emprendedores_testeo_testeo";
     sql.execute(q).done(function (data) {
         for (var i = 0; i < data.total_rows; i++) {
@@ -114,25 +112,3 @@ function abroSlide(pantalla) {
         left: destino
     }, 200);
 }
-
-
-// Implementar en filtros
-	function filtrarPor(query) {
-
-        var palabras_clave;
-
-
-	    var contenido = $('#modal-list .modal-body');
-
-//	    var q = "SELECT * FROM emprendedores WHERE tipo IN " + ;
-	    sql.execute(q).done(function (data) {
-	        for (var i = 0; i < data.total_rows; i++) {
-	            contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
-	            contenido.children('.loading').remove();
-	        }
-	    }).error(function (errors) {
-	        console.log("SQL ERR:", errors);
-	    });
-	}
-
-
