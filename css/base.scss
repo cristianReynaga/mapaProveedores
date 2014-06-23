@@ -69,8 +69,8 @@ header {
 }
 
 #contenidos{
-    position: relative;
-    top: 50px;
+    position: absolute;
+    top: 0;
     left: 0;
     background-color: #FFFFFF;
     width: 100%;
@@ -82,11 +82,15 @@ header {
         background-color: #0070eb;
         opacity: 0.8;
         position: absolute;
+        top:0;
         right: 0;
         color: #FFFFFF;        
 
         #menuSidebar{
+            height: 90px;
             button{
+                position: absolute; 
+                bottom: 0;                 
                 background: transparent;
                 border: 0px;
                 outline: none;
@@ -124,7 +128,6 @@ header {
         }
 
         #panel{
-            height: 100%;
             width: 100%;
             overflow: hidden;
         }
@@ -209,12 +212,15 @@ header {
 //cambio de lugar los controles de zoom de cartodb
 
 .cartodb-zoom{
-    margin: 20px !important;   
+    margin-bottom: 50px !important;   
+    margin-left: 20px !important;   
     position: fixed !important; 
     bottom: 0px !important;
 }
 
-
+.leaflet-container .leaflet-control-attribution{
+    margin-right: 270px !important;
+}
 
 
 
