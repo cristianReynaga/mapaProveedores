@@ -1,8 +1,14 @@
 'use strict'
+var capas;
 
 // Instacio el mapa
+var visualizacion = cartodb.createVis(mapa, 'http://gcba.cartodb.com/api/v2/viz/623b9526-f7ec-11e3-95ab-0e230854a1cb/viz.json')
+    .done(function(vis, layers) {
+        capas = layers[1];
 
-var visualizacion = cartodb.createVis(mapa, 'http://gcba.cartodb.com/api/v2/viz/623b9526-f7ec-11e3-95ab-0e230854a1cb/viz.json');
+
+    });
+
 
 
 // Bindeo listeners a botones activos top menu sidebar

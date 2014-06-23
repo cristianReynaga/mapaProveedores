@@ -50,14 +50,16 @@ function consultaSQL(param, listado){
 function seleccionoMarkers( tipo ){
     var condicion = false;
 
-    if (tipo === "todos"){
+    // P C
+    // array de botones con clase activo
+    // agregar al parametro de query
+
+    if (tipo === "todos"){         //muestro todos los puntos
         $('#filtrar button[value="' +  tipo + '"]').addClass("activo")
         $('#filtrar button').removeClass("activo")
 
-//        layer.setOptions({           query: "SELECT * FROM emprendedores WHERE tipo = 'Aceleradora'"        });
 
-        //muestro todos los puntos
-        // ..
+        capas.setQuery("SELECT * FROM emprendedores") //filtro por sql
 
     }else{
         $('#filtrar #todos_btn').removeClass("activo")
