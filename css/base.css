@@ -5326,7 +5326,7 @@ header {
 #paneles {
   position: relative;
   left: 0;
-  width: 810px;
+  width: 1080px;
   height: 100%;
   display: block; }
   #paneles h1 {
@@ -5374,6 +5374,11 @@ header {
     #paneles #filtrar .activo {
       color: #333333;
       background-color: #FFFFFF; }
+  #paneles #crear {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 270px;
+    float: left; }
   #paneles #acerca {
     padding-left: 20px;
     padding-right: 20px;

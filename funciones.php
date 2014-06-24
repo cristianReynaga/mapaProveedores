@@ -37,4 +37,10 @@
 		echo json_encode($result);
 	}
 
+
+
+	if($action == "filtro"){
+		$result = $cartodb->runSql("SELECT * FROM emprendedores WHERE tipo = 'Aceleradora'",true);
+	}
+
 ?>

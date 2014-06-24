@@ -49,46 +49,50 @@ function consultaSQL(param, listado){
 // Maneja los estilos de los filtros
 function seleccionoMarkers( tipo ){
     var condicion = false;
-    if (tipo === "todos"){
+
+    // P C
+    // array de botones con clase activo
+    // agregar al parametro de query
+
+    if (tipo === "todos"){         //muestro todos los puntos
         $('#filtrar button[value="' +  tipo + '"]').addClass("activo")
         $('#filtrar button').removeClass("activo")
-        //muestro todos los puntos
+
+
+        capas.setQuery("SELECT * FROM emprendedores") //filtro por sql
 
     }else{
         $('#filtrar #todos_btn').removeClass("activo")
         condicion = $('#filtrar button[value="' +  tipo + '"]').hasClass("activo") ;
     }
 
-    if (tipo !== "todos"){
-        var mark = $('#filtrar button[value="' +  tipo + '"]').hasClass("activo") ;
-        $('#filtrar button[value="' +  tipo + '"]').addClass("activo")
-    }
-
     if (condicion){
         $('#filtrar button[value="' +  tipo + '"]').removeClass("activo")
-        // Oculto los puntos de TIPO
+        // Oculto los puntos de TIPO (si no hay activos muestro todos)
         // ..
 
     }else{
         console.log("Prendo:" + tipo);
         $('#filtrar button[value="' +  tipo + '"]').addClass("activo")
-        // Muestro los puntos de TIPO
+        // Muestro los puntos de TIPO (array con todos los activos)
         // ..
+    }
 
+    //si no hay activos se muestran todos
+    if ( !$('#filtrar button').hasClass("activo") ){
+        $('#filtrar button[value="todos"]').addClass("activo");
+        //muestro todos los puntos
+        // ..
     }
 }
 
-
 // Corre la query 
 function muestroMarcadores (query) {
-
-    var contenido = $('#modal-list .modal-body');
-
     var q = "SELECT * FROM mapa_emprendedores_testeo_testeo";
     sql.execute(q).done(function (data) {
         for (var i = 0; i < data.total_rows; i++) {
             contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
-            contenido.children('.loading').remove();
+            //contenido.children('.loading').remove();
         }
     }).error(function (errors) {
         console.log("SQL ERR:", errors);
@@ -97,46 +101,16 @@ function muestroMarcadores (query) {
 
 // Corre la pantalla que debo mostrar en el sidebar
 function abroSlide(pantalla) {
-    var pantalla_1 = 0,
-        pantalla_2 = $("#inicio").width(),
-        pantalla_3 = $("#inicio").width() * 2,
-        destino = 0;
-
-    switch (pantalla) {
-        case "inicio":
-            destino = pantalla_1;
-            break;
-        case "filtrar":
-            destino = pantalla_2;
-            break;
-        case "acerca":
-            destino = pantalla_3;
-            break;
+    var pantallas = ["inicio","filtrar","crear","acerca"]; // mantener el orden
+    var desplazamiento = new Array()     
+    var ancho = $("#inicio").width();
+    for (var i = 0; i < pantallas.length; i++ ){
+        desplazamiento.push(ancho * i);
     }
 
-    destino = destino * -1;
+    var destino = desplazamiento[ pantallas.indexOf( pantalla ) ] * -1;
 
     $("#paneles").animate({
         left: destino
-    }, 250);
-
+    }, 200);
 }
-
-
-// Implementar en filtros
-	function filtrarPor(query) {
-
-	    var contenido = $('#modal-list .modal-body');
-
-	    var q = "SELECT * FROM mapa_emprendedores_testeo_testeo";
-	    sql.execute(q).done(function (data) {
-	        for (var i = 0; i < data.total_rows; i++) {
-	            contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
-	            contenido.children('.loading').remove();
-	        }
-	    }).error(function (errors) {
-	        console.log("SQL ERR:", errors);
-	    });
-	}
-
-
