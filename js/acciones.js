@@ -77,7 +77,7 @@ function seleccionoMarkers( tipo ){
     var query = armoFiltrado ( $('#filtrar .activo:button') );
 
     //Tiro el query
-    var visual = capas.getLayers();
+    var visual = visualizacion.getLayers();
     visual[1].setQuery(query);
 
     /*
