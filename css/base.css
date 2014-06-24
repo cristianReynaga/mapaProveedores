@@ -5353,6 +5353,7 @@ header {
         border: 0px;
         border-radius: 0px; }
   #paneles #filtrar {
+    min-height: 450px;
     width: 270px;
     float: left; }
     #paneles #filtrar * {
