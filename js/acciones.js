@@ -87,8 +87,6 @@ function seleccionoMarkers( tipo ){
     */ 
     visual[1].infowindow.set("visibility", false)
 
-
-
 }
 
 function armoFiltrado ( lista ){
