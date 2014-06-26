@@ -5343,9 +5343,15 @@ header {
     line-height: 1.5em; }
   #paneles #inicio {
     width: 270px;
-    float: left;
-    border-radius: 0px; }
+    float: left; }
+    #paneles #inicio #listado {
+      max-height: 350px;
+      overflow-y: auto; }
+    #paneles #inicio li a {
+      border-radius: 0px;
+      color: #222222; }
     #paneles #inicio .input-group {
+      border-radius: 0px;
       width: 270px; }
       #paneles #inicio .input-group * {
         height: 40px;
@@ -5359,6 +5365,7 @@ header {
       padding-left: 20px;
       padding-right: 20px; }
   #paneles #filtrar {
+    min-height: 450px;
     width: 270px;
     float: left; }
     #paneles #filtrar * {

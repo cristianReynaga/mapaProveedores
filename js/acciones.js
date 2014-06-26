@@ -17,7 +17,6 @@ function manejoBase(accion){
 
 	if (accion === "M"){
 		// Aun no hay un update definido pero va con los parametros de "A".
-		
 	}
 
 	if (accion === "L"){
@@ -49,41 +48,63 @@ function consultaSQL(param, listado){
 // Maneja los estilos de los filtros
 function seleccionoMarkers( tipo ){
     var condicion = false;
-
     // P C
     // array de botones con clase activo
     // agregar al parametro de query
+    // muestro todos los puntos
+    // capas.setQuery("SELECT * FROM emprendedores") //filtro por sql
 
-    if (tipo === "todos"){         //muestro todos los puntos
+    if (tipo === "todos"){ // toggle por todos
         $('#filtrar button[value="' +  tipo + '"]').addClass("activo")
         $('#filtrar button').removeClass("activo")
-
-
-        capas.setQuery("SELECT * FROM emprendedores") //filtro por sql
-
     }else{
         $('#filtrar #todos_btn').removeClass("activo")
         condicion = $('#filtrar button[value="' +  tipo + '"]').hasClass("activo") ;
     }
 
-    if (condicion){
+    if (condicion){ // toggle resto de los botones
         $('#filtrar button[value="' +  tipo + '"]').removeClass("activo")
-        // Oculto los puntos de TIPO (si no hay activos muestro todos)
-        // ..
-
     }else{
-        console.log("Prendo:" + tipo);
         $('#filtrar button[value="' +  tipo + '"]').addClass("activo")
-        // Muestro los puntos de TIPO (array con todos los activos)
-        // ..
     }
 
-    //si no hay activos se muestran todos
+    // Si no hay botones activos se activa Todos
     if ( !$('#filtrar button').hasClass("activo") ){
         $('#filtrar button[value="todos"]').addClass("activo");
-        //muestro todos los puntos
-        // ..
     }
+
+    //preparo el query para todos los filtros
+    var query = armoFiltrado ( $('#filtrar .activo:button') );
+
+    //Tiro el query
+    var visual = visualizacion.getLayers();
+    visual[1].setQuery(query);
+
+    /*
+        Known bug:
+        https://github.com/CartoDB/cartodb.js/issues/26
+        El cambio de la query en la visualización no cierra los infowindow activos
+    */ 
+    visual[1].infowindow.set("visibility", false)
+
+}
+
+function armoFiltrado ( lista ){
+    var consulta = "SELECT * FROM emprendedores";
+    var valores = "";
+
+    for ( var i = 0 ; i < lista.length ; i++ ){
+        if ( lista[i].value === "todos"){
+            return consulta;
+        }else{
+            if (i === 0){
+                consulta = consulta + " WHERE tipo IN ("
+            }
+            consulta = consulta + "'"+ lista[i].value.replace(/_/g, " ") +"',";
+        }
+    }
+    consulta = consulta.slice(0,consulta.length-1);
+    return consulta + ")";
 }
 
 // Corre la query 
@@ -102,7 +123,7 @@ function muestroMarcadores (query) {
 // Corre la pantalla que debo mostrar en el sidebar
 function abroSlide(pantalla) {
     var pantallas = ["inicio","filtrar","crear","acerca"]; // mantener el orden
-    var desplazamiento = new Array()     
+    var desplazamiento = new Array();
     var ancho = $("#inicio").width();
     for (var i = 0; i < pantallas.length; i++ ){
         desplazamiento.push(ancho * i);

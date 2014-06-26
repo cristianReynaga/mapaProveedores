@@ -110,7 +110,6 @@ header {
         #logo{
             border-top: 1px solid rgba(255,255,255,0.25);
             border-bottom: 1px solid rgba(255,255,255,0.25);
-
             width: 100%;
             height: 130px;
             line-height: 9em;
@@ -150,9 +149,7 @@ header {
         text-align: right;
         padding-left: 20px;
         padding-right: 20px;
-
     }
-
 
     p{
         font-size: 0.8em;
@@ -163,8 +160,21 @@ header {
         width: $width-sidebar;
         float: left;
 
-        border-radius: 0px;
+        #listado{
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        li a {
+            border-radius: 0px;
+            color: #222222;
+        }
+        .badge{
+
+
+        }
         .input-group {
+            border-radius: 0px;
             width: $width-sidebar;
             * {
                 height: 40px;
@@ -183,6 +193,7 @@ header {
     }
     
     #filtrar{
+        min-height: 450px;
         width: $width-sidebar;
         float: left;
 
@@ -205,8 +216,8 @@ header {
             color: #333333;
             background-color: #FFFFFF;
         }
-
     }
+
     #crear{
         padding-left: 20px;
         padding-right: 20px;
