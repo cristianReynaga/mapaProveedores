@@ -5332,7 +5332,6 @@ header {
   #paneles h1 {
     font-size: 0.9em; }
   #paneles h5 {
-    font-size: 0.7em;
     width: 270px;
     font-size: 0.8em;
     text-align: right;
@@ -5350,6 +5349,8 @@ header {
     #paneles #inicio li a {
       border-radius: 0px;
       color: #222222; }
+    #paneles #inicio .badge {
+      z-index: 999; }
     #paneles #inicio .input-group {
       border-radius: 0px;
       width: 270px; }
@@ -5380,6 +5381,17 @@ header {
     padding-right: 20px;
     width: 270px;
     float: left; }
+    #paneles #crear .titular {
+      width: 270px;
+      color: #333333;
+      background-color: #FFFFFF; }
+    #paneles #crear label {
+      font-size: 0.7em;
+      font-family: Helvetica, Arial, sans-serif;
+      margin-bottom: 0px; }
+    #paneles #crear input, #paneles #crear button, #paneles #crear textarea {
+      font-size: 1em;
+      font-family: Helvetica, Arial, sans-serif; }
   #paneles #acerca {
     padding-left: 20px;
     padding-right: 20px;

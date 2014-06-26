@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html lang="es">
 <head>
-    <title>Mapa de Emprendedores - Buenos Aires Ciudad</title>
+    <title>Mapa Emprendedor - Buenos Aires Ciudad</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="El mapa en donde los emprendedores de la Ciudad de Buenos Aires se juntan." />
+    <meta name="description" content="Mapa Emprendedor de la Ciudad Autónoma de Buenos Aires." />
     <meta name="keywords" content="mapa, buenos aires, emprendedores, ciudad de buenos aires" />
     <!--[if lt IE 9]>
         <script src="js/html5shiv.js"></script>
@@ -68,38 +68,15 @@
                 <div id="paneles">
 
                     <div id="inicio">
-                        <h5>Buscar por nombre, descripción o tag</h5>
+                        <h5>por nombre, descripción o tag</h5>
                         <div class="input-group">
                             <span class="input-group-addon glyphicon glyphicon-search"></span>
-                            <input type="text" class="form-control" placeholder="Buscar">
+                            <input type="text" class="form-control" placeholder="Buscar..." id="busquedaEmprendedores">
                         </div>
 
-                        <div id="listado" style="overflow-y: auto;">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li>
-                                    <a href="#">
-                                        NOMBRE
-                                        <span class="badge pull-right">QUE ES</span>
-                                    </a>
-                                </li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
-                                <li><a href="#">Lorem<span class="badge pull-right">Ipsum</span></a></li>
+                        <div id="listado">
+                            <ul class="nav nav-pills nav-stacked" id="resultados">
+
                             </ul>
                         </div>
 
@@ -124,8 +101,96 @@
                     </div>
 
                     <div id="crear">
-                        <h1>Alta de Emprendimiento<h1>
-                        <p>Por favor complete todo los campos posibles.</p>
+                            Form de alta
+
+                            <form style="display: none;">
+
+                                <!-- Paso 1 - Información Básica -->
+                                <div class="form-group">
+                                    <label for="nombre_frm">Nombre</label>
+                                    <input type="text" id="nombre_frm" class="form-control" placeholder="Nombre del emprendimiento">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="desc_frm">Descripción</label>
+                                    <textarea class="form-control" rows="3" id="desc_frm" placeholder="">Ingrese una breve descripción del emprendimiento</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="resp_frm">Servicios</label>
+                                    <input type="text" id="serv_frm" class="form-control" placeholder="Sevicios">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="acti_frm">Inicio de actividades</label>
+                                    <input type="text" id="acti_frm" class="form-control" placeholder="Año de inicio">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tags_frm">Tags</label>
+                                    <input type="text" id="tags_frm" class="form-control" placeholder="Tags separados por coma">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tipo_frm">Tipo</label>
+                                    <select class="form-control" id="tipo_frm">
+                                        <option>Aceleradora</option>
+                                        <option>Emprendimiento</option>
+                                        <option>Espacio de Coworking</option>
+                                        <option>Fondo de Inversión</option>
+                                        <option>Gobierno Nacional</option>
+                                        <option>Incubadora</option>
+                                        <option>Inversor</option>
+                                        <option>Makerspace</option>
+                                        <option>Organización</option>
+                                        <option>Universidad</option>
+                                    </select>
+                                </div>
+
+                                <!-- Paso 2 - Ubicacion -->
+
+                                <div class="form-group">
+                                    <label for="direccion_frm">Direccion</label>
+                                    <input type="text" id="direccion_frm" class="form-control" placeholder="Calle y altura o esquina">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="piso_frm">Piso y departamento</label>
+                                    <input type="text" id="piso_frm" class="form-control" placeholder="Piso y departamento">
+                                </div>
+
+                                <!-- Paso 3 - Datos de contacto -->
+
+
+                                <div class="form-group">
+                                    <label for="mailIns_frm">Mail institucional</label>
+                                    <input type="email" class="form-control" id="mailIns_frm" placeholder="E-mail">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tele_frm">Teléfono</label>
+                                    <input type="tel" id="tele_frm" class="form-control" placeholder="Telefonos">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="web_frm">Web</label>
+                                    <input type="url" id="web_frm" class="form-control" placeholder="HTTP://">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="resp_frm">Responsable del proyecto</label>
+                                    <input type="text" id="resp_frm" class="form-control" placeholder="Nombre del responsable">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mailRes_frm">Mail del responsable</label>
+                                    <input type="email" class="form-control" id="mailRes_frm" placeholder="E-mail del responsable">
+                                </div>
+
+                                <button type="submit" class="btn btn-default">
+                                    Enviar
+                                </button>
+                            </form>
                         
                     </div>
 

@@ -135,3 +135,40 @@ function abroSlide(pantalla) {
         left: destino
     }, 200);
 }
+
+
+//Llena el listado inicial
+function busquedaKeyword(key) {
+    console.log("pase");
+    var contenido = $('#listado');
+
+    if ( $('#busquedaEmprendedores').val() != ''){
+        console.log (key);
+        key = key.toLowerCase();
+        var q = "SELECT * FROM emprendedores  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
+        sql.execute(q).done(function(data) {
+            $('#resultados').text("");
+            for (var i = 0; i < data.total_rows; i++) {
+                $('#resultados').append(
+                    "<li>" +
+                        "<a href='#' id='empID" +
+                            data.rows[i].cartodb_id +
+                            "' onclick='verDetallesEmpresa(this.id)'>" + 
+                            data.rows[i].nombre +
+                        "</a>" +
+                            "<span class='badge pull-right'>" +
+                                data.rows[i].tipo +
+                            "</span>" +
+                    "</li>"
+                );
+            }
+        }).error(function(errors) {
+            console.log("SQL ERR:", errors);
+        });
+    }
+}
+
+function verDetallesEmpresa(idEmpresa){
+    alert("ID clickeado: " , idEmpresa);
+    console.log(idEmpresa);
+}
