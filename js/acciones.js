@@ -55,17 +55,17 @@ function seleccionoMarkers( tipo ){
     // capas.setQuery("SELECT * FROM emprendedores") //filtro por sql
 
     if (tipo === "todos"){ // toggle por todos
-        $('#filtrar button[value="' +  tipo + '"]').addClass("activo")
-        $('#filtrar button').removeClass("activo")
+        $('#filtrar button[value="' +  tipo + '"]').addClass("activo");
+        $('#filtrar button').removeClass("activo");
     }else{
-        $('#filtrar #todos_btn').removeClass("activo")
-        condicion = $('#filtrar button[value="' +  tipo + '"]').hasClass("activo") ;
+        $('#filtrar #todos_btn').removeClass("activo");
+        condicion = $('#filtrar button[value="' +  tipo + '"]').hasClass("activo");
     }
 
     if (condicion){ // toggle resto de los botones
-        $('#filtrar button[value="' +  tipo + '"]').removeClass("activo")
+        $('#filtrar button[value="' +  tipo + '"]').removeClass("activo");
     }else{
-        $('#filtrar button[value="' +  tipo + '"]').addClass("activo")
+        $('#filtrar button[value="' +  tipo + '"]').addClass("activo");
     }
 
     // Si no hay botones activos se activa Todos
@@ -85,7 +85,7 @@ function seleccionoMarkers( tipo ){
         https://github.com/CartoDB/cartodb.js/issues/26
         El cambio de la query en la visualización no cierra los infowindow activos
     */ 
-    visual[1].infowindow.set("visibility", false)
+    visual[1].infowindow.set("visibility", false);
 
 }
 
@@ -172,3 +172,19 @@ function verDetallesEmpresa(idEmpresa){
     alert("ID clickeado: " , idEmpresa);
     console.log(idEmpresa);
 }
+
+function siguienteFormulario(muestro, oculto){
+    // Si campos válidos entonces
+    console.log (muestro,oculto);
+    $(oculto).attr("class", "pasoNoActivo");
+    $(muestro).attr("class", "pasoActivo");
+    return false;    
+}
+
+function resolverCaptcha(){
+    alert("Resolver captcha");
+    $("#paso3").attr("class", "pasoNoActivo");
+    $("#paso2").attr("class", "pasoNoActivo");
+    $("#paso1").attr("class", "pasoActivo");
+    return false;    
+};

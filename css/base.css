@@ -5284,7 +5284,7 @@ header {
     width: 270px;
     height: 100%;
     background-color: #0070eb;
-    opacity: 0.8;
+    opacity: 0.9;
     position: absolute;
     top: 0;
     right: 0;
@@ -5385,6 +5385,14 @@ header {
       width: 270px;
       color: #333333;
       background-color: #FFFFFF; }
+    #paneles #crear .siguiente {
+      cursor: pointer; }
+    #paneles #crear .siguiente:hover {
+      text: #000000; }
+    #paneles #crear .pasoActivo {
+      display: inline; }
+    #paneles #crear .pasoNoActivo {
+      display: none; }
     #paneles #crear label {
       font-size: 0.7em;
       font-family: Helvetica, Arial, sans-serif;

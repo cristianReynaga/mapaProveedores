@@ -80,7 +80,7 @@ header {
         width: $width-sidebar;
         height: 100%;
         background-color: #0070eb;
-        opacity: 0.8;
+        opacity: 0.9;
         position: absolute;
         top:0;
         right: 0;
@@ -219,6 +219,20 @@ header {
             width: $width-sidebar;
             color: #333333;
             background-color: #FFFFFF;
+        }
+
+        .siguiente {
+            cursor: pointer;
+        }
+        .siguiente:hover {
+            text: #000000;
+        }
+
+        .pasoActivo{
+            display: inline;
+        }
+        .pasoNoActivo{
+            display: none;
         }
 
         label {
