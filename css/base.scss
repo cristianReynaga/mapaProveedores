@@ -8,7 +8,7 @@
 
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 
-$width-sidebar:270px;
+$width-sidebar:355px;
 
 html {
     -webkit-font-smoothing: antialiased;
@@ -82,10 +82,10 @@ html, body {
             border-bottom: 1px solid rgba(255,255,255,0.25);
             width: 100%;
             height: 130px;
-            line-height: 9em;
+            line-height: 7em;
             color: #FFFFFF;        
             text-align: center;
-            font-size: 1em;
+            font-size: 1.3em;
                 .fino {
                     font-family: "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
                     font-weight: lighter;
@@ -201,8 +201,8 @@ html, body {
         }
 
         .minimapa{
-//            width: $width-sidebar - 50;
-            height: $width-sidebar;
+ //           width: $width-sidebar - 50;
+            height: $width-sidebar / 2;
 
         }
 

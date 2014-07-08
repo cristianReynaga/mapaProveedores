@@ -15,6 +15,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
     <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+    <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
     <![endif]-->
@@ -148,7 +149,7 @@
                                     <div class="form-group">
                                         <label for="piso_frm">Piso y departamento</label>
                                         <input type="text" id="piso_frm" class="form-control" placeholder="Piso y departamento">
-                                        <input type="text" id="latLong_frm" hidden>
+                                        <input type="text" id="latLong_frm" hidden value="">
                                     </div>
 
                                     <div class="form-group">
@@ -189,6 +190,10 @@
                                     <div class="form-group">
                                         <label for="mailRes_frm">Mail del responsable</label>
                                         <input type="email" class="form-control" id="mailRes_frm" placeholder="E-mail del responsable">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div id="captchadiv"></div>
                                     </div>
 
                                     <div class="btn btn-default anterior" onclick="siguienteFormulario('#paso2','#paso3')"> Anterior </div>

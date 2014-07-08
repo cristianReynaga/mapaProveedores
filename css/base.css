@@ -5252,7 +5252,7 @@ html, body {
   width: 100%;
   height: 100%; }
   #contenidos #sidebar {
-    width: 270px;
+    width: 355px;
     height: 100%;
     background-color: #0070eb;
     opacity: 0.9;
@@ -5281,10 +5281,10 @@ html, body {
       border-bottom: 1px solid rgba(255, 255, 255, 0.25);
       width: 100%;
       height: 130px;
-      line-height: 9em;
+      line-height: 7em;
       color: #FFFFFF;
       text-align: center;
-      font-size: 1em; }
+      font-size: 1.3em; }
       #contenidos #sidebar #logo .fino {
         font-family: "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: lighter; }
@@ -5297,13 +5297,13 @@ html, body {
 #paneles {
   position: relative;
   left: 0;
-  width: 1080px;
+  width: 1420px;
   height: 100%;
   display: block; }
   #paneles h1 {
     font-size: 0.9em; }
   #paneles h5 {
-    width: 270px;
+    width: 355px;
     font-size: 0.8em;
     text-align: right;
     padding-left: 20px;
@@ -5312,7 +5312,7 @@ html, body {
     font-size: 0.8em;
     line-height: 1.5em; }
   #paneles #inicio {
-    width: 270px;
+    width: 355px;
     float: left; }
     #paneles #inicio #listado {
       max-height: 350px;
@@ -5324,7 +5324,7 @@ html, body {
       z-index: 999; }
     #paneles #inicio .input-group {
       border-radius: 0px;
-      width: 270px; }
+      width: 355px; }
       #paneles #inicio .input-group * {
         height: 40px;
         background-color: #ffffff;
@@ -5332,11 +5332,11 @@ html, body {
         border-radius: 0px; }
   #paneles #filtrar {
     min-height: 450px;
-    width: 270px;
+    width: 355px;
     float: left; }
     #paneles #filtrar * {
       border-radius: 0px;
-      width: 270px;
+      width: 355px;
       height: 40px; }
     #paneles #filtrar button {
       text-align: left;
@@ -5350,10 +5350,10 @@ html, body {
   #paneles #crear {
     padding-left: 20px;
     padding-right: 20px;
-    width: 270px;
+    width: 355px;
     float: left; }
     #paneles #crear .titular {
-      width: 270px;
+      width: 355px;
       color: #333333;
       background-color: #FFFFFF; }
     #paneles #crear .siguiente {
@@ -5363,7 +5363,7 @@ html, body {
       cursor: pointer;
       float: left; }
     #paneles #crear .minimapa {
-      height: 270px; }
+      height: 177.5px; }
     #paneles #crear .validar {
       cursor: pointer;
       text-align: right;
@@ -5394,7 +5394,7 @@ html, body {
   #paneles #acerca {
     padding-left: 20px;
     padding-right: 20px;
-    width: 270px;
+    width: 355px;
     float: left; }
 
 .cartodb-zoom {

@@ -20,14 +20,14 @@ function validoPaso(nro){
     }
 
     if (nro === 2){
+            dato = $("#direccion_frm").val();
+            if (dato.length > 5) { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
             dato = $("#latLong_frm").val();
-            if (dato.length > 0) { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
+            if (dato.length != "") { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
             validarFormulario(pantallaValidada, "#paso2");
     }
 
     if (nro === 3){
-        dato  = $("#mailIns_frm").val();
-        if ( validarEmail(dato)) { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
         dato  = $("#mailIns_frm").val();
         if ( validarEmail(dato)) { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
         dato  = $("#mailRes_frm").val();
@@ -39,13 +39,12 @@ function validoPaso(nro){
 
 function validarFormulario (validacion, paso){
     if  ( validacion.indexOf(false) < 0  ){
-        var alerta = paso + " span"
         switch (paso){
             case "#paso1":
                 siguienteFormulario('#paso2','#paso1')
+                google.maps.event.trigger(minimapa, 'resize');
                 break;
             case "#paso2":
-                google.maps.event.trigger(minimapa, 'resize');             
                 siguienteFormulario('#paso3','#paso2')
                 break;
             case "#paso3":
@@ -98,7 +97,7 @@ function buscarDireccion() {
                 map : minimapa,
                 position : results[0].geometry.location             
             });
-            $("#latLong_frm").val(marker.position.A  + "," +  marker.position.k);
+            $("#latLong_frm").val(marker.position.B  + "," +  marker.position.k);
         } else {
             console.log('No se pudo geocodificar la direccion. Error : ' + status);
         }
