@@ -1,4 +1,8 @@
 'use strict'
+// variables de geocodificacion
+var geocoder;
+var minimapa;
+
 // var de sql para las busquedas
 var sql = cartodb.SQL({
     user: 'gcba'
@@ -39,3 +43,19 @@ $("#busquedaEmprendedores").keyup(function () {
     busquedaKeyword($('#busquedaEmprendedores').val());
 });
 
+
+//inicializa el minimapa
+function init() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.609879, -58.391900);
+    var mapOptions = {
+        zoom : 15,
+        mapTypeControl : false,
+        streetViewControl : false,
+        center : latlng
+    };
+    minimapa = new google.maps.Map(document.getElementById('minimapa'), mapOptions);
+}
+
+
+google.maps.event.addDomListener(window, 'load', init);

@@ -139,7 +139,6 @@ function abroSlide(pantalla) {
 
 //Llena el listado inicial
 function busquedaKeyword(key) {
-    console.log("pase");
     var contenido = $('#listado');
 
     if ( $('#busquedaEmprendedores').val() != ''){
@@ -174,17 +173,9 @@ function verDetallesEmpresa(idEmpresa){
 }
 
 function siguienteFormulario(muestro, oculto){
-    // Si campos válidos entonces
-    console.log (muestro,oculto);
+    $(".aviso").attr("style", "display:none");
     $(oculto).attr("class", "pasoNoActivo");
     $(muestro).attr("class", "pasoActivo");
     return false;    
 }
 
-function resolverCaptcha(){
-    alert("Resolver captcha");
-    $("#paso3").attr("class", "pasoNoActivo");
-    $("#paso2").attr("class", "pasoNoActivo");
-    $("#paso1").attr("class", "pasoActivo");
-    return false;    
-};
