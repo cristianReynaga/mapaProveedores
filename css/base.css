@@ -5356,6 +5356,9 @@ html, body {
       width: 355px;
       color: #333333;
       background-color: #FFFFFF; }
+    #paneles #crear .cartelMinimapa {
+      font-size: 0.7em;
+      text-align: right; }
     #paneles #crear .siguiente {
       cursor: pointer;
       float: right; }
