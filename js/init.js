@@ -10,7 +10,7 @@ var sql = cartodb.SQL({
 
 
 // Instacio el mapa
-var visualizacion = cartodb.createVis(mapa, 'http://gcba.cartodb.com/api/v2/viz/623b9526-f7ec-11e3-95ab-0e230854a1cb/viz.json')
+var visualizacion = cartodb.createVis(mapa, 'http://gcba.cartodb.com/api/v2/viz/0677229a-0c33-11e4-ad27-0edbca4b5057/viz.json')
     .done(function(vis,layers) {
         //no hago nada por el momento
     });

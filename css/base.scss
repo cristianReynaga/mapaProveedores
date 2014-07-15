@@ -160,17 +160,28 @@ html, body {
 
         * {
             border-radius: 0px;
-            width: $width-sidebar;
+            //width: $width-sidebar;
             height: 40px;
 
         }
 
+        span {
+            text-transform: uppercase;
+            float: left;
+            font-size: 0.9em;
+            width: $width-sidebar;
+            height: 20px;
+            background-color: rgba(255,255,255,0.25);
+        }
+
         button {
+            font-size: 0.7em;
             text-align: left; 
             color: #ffffff;
             background-color: transparent;
             border: 0px;
             border-radius: 0px;
+            height: 25px;
         }
 
         .activo {
@@ -217,6 +228,11 @@ html, body {
             font-size: 0.7em;
             display: block;
             text-align: center;
+        }
+
+        .disclaimer{
+            font-size: 0.6em;
+            margin-bottom: 10px;
         }
 
         .aviso {

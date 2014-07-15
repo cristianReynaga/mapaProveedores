@@ -90,7 +90,7 @@ function seleccionoMarkers( tipo ){
 }
 
 function armoFiltrado ( lista ){
-    var consulta = "SELECT * FROM emprendedores";
+    var consulta = "SELECT * FROM mapa_emprendedor_mde";
     var valores = "";
 
     for ( var i = 0 ; i < lista.length ; i++ ){
@@ -109,7 +109,7 @@ function armoFiltrado ( lista ){
 
 // Corre la query 
 function muestroMarcadores (query) {
-    var q = "SELECT * FROM mapa_emprendedores_testeo_testeo";
+    var q = "SELECT * FROM mapa_emprendedor_mde";
     sql.execute(q).done(function (data) {
         for (var i = 0; i < data.total_rows; i++) {
             contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
@@ -144,7 +144,7 @@ function busquedaKeyword(key) {
     if ( $('#busquedaEmprendedores').val() != ''){
         console.log (key);
         key = key.toLowerCase();
-        var q = "SELECT * FROM emprendedores  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
+        var q = "SELECT * FROM mapa_emprendedor_mde  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
         sql.execute(q).done(function(data) {
             $('#resultados').text("");
             for (var i = 0; i < data.total_rows; i++) {

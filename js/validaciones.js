@@ -16,6 +16,8 @@ function validoPaso(nro){
             if (dato.length > 2)  { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
             dato  = $("#tipo_frm").val();
             if (dato != "Seleccione")  { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
+            dato  = $("#sector_frm").val();
+            if (dato != "Seleccione")  { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
             validarFormulario(pantallaValidada, "#paso1");
     }
 

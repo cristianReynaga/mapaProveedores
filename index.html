@@ -69,7 +69,9 @@
                     </div>
 
                     <div id="filtrar">
-                        <div class="btn-group-vertical">
+                        <div class="btn-group">
+                            <span> Por tipo de industria </span>
+
                             <button type="button" value="todos" id="todos_btn" class="btn btn-default activo">Ver Todos</button>
                             <button type="button" value="Aceleradora" class="btn btn-default">Aceleradora</button>
                             <button type="button" value="Emprendimiento" class="btn btn-default">Emprendimiento</button>
@@ -81,6 +83,23 @@
                             <button type="button" value="Makerspace" class="btn btn-default">Makerspace</button>
                             <button type="button" value="Organización" class="btn btn-default">Organización</button>
                             <button type="button" value="Universidad" class="btn btn-default">Universidad</button>
+
+                            <span> Por sector </span>
+
+                            <button type="button" value="a" class="btn btn-default">Productos Industriales</button>
+                            <button type="button" value="b" class="btn btn-default">Servicios</button>
+                            <button type="button" value="c" class="btn btn-default">Biotecnología</button>
+                            <button type="button" value="d" class="btn btn-default">Desarrollo de Software</button>
+                            <button type="button" value="e" class="btn btn-default">E-commerce</button>
+                            <button type="button" value="f" class="btn btn-default">Desarrollo de Video Juegos</button>
+                            <button type="button" value="g" class="btn btn-default">Tecnología de la Información</button>
+                            <button type="button" value="h" class="btn btn-default">Consultoría</button>
+                            <button type="button" value="u" class="btn btn-default">Educación</button>
+                            <button type="button" value="j" class="btn btn-default">Turismo</button>
+                            <button type="button" value="k" class="btn btn-default">Salud</button>
+                            <button type="button" value="l" class="btn btn-default">Cultura</button>
+                            <button type="button" value="m" class="btn btn-default">Gobierno</button>
+                            <button type="button" value="n" class="btn btn-default">Otro</button>
                         </div>
                     </div>
 
@@ -127,6 +146,23 @@
                                             <option value="Makerspace">Makerspace</option>
                                             <option value="Organización">Organización</option>
                                             <option value="Universidad">Universidad</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="sector_frm">Sector</label>
+                                        <select class="form-control" id="sector_frm" name="sector_frm">
+                                            <option value="Seleccione" selected>Seleccione su sector</option>
+                                            <option value=""> 0 </option>
+                                            <option value=""> 1 </option>
+                                            <option value=""> 2 </option>
+                                            <option value=""> 3 </option>
+                                            <option value=""> 4 </option>
+                                            <option value=""> 5 </option>
+                                            <option value=""> 6 </option>
+                                            <option value=""> 7 </option>
+                                            <option value=""> 8 </option>
+                                            <option value=""> 9 </option>
                                         </select>
                                     </div>
 
@@ -194,6 +230,8 @@
                                     <div class="form-group">
                                         <div id="captchadiv"></div>
                                     </div>
+
+                                    <div class="disclaimer"> Al decidir formar parte del mapa del ecosistema emprendedor de la C.A.B.A., presto consentimiento a la publicación de los datos de mi emprendimiento en dicho mapa.</div>
 
                                     <div class="btn btn-default anterior" onclick="siguienteFormulario('#paso2','#paso3')"> Anterior </div>
 
