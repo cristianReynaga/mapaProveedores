@@ -143,7 +143,6 @@ header {
         font-size: 0.9em;
     }
     h5{
-        font-size: 0.7em;
         width: $width-sidebar;
         font-size: 0.8em;
         text-align: right;
@@ -170,8 +169,7 @@ header {
             color: #222222;
         }
         .badge{
-
-
+            z-index: 999;
         }
         .input-group {
             border-radius: 0px;
@@ -223,6 +221,24 @@ header {
         padding-right: 20px;
         width: $width-sidebar;
         float: left;
+
+        .titular{
+            width: $width-sidebar;
+            color: #333333;
+            background-color: #FFFFFF;
+        }
+
+        label {
+            font-size: 0.7em;
+            font-family: Helvetica, Arial, sans-serif;
+            margin-bottom: 0px;
+        }
+
+        input, button, textarea{
+            font-size: 1em;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
     }
 
     #acerca{
