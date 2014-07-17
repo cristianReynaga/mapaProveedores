@@ -15,32 +15,32 @@
 
 	if($action == "buscaRegistro") {
 		$arg1 = $_REQUEST["arg1"];
-		$result = $cartodb->runSql("SELECT * FROM mapa_emprendedor_mde",true); //definir que busco y en donde. nombre, descripción o tag
+		$result = $cartodb->runSql("SELECT * FROM mapa_emprendedor",true); //definir que busco y en donde. nombre, descripción o tag
 		echo json_encode($result);
 	}
 
 	if($action == "agregaRegistro") {
 		$arg1 = $_REQUEST["arg1"];
 		$arg2 = $_REQUEST["arg2"];
-		$result = $cartodb->runSql( "INSERT INTO mapa_emprendedor_mde ( name , description ) VALUES (' " . $arg1 . "','" . $arg2 . "')",true);
+		$result = $cartodb->runSql( "INSERT INTO mapa_emprendedor ( name , description ) VALUES (' " . $arg1 . "','" . $arg2 . "')",true);
 	}
 
-	// Al php va: UPDATE mapa_emprendedor_mde SET columna1=valor1,columna2=valor2, y así WHERE cartodb_id = ID_del_registro_seleccionado;
+	// Al php va: UPDATE mapa_emprendedor SET columna1=valor1,columna2=valor2, y así WHERE cartodb_id = ID_del_registro_seleccionado;
 
 	if($action == "borraRegistro") {
 		$arg1 = $_REQUEST["arg1"];
-		$result = $cartodb->runSql( "DELETE FROM mapa_emprendedor_mde WHERE cartodb_id = " . $arg1 ,true);
+		$result = $cartodb->runSql( "DELETE FROM mapa_emprendedor WHERE cartodb_id = " . $arg1 ,true);
 	}
 
 	if($action == "listarRegistro") {
-		$result = $cartodb->runSql("SELECT cartodb_id , the_geom , nombre , descripcion , calle, direccion_normalizada, inicio de actividades , web FROM mapa_emprendedor_mde",true);
+		$result = $cartodb->runSql("SELECT cartodb_id , the_geom , nombre , descripcion , calle, direccion_normalizada, inicio de actividades , web FROM mapa_emprendedor",true);
 		echo json_encode($result);
 	}
 
 
 
 	if($action == "filtro"){
-		$result = $cartodb->runSql("SELECT * FROM mapa_emprendedor_mde WHERE tipo = 'Aceleradora'",true);
+		$result = $cartodb->runSql("SELECT * FROM mapa_emprendedor WHERE tipo = 'Aceleradora'",true);
 	}
 
 ?>

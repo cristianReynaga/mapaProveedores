@@ -44,53 +44,8 @@ function consultaSQL(param, listado){
 	});
 }
 
-
-// Maneja los estilos de los filtros
-function seleccionoMarkers( tipo ){
-    var condicion = false;
-    // P C
-    // array de botones con clase activo
-    // agregar al parametro de query
-    // muestro todos los puntos
-    // capas.setQuery("SELECT * FROM emprendedores") //filtro por sql
-
-    if (tipo === "todos"){ // toggle por todos
-        $('#filtrar button[value="' +  tipo + '"]').addClass("activo");
-        $('#filtrar button').removeClass("activo");
-    }else{
-        $('#filtrar #todos_btn').removeClass("activo");
-        condicion = $('#filtrar button[value="' +  tipo + '"]').hasClass("activo");
-    }
-
-    if (condicion){ // toggle resto de los botones
-        $('#filtrar button[value="' +  tipo + '"]').removeClass("activo");
-    }else{
-        $('#filtrar button[value="' +  tipo + '"]').addClass("activo");
-    }
-
-    // Si no hay botones activos se activa Todos
-    if ( !$('#filtrar button').hasClass("activo") ){
-        $('#filtrar button[value="todos"]').addClass("activo");
-    }
-
-    //preparo el query para todos los filtros
-    var query = armoFiltrado ( $('#filtrar .activo:button') );
-
-    //Tiro el query
-    var visual = visualizacion.getLayers();
-    visual[1].setQuery(query);
-
-    /*
-        Known bug:
-        https://github.com/CartoDB/cartodb.js/issues/26
-        El cambio de la query en la visualización no cierra los infowindow activos
-    */ 
-    visual[1].infowindow.set("visibility", false);
-
-}
-
 function armoFiltrado ( lista ){
-    var consulta = "SELECT * FROM mapa_emprendedor_mde";
+    var consulta = "SELECT * FROM mapa_emprendedor";
     var valores = "";
 
     for ( var i = 0 ; i < lista.length ; i++ ){
@@ -105,11 +60,13 @@ function armoFiltrado ( lista ){
     }
     consulta = consulta.slice(0,consulta.length-1);
     return consulta + ")";
+
+
 }
 
 // Corre la query 
 function muestroMarcadores (query) {
-    var q = "SELECT * FROM mapa_emprendedor_mde";
+    var q = "SELECT * FROM mapa_emprendedor";
     sql.execute(q).done(function (data) {
         for (var i = 0; i < data.total_rows; i++) {
             contenido.append("<div> <span>" + data.rows[i].nombre + " (" + data.rows[i].tipo + ")");
@@ -144,7 +101,7 @@ function busquedaKeyword(key) {
     if ( $('#busquedaEmprendedores').val() != ''){
         console.log (key);
         key = key.toLowerCase();
-        var q = "SELECT * FROM mapa_emprendedor_mde  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
+        var q = "SELECT * FROM mapa_emprendedor  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
         sql.execute(q).done(function(data) {
             $('#resultados').text("");
             for (var i = 0; i < data.total_rows; i++) {
@@ -179,3 +136,88 @@ function siguienteFormulario(muestro, oculto){
     return false;    
 }
 
+
+
+/*
+############################################################
+# Maneja los estilos de los filtros                        #
+# reesccribir esta funcion pq se agregan filtros anidados  #
+############################################################
+*/
+
+
+function seleccionoMarkers( tipo ){  // e.target.value
+    var condicion = false;
+
+    //cond 1 = value === "todosIND"
+    //cond 2 = value === "todosSEC"
+
+    if (tipo === "todosIND"){ // toggle por todosIND
+        $('#todosIND button').removeClass("activo");
+        $('#todosIND button[value="' +  tipo + '"]').addClass("activo");
+    }
+
+    if (tipo === "todosSEC"){ // toggle por todosSEC
+        $('#todosSEC button').removeClass("activo");
+        $('#todosSEC button[value="' +  tipo + '"]').addClass("activo");
+    }
+
+    console.log("Se clickeó:", tipo);
+    console.log("Se :", tipo);
+
+
+}
+
+
+
+
+
+/*
+// Maneja los estilos de los filtros
+// reesccribir esta funcion pq se agregan filtros anidados
+
+
+function seleccionoMarkers( tipo ){  // e.target.value
+    var condicion = false;
+
+    //cond 1 = value === "todosSEC"
+    //cond 2 = value === "todosIND"
+
+    if (tipo === "todos"){ // toggle por todos
+        $('#filtrar button[value="' +  tipo + '"]').addClass("activo");
+        $('#filtrar button').removeClass("activo");
+    }else{
+        $('#filtrar #todos_btn').removeClass("activo");
+        condicion = $('#filtrar button[value="' +  tipo + '"]').hasClass("activo");
+    }
+
+    if (condicion){ // toggle resto de los botones
+        $('#filtrar button[value="' +  tipo + '"]').removeClass("activo");
+    }else{
+        $('#filtrar button[value="' +  tipo + '"]').addClass("activo");
+    }
+
+    // Si no hay botones de Industria activos se activan todos
+    if ( !$('#filtrar button').hasClass("activo") ){
+        $('#filtrar button[value="todos"]').addClass("activo");
+    }
+
+    // Si no hay botones de Industria activos se activan todos
+    if ( !$('#filtrar button').hasClass("activo") ){
+        $('#filtrar button[value="todos"]').addClass("activo");
+    }
+
+
+    //preparo el query para todos los filtros
+    var query = armoFiltrado ( $('#industria_ftr .activo:button') );
+    console.log ( $('#industria_ftr .activo:button') );
+    console.log ( $('#sector_ftr .activo:button') );
+
+    //Tiro el query y oculto infowindows activos
+    var visual = visualizacion.getLayers();
+    visual[1].setQuery(query);
+    visual[1].infowindow.set("visibility", false); // Known bug: https://github.com/CartoDB/cartodb.js/issues/26
+}
+
+
+*/

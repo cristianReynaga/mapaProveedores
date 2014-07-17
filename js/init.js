@@ -10,12 +10,10 @@ var sql = cartodb.SQL({
 
 
 // Instacio el mapa
-var visualizacion = cartodb.createVis(mapa, 'http://gcba.cartodb.com/api/v2/viz/0677229a-0c33-11e4-ad27-0edbca4b5057/viz.json')
+var visualizacion = cartodb.createVis(mapa, 'http://gcba.cartodb.com/api/v2/viz/3aabb182-0dd4-11e4-9d39-0e73339ffa50/viz.json')
     .done(function(vis,layers) {
         //no hago nada por el momento
     });
-
-
 
 // Bindeo listeners a botones activos top menu sidebar
 $("#menuSidebar .btn-default").click(function(e) {
@@ -64,4 +62,3 @@ Recaptcha.create("6Ld4iQsAAAAAAM3nfX_K0vXaUudl2Gk0lpTF3REf", 'captchadiv', {
 });
 
 google.maps.event.addDomListener(window, 'load', init);
-

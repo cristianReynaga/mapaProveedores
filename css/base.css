@@ -5335,8 +5335,7 @@ html, body {
     width: 355px;
     float: left; }
     #paneles #filtrar * {
-      border-radius: 0px;
-      height: 40px; }
+      border-radius: 0px; }
     #paneles #filtrar span {
       text-transform: uppercase;
       float: left;
