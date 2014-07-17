@@ -8,7 +8,7 @@
 
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 
-$width-sidebar:270px;
+$width-sidebar:355px;
 
 html {
     -webkit-font-smoothing: antialiased;
@@ -29,35 +29,6 @@ html, body {
     overflow: hidden;
 }
 
-header {
-    z-index: 999;
-    position: fixed;
-    color: #FFF;
-    top: 0px;
-    width: 100%;
-    height: 50px; 
-    background-color: #ffcc00;
-    .logo {
-        float: left;
-        margin-top: 8px;
-        width:172px;
-        height:33px;
-        @include retina-image("img/logo-normal", 172px 34px);
-    }
-    
-    .slogan {
-        padding-top: 8px;
-        text-align: right;
-        float: right;
-        font-family: 'Gotham Black';
-        margin-top: 0.75em;
-        font-size: 0.85em;
-        letter-spacing:-1px;
-        color:#000000;
-        text-transform: uppercase;
-    }
-}
-
 #mapa{
     z-index: 500;
     float: left;
@@ -75,19 +46,18 @@ header {
     background-color: #FFFFFF;
     width: 100%;
     height: 100%;
-
         #sidebar{
         width: $width-sidebar;
         height: 100%;
         background-color: #0070eb;
-        opacity: 0.8;
+        opacity: 0.9;
         position: absolute;
         top:0;
         right: 0;
         color: #FFFFFF;        
 
         #menuSidebar{
-            height: 90px;
+            height: 35px;
             button{
                 position: absolute; 
                 bottom: 0;                 
@@ -112,10 +82,10 @@ header {
             border-bottom: 1px solid rgba(255,255,255,0.25);
             width: 100%;
             height: 130px;
-            line-height: 9em;
+            line-height: 7em;
             color: #FFFFFF;        
             text-align: center;
-            font-size: 1em;
+            font-size: 1.3em;
                 .fino {
                     font-family: "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
                     font-weight: lighter;
@@ -197,17 +167,28 @@ header {
 
         * {
             border-radius: 0px;
-            width: $width-sidebar;
-            height: 40px;
+            //width: $width-sidebar;
+            //height: 40px;
 
         }
 
+        span {
+            text-transform: uppercase;
+            float: left;
+            font-size: 0.9em;
+            width: $width-sidebar;
+            height: 20px;
+            background-color: rgba(255,255,255,0.25);
+        }
+
         button {
+            font-size: 0.7em;
             text-align: left; 
             color: #ffffff;
             background-color: transparent;
             border: 0px;
             border-radius: 0px;
+            height: 25px;
         }
 
         .activo {
@@ -221,11 +202,61 @@ header {
         padding-right: 20px;
         width: $width-sidebar;
         float: left;
-
         .titular{
             width: $width-sidebar;
             color: #333333;
             background-color: #FFFFFF;
+        }
+        
+        .cartelMinimapa{
+            font-size: 0.7em;
+            text-align: right;
+        }
+
+        .siguiente {
+            cursor: pointer;
+            float: right;
+        }
+
+        .anterior{
+            cursor: pointer;
+            float: left;
+        }
+
+        .minimapa{
+ //           width: $width-sidebar - 50;
+            height: $width-sidebar / 2;
+
+        }
+
+        .validar{
+            cursor: pointer;
+            text-align: right;
+            font-size: 0.7em;
+            display: block;
+            text-align: center;
+        }
+
+        .disclaimer{
+            font-size: 0.6em;
+            margin-bottom: 10px;
+        }
+
+        .aviso {
+            float: left;
+            font-size: 0.7em;
+            margin-top: 10px;
+
+            
+        }
+        .paso1 { display: none; }   
+        .paso2 { display: none; }
+        .paso3 { display: none; }
+        .pasoActivo{
+            display: inline;
+        }
+        .pasoNoActivo{
+            display: none;
         }
 
         label {

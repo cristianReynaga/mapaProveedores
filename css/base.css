@@ -5235,35 +5235,6 @@ html, body {
   background-color: #FFFFFF;
   overflow: hidden; }
 
-header {
-  z-index: 999;
-  position: fixed;
-  color: #FFF;
-  top: 0px;
-  width: 100%;
-  height: 50px;
-  background-color: #ffcc00; }
-  header .logo {
-    float: left;
-    margin-top: 8px;
-    width: 172px;
-    height: 33px;
-    background-image: url("img/logo-normal.png"); }
-    @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
-      header .logo {
-        background-image: url("img/logo-normal_2x.png");
-        background-size: 172px 34px; } }
-  header .slogan {
-    padding-top: 8px;
-    text-align: right;
-    float: right;
-    font-family: 'Gotham Black';
-    margin-top: 0.75em;
-    font-size: 0.85em;
-    letter-spacing: -1px;
-    color: #000000;
-    text-transform: uppercase; }
-
 #mapa {
   z-index: 500;
   float: left;
@@ -5281,16 +5252,16 @@ header {
   width: 100%;
   height: 100%; }
   #contenidos #sidebar {
-    width: 270px;
+    width: 355px;
     height: 100%;
     background-color: #0070eb;
-    opacity: 0.8;
+    opacity: 0.9;
     position: absolute;
     top: 0;
     right: 0;
     color: #FFFFFF; }
     #contenidos #sidebar #menuSidebar {
-      height: 90px; }
+      height: 35px; }
       #contenidos #sidebar #menuSidebar button {
         position: absolute;
         bottom: 0;
@@ -5310,10 +5281,10 @@ header {
       border-bottom: 1px solid rgba(255, 255, 255, 0.25);
       width: 100%;
       height: 130px;
-      line-height: 9em;
+      line-height: 7em;
       color: #FFFFFF;
       text-align: center;
-      font-size: 1em; }
+      font-size: 1.3em; }
       #contenidos #sidebar #logo .fino {
         font-family: "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: lighter; }
@@ -5326,13 +5297,13 @@ header {
 #paneles {
   position: relative;
   left: 0;
-  width: 1080px;
+  width: 1420px;
   height: 100%;
   display: block; }
   #paneles h1 {
     font-size: 0.9em; }
   #paneles h5 {
-    width: 270px;
+    width: 355px;
     font-size: 0.8em;
     text-align: right;
     padding-left: 20px;
@@ -5341,7 +5312,7 @@ header {
     font-size: 0.8em;
     line-height: 1.5em; }
   #paneles #inicio {
-    width: 270px;
+    width: 355px;
     float: left; }
     #paneles #inicio #listado {
       max-height: 350px;
@@ -5353,7 +5324,7 @@ header {
       z-index: 999; }
     #paneles #inicio .input-group {
       border-radius: 0px;
-      width: 270px; }
+      width: 355px; }
       #paneles #inicio .input-group * {
         height: 40px;
         background-color: #ffffff;
@@ -5367,30 +5338,71 @@ header {
       padding-right: 20px; }
   #paneles #filtrar {
     min-height: 450px;
-    width: 270px;
+    width: 355px;
     float: left; }
     #paneles #filtrar * {
-      border-radius: 0px;
-      width: 270px;
-      height: 40px; }
+      border-radius: 0px; }
+    #paneles #filtrar span {
+      text-transform: uppercase;
+      float: left;
+      font-size: 0.9em;
+      width: 355px;
+      height: 20px;
+      background-color: rgba(255, 255, 255, 0.25); }
     #paneles #filtrar button {
+      font-size: 0.7em;
       text-align: left;
       color: #ffffff;
       background-color: transparent;
       border: 0px;
-      border-radius: 0px; }
+      border-radius: 0px;
+      height: 25px; }
     #paneles #filtrar .activo {
       color: #333333;
       background-color: #FFFFFF; }
   #paneles #crear {
     padding-left: 20px;
     padding-right: 20px;
-    width: 270px;
+    width: 355px;
     float: left; }
     #paneles #crear .titular {
-      width: 270px;
+      width: 355px;
       color: #333333;
       background-color: #FFFFFF; }
+    #paneles #crear .cartelMinimapa {
+      font-size: 0.7em;
+      text-align: right; }
+    #paneles #crear .siguiente {
+      cursor: pointer;
+      float: right; }
+    #paneles #crear .anterior {
+      cursor: pointer;
+      float: left; }
+    #paneles #crear .minimapa {
+      height: 177.5px; }
+    #paneles #crear .validar {
+      cursor: pointer;
+      text-align: right;
+      font-size: 0.7em;
+      display: block;
+      text-align: center; }
+    #paneles #crear .disclaimer {
+      font-size: 0.6em;
+      margin-bottom: 10px; }
+    #paneles #crear .aviso {
+      float: left;
+      font-size: 0.7em;
+      margin-top: 10px; }
+    #paneles #crear .paso1 {
+      display: none; }
+    #paneles #crear .paso2 {
+      display: none; }
+    #paneles #crear .paso3 {
+      display: none; }
+    #paneles #crear .pasoActivo {
+      display: inline; }
+    #paneles #crear .pasoNoActivo {
+      display: none; }
     #paneles #crear label {
       font-size: 0.7em;
       font-family: Helvetica, Arial, sans-serif;
@@ -5401,7 +5413,7 @@ header {
   #paneles #acerca {
     padding-left: 20px;
     padding-right: 20px;
-    width: 270px;
+    width: 355px;
     float: left; }
 
 .cartodb-zoom {
