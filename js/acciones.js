@@ -44,27 +44,7 @@ function consultaSQL(param, listado){
 	});
 }
 
-function armoFiltrado ( lista ){
-    var consulta = "SELECT * FROM mapa_emprendedor";
-    var valores = "";
-
-    for ( var i = 0 ; i < lista.length ; i++ ){
-        if ( lista[i].value === "todos"){
-            return consulta;
-        }else{
-            if (i === 0){
-                consulta = consulta + " WHERE tipo IN ("
-            }
-            consulta = consulta + "'"+ lista[i].value.replace(/_/g, " ") +"',";
-        }
-    }
-    consulta = consulta.slice(0,consulta.length-1);
-    return consulta + ")";
-
-
-}
-
-// Corre la query 
+// Ejecuta la query 
 function muestroMarcadores (query) {
     var q = "SELECT * FROM mapa_emprendedor";
     sql.execute(q).done(function (data) {
@@ -101,7 +81,7 @@ function busquedaKeyword(key) {
     if ( $('#busquedaEmprendedores').val() != ''){
         console.log (key);
         key = key.toLowerCase();
-        var q = "SELECT * FROM mapa_emprendedor  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
+        var q = "SELECT * FROM mapa_emprendedor WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
         sql.execute(q).done(function(data) {
             $('#resultados').text("");
             for (var i = 0; i < data.total_rows; i++) {
@@ -152,19 +132,77 @@ function seleccionoMarkers( tipo ){  // e.target.value
     //cond 1 = value === "todosIND"
     //cond 2 = value === "todosSEC"
 
-    if (tipo === "todosIND"){ // toggle por todosIND
-        $('#todosIND button').removeClass("activo");
-        $('#todosIND button[value="' +  tipo + '"]').addClass("activo");
+    if (tipo === "TIN"){ // Todos saca la actividad de la clase.
+        $('#industria_ftr button').removeClass("activo");
+        $('#industria_ftr button[value="' +  tipo + '"]').addClass("activo");
     }
 
-    if (tipo === "todosSEC"){ // toggle por todosSEC
-        $('#todosSEC button').removeClass("activo");
-        $('#todosSEC button[value="' +  tipo + '"]').addClass("activo");
+    if (tipo === "TSEC"){ // toggle por todosSEC
+        $('#sector_ftr button').removeClass("activo");
+        $('#sector_ftr button[value="' +  tipo + '"]').addClass("activo");
     }
 
-    console.log("Se clickeó:", tipo);
-    console.log("Se :", tipo);
+    if (tipo !== "TSEC" && tipo !== "TIN") { // toggle el seleccionado
+        if (tipo.length === 3){ // es industria
 
+            if ( $('#industria_ftr button[value="' +  tipo + '"]').hasClass("activo")){
+                $('#industria_ftr button[value="' +  tipo + '"]').removeClass("activo");
+            }else{
+                $('#industria_ftr button[value="TIN"]').removeClass("activo");
+                $('#industria_ftr button[value="' +  tipo + '"]').addClass("activo");
+            }
+        }else{ // es sector
+            if ( $('#sector_ftr button[value="' +  tipo + '"]').hasClass("activo")){
+                $('#sector_ftr button[value="' +  tipo + '"]').removeClass("activo");
+            }else{
+                $('#sector_ftr button[value="TSEC"]').removeClass("activo");
+                $('#sector_ftr button[value="' +  tipo + '"]').addClass("activo");
+            }
+
+        }
+    }
+
+    /*QUERY*/
+    //preparo el query para todos los filtros
+    var consulta = "SELECT * FROM mapa_emprendedor";
+    var condiciones = armoFiltrado ( $('#industria_ftr .activo:button') , "tipo_sigla" , $('#sector_ftr .activo:button'), "sector_sigla" );
+
+    //Tiro el query y oculto infowindows activos
+    var visual = visualizacion.getLayers();
+    visual[1].setQuery(consulta + condiciones);
+    visual[1].infowindow.set("visibility", false); // Known bug: https://github.com/CartoDB/cartodb.js/issues/26
+
+    console.log ( consulta + condiciones );
+
+}
+
+
+function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
+
+
+    console.log(listaIND , columnaIND , listaSEC , columnaSEC );
+    return "";
+
+
+    // SELECT * FROM mapa_emprendedor
+    // WHERE tipo_sigla IN ('XXX')
+    // AND WHERE sector_sigla IN ('XXXX')
+/*
+    var valores = "";
+
+    for ( var i = 0 ; i < lista.length ; i++ ){
+        if ( lista[i].value === "todos"){
+            return consulta;
+        }else{
+            if (i === 0){
+                consulta = consulta + " WHERE " + columna + " IN ("
+            }
+            consulta = consulta + "'"+ lista[i].value.replace(/_/g, " ") +"',";
+        }
+    }
+    consulta = consulta.slice(0,consulta.length-1);
+    return consulta + ")";
+*/
 
 }
 
