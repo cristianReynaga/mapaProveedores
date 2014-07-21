@@ -58,23 +58,17 @@ function validarFormulario (validacion, paso){
     }
 }
 
-
-
 function resolverCaptcha(){
-    alert("Resolver captcha");
-
-        //si captcha ok entonces escribe
-        //formulario validado
-
-        //tiro query y por success borro los campos()
-
-        // vuelvo a la pantalla inicial.
-
-        //    $("#paso3").attr("class", "pasoNoActivo");
-        //    $("#paso2").attr("class", "pasoNoActivo");
-        //    $("#paso1").attr("class", "pasoActivo");
-
-    return false;    
+    $.post('http://127.0.0.1/mapa-emprendedores/',
+        { challenge: Recaptcha.get_challenge(), response:Recaptcha.get_response() },
+        function (data) {
+            if (data.success) {
+                console.log("Captcha OK");
+                loadCaptcha();
+            } else {
+                console.log("Captcha erroneo");
+            }
+        });
 };
 
 function validarEmail(mailCheck) {

@@ -118,21 +118,10 @@ function siguienteFormulario(muestro, oculto){
 
 
 
-/*
-############################################################
-# Maneja los estilos de los filtros                        #
-# reesccribir esta funcion pq se agregan filtros anidados  #
-############################################################
-*/
-
-
+// Maneja los estilos de los filtros
 function seleccionoMarkers( tipo ){  // e.target.value
-    var condicion = false;
-
-    //cond 1 = value === "todosIND"
-    //cond 2 = value === "todosSEC"
-
-    if (tipo === "TIN"){ // Todos saca la actividad de la clase.
+    
+    if (tipo === "TIN" ) { // Todos saca la actividad de la clase.
         $('#industria_ftr button').removeClass("activo");
         $('#industria_ftr button[value="' +  tipo + '"]').addClass("activo");
     }
@@ -144,7 +133,6 @@ function seleccionoMarkers( tipo ){  // e.target.value
 
     if (tipo !== "TSEC" && tipo !== "TIN") { // toggle el seleccionado
         if (tipo.length === 3){ // es industria
-
             if ( $('#industria_ftr button[value="' +  tipo + '"]').hasClass("activo")){
                 $('#industria_ftr button[value="' +  tipo + '"]').removeClass("activo");
             }else{
@@ -158,104 +146,70 @@ function seleccionoMarkers( tipo ){  // e.target.value
                 $('#sector_ftr button[value="TSEC"]').removeClass("activo");
                 $('#sector_ftr button[value="' +  tipo + '"]').addClass("activo");
             }
-
         }
+    }
+
+
+    var listadoUNO =  $('#industria_ftr button');
+    var condicionUNO = new Array();
+    var listadoDOS =  $('#sector_ftr button');
+    var condicionDOS = new Array();
+
+    for (var i = 1; i < listadoUNO.length; i++){
+        condicionUNO.push( $(listadoUNO[i]).hasClass("activo") );
+    }
+
+    if ( $.inArray(true , condicionUNO) < 0 ){
+        $('#industria_ftr button[value="TIN"]').addClass("activo");
+    }
+
+    for (var i = 1; i < listadoDOS.length; i++){
+        condicionDOS.push( $(listadoDOS[i]).hasClass("activo") );
+    }
+
+    if ( $.inArray(true , condicionDOS) < 0 ){
+        $('#sector_ftr button[value="TSEC"]').addClass("activo");
     }
 
     /*QUERY*/
     //preparo el query para todos los filtros
-    var consulta = "SELECT * FROM mapa_emprendedor";
-    var condiciones = armoFiltrado ( $('#industria_ftr .activo:button') , "tipo_sigla" , $('#sector_ftr .activo:button'), "sector_sigla" );
+    var consulta = armoFiltrado ( $('#industria_ftr .activo:button') , "tipo_sigla" , $('#sector_ftr .activo:button'), "sector_sigla" );
 
     //Tiro el query y oculto infowindows activos
     var visual = visualizacion.getLayers();
-    visual[1].setQuery(consulta + condiciones);
+    visual[1].setQuery( consulta );
     visual[1].infowindow.set("visibility", false); // Known bug: https://github.com/CartoDB/cartodb.js/issues/26
-
-    console.log ( consulta + condiciones );
-
 }
 
 
 function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
+    var retorno_consulta = "SELECT * FROM mapa_emprendedor";
+    var hay_consulta_industria = false;
 
-
-    console.log(listaIND , columnaIND , listaSEC , columnaSEC );
-    return "";
-
-
-    // SELECT * FROM mapa_emprendedor
-    // WHERE tipo_sigla IN ('XXX')
-    // AND WHERE sector_sigla IN ('XXXX')
-/*
-    var valores = "";
-
-    for ( var i = 0 ; i < lista.length ; i++ ){
-        if ( lista[i].value === "todos"){
-            return consulta;
-        }else{
-            if (i === 0){
-                consulta = consulta + " WHERE " + columna + " IN ("
-            }
-            consulta = consulta + "'"+ lista[i].value.replace(/_/g, " ") +"',";
+    if (listaIND.val() !== "TIN"){
+        hay_consulta_industria = true;
+        console.log(listaIND.val())
+        retorno_consulta = retorno_consulta + " WHERE " + columnaIND + " IN (";
+        for (var i = 0; i < listaIND.length ; i++){
+            retorno_consulta = retorno_consulta + "'" + listaIND[i].value + "',";
         }
+        retorno_consulta = retorno_consulta.substring(0, retorno_consulta.length-1) + ")";
     }
-    consulta = consulta.slice(0,consulta.length-1);
-    return consulta + ")";
-*/
 
+    if (listaSEC.val() !== "TSEC"){
+        console.log(listaSEC.val())
+
+        if (hay_consulta_industria){
+            retorno_consulta = retorno_consulta + " AND " + columnaSEC + " IN (";
+        } else {
+            retorno_consulta = retorno_consulta + " WHERE " + columnaSEC + " IN (";
+        } 
+        
+        for (var i = 0; i < listaSEC.length ; i++){
+            retorno_consulta = retorno_consulta + "'" + listaSEC[i].value + "',";
+        }
+        retorno_consulta = retorno_consulta.substring(0, retorno_consulta.length-1) + ")";
+    }
+
+    return retorno_consulta;
 }
-
-
-
-
-
-/*
-// Maneja los estilos de los filtros
-// reesccribir esta funcion pq se agregan filtros anidados
-
-
-function seleccionoMarkers( tipo ){  // e.target.value
-    var condicion = false;
-
-    //cond 1 = value === "todosSEC"
-    //cond 2 = value === "todosIND"
-
-    if (tipo === "todos"){ // toggle por todos
-        $('#filtrar button[value="' +  tipo + '"]').addClass("activo");
-        $('#filtrar button').removeClass("activo");
-    }else{
-        $('#filtrar #todos_btn').removeClass("activo");
-        condicion = $('#filtrar button[value="' +  tipo + '"]').hasClass("activo");
-    }
-
-    if (condicion){ // toggle resto de los botones
-        $('#filtrar button[value="' +  tipo + '"]').removeClass("activo");
-    }else{
-        $('#filtrar button[value="' +  tipo + '"]').addClass("activo");
-    }
-
-    // Si no hay botones de Industria activos se activan todos
-    if ( !$('#filtrar button').hasClass("activo") ){
-        $('#filtrar button[value="todos"]').addClass("activo");
-    }
-
-    // Si no hay botones de Industria activos se activan todos
-    if ( !$('#filtrar button').hasClass("activo") ){
-        $('#filtrar button[value="todos"]').addClass("activo");
-    }
-
-
-    //preparo el query para todos los filtros
-    var query = armoFiltrado ( $('#industria_ftr .activo:button') );
-    console.log ( $('#industria_ftr .activo:button') );
-    console.log ( $('#sector_ftr .activo:button') );
-
-    //Tiro el query y oculto infowindows activos
-    var visual = visualizacion.getLayers();
-    visual[1].setQuery(query);
-    visual[1].infowindow.set("visibility", false); // Known bug: https://github.com/CartoDB/cartodb.js/issues/26
-}
-
-
-*/
