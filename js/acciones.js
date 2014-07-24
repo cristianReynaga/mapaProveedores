@@ -181,6 +181,23 @@ function seleccionoMarkers( tipo ){  // e.target.value
     visual[1].infowindow.set("visibility", false); // Known bug: https://github.com/CartoDB/cartodb.js/issues/26
 }
 
+function resetAllFields (){
+    $("#nombre_frm").val("");
+    $("#desc_frm").val("");
+    $("#serv_frm").val("");
+    $("#acti_frm").val("");
+    $("#tags_frm").val("");
+    $("#tipo_frm").val("Seleccione");
+    $("#sector_frm").val("Seleccione");
+    $("#direccion_frm").val("");
+    $("#latLong_frm").val("");
+    $("#piso_frm").val("");
+    $("#mailIns_frm").val("");
+    $("#mailRes_frm").val("");
+    $("#tele_frm").val("")
+    $("#web_frm").val("")
+    $("#resp_frm").val("");
+}
 
 function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
     var retorno_consulta = "SELECT * FROM mapa_emprendedor";
