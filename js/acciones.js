@@ -44,27 +44,7 @@ function consultaSQL(param, listado){
 	});
 }
 
-function armoFiltrado ( lista ){
-    var consulta = "SELECT * FROM mapa_emprendedor";
-    var valores = "";
-
-    for ( var i = 0 ; i < lista.length ; i++ ){
-        if ( lista[i].value === "todos"){
-            return consulta;
-        }else{
-            if (i === 0){
-                consulta = consulta + " WHERE tipo IN ("
-            }
-            consulta = consulta + "'"+ lista[i].value.replace(/_/g, " ") +"',";
-        }
-    }
-    consulta = consulta.slice(0,consulta.length-1);
-    return consulta + ")";
-
-
-}
-
-// Corre la query 
+// Ejecuta la query 
 function muestroMarcadores (query) {
     var q = "SELECT * FROM mapa_emprendedor";
     sql.execute(q).done(function (data) {
@@ -101,7 +81,7 @@ function busquedaKeyword(key) {
     if ( $('#busquedaEmprendedores').val() != ''){
         console.log (key);
         key = key.toLowerCase();
-        var q = "SELECT * FROM mapa_emprendedor  WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
+        var q = "SELECT * FROM mapa_emprendedor WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
         sql.execute(q).done(function(data) {
             $('#resultados').text("");
             for (var i = 0; i < data.total_rows; i++) {
@@ -138,86 +118,115 @@ function siguienteFormulario(muestro, oculto){
 
 
 
-/*
-############################################################
-# Maneja los estilos de los filtros                        #
-# reesccribir esta funcion pq se agregan filtros anidados  #
-############################################################
-*/
-
-
-function seleccionoMarkers( tipo ){  // e.target.value
-    var condicion = false;
-
-    //cond 1 = value === "todosIND"
-    //cond 2 = value === "todosSEC"
-
-    if (tipo === "todosIND"){ // toggle por todosIND
-        $('#todosIND button').removeClass("activo");
-        $('#todosIND button[value="' +  tipo + '"]').addClass("activo");
-    }
-
-    if (tipo === "todosSEC"){ // toggle por todosSEC
-        $('#todosSEC button').removeClass("activo");
-        $('#todosSEC button[value="' +  tipo + '"]').addClass("activo");
-    }
-
-    console.log("Se clickeó:", tipo);
-    console.log("Se :", tipo);
-
-
-}
-
-
-
-
-
-/*
 // Maneja los estilos de los filtros
-// reesccribir esta funcion pq se agregan filtros anidados
-
-
 function seleccionoMarkers( tipo ){  // e.target.value
-    var condicion = false;
-
-    //cond 1 = value === "todosSEC"
-    //cond 2 = value === "todosIND"
-
-    if (tipo === "todos"){ // toggle por todos
-        $('#filtrar button[value="' +  tipo + '"]').addClass("activo");
-        $('#filtrar button').removeClass("activo");
-    }else{
-        $('#filtrar #todos_btn').removeClass("activo");
-        condicion = $('#filtrar button[value="' +  tipo + '"]').hasClass("activo");
+    
+    if (tipo === "TIN" ) { // Todos saca la actividad de la clase.
+        $('#industria_ftr button').removeClass("activo");
+        $('#industria_ftr button[value="' +  tipo + '"]').addClass("activo");
     }
 
-    if (condicion){ // toggle resto de los botones
-        $('#filtrar button[value="' +  tipo + '"]').removeClass("activo");
-    }else{
-        $('#filtrar button[value="' +  tipo + '"]').addClass("activo");
+    if (tipo === "TSEC"){ // toggle por todosSEC
+        $('#sector_ftr button').removeClass("activo");
+        $('#sector_ftr button[value="' +  tipo + '"]').addClass("activo");
     }
 
-    // Si no hay botones de Industria activos se activan todos
-    if ( !$('#filtrar button').hasClass("activo") ){
-        $('#filtrar button[value="todos"]').addClass("activo");
+    if (tipo !== "TSEC" && tipo !== "TIN") { // toggle el seleccionado
+        if (tipo.length === 3){ // es industria
+            if ( $('#industria_ftr button[value="' +  tipo + '"]').hasClass("activo")){
+                $('#industria_ftr button[value="' +  tipo + '"]').removeClass("activo");
+            }else{
+                $('#industria_ftr button[value="TIN"]').removeClass("activo");
+                $('#industria_ftr button[value="' +  tipo + '"]').addClass("activo");
+            }
+        }else{ // es sector
+            if ( $('#sector_ftr button[value="' +  tipo + '"]').hasClass("activo")){
+                $('#sector_ftr button[value="' +  tipo + '"]').removeClass("activo");
+            }else{
+                $('#sector_ftr button[value="TSEC"]').removeClass("activo");
+                $('#sector_ftr button[value="' +  tipo + '"]').addClass("activo");
+            }
+        }
     }
 
-    // Si no hay botones de Industria activos se activan todos
-    if ( !$('#filtrar button').hasClass("activo") ){
-        $('#filtrar button[value="todos"]').addClass("activo");
+
+    var listadoUNO =  $('#industria_ftr button');
+    var condicionUNO = new Array();
+    var listadoDOS =  $('#sector_ftr button');
+    var condicionDOS = new Array();
+
+    for (var i = 1; i < listadoUNO.length; i++){
+        condicionUNO.push( $(listadoUNO[i]).hasClass("activo") );
     }
 
+    if ( $.inArray(true , condicionUNO) < 0 ){
+        $('#industria_ftr button[value="TIN"]').addClass("activo");
+    }
 
+    for (var i = 1; i < listadoDOS.length; i++){
+        condicionDOS.push( $(listadoDOS[i]).hasClass("activo") );
+    }
+
+    if ( $.inArray(true , condicionDOS) < 0 ){
+        $('#sector_ftr button[value="TSEC"]').addClass("activo");
+    }
+
+    /*QUERY*/
     //preparo el query para todos los filtros
-    var query = armoFiltrado ( $('#industria_ftr .activo:button') );
-    console.log ( $('#industria_ftr .activo:button') );
-    console.log ( $('#sector_ftr .activo:button') );
+    var consulta = armoFiltrado ( $('#industria_ftr .activo:button') , "tipo_sigla" , $('#sector_ftr .activo:button'), "sector_sigla" );
 
     //Tiro el query y oculto infowindows activos
     var visual = visualizacion.getLayers();
-    visual[1].setQuery(query);
+    visual[1].setQuery( consulta );
     visual[1].infowindow.set("visibility", false); // Known bug: https://github.com/CartoDB/cartodb.js/issues/26
 }
 
+function resetAllFields (){
+    $("#nombre_frm").val("");
+    $("#desc_frm").val("");
+    $("#serv_frm").val("");
+    $("#acti_frm").val("");
+    $("#tags_frm").val("");
+    $("#tipo_frm").val("Seleccione");
+    $("#sector_frm").val("Seleccione");
+    $("#direccion_frm").val("");
+    $("#latLong_frm").val("");
+    $("#piso_frm").val("");
+    $("#mailIns_frm").val("");
+    $("#mailRes_frm").val("");
+    $("#tele_frm").val("")
+    $("#web_frm").val("")
+    $("#resp_frm").val("");
+}
 
-*/
+function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
+    var retorno_consulta = "SELECT * FROM mapa_emprendedor";
+    var hay_consulta_industria = false;
+
+    if (listaIND.val() !== "TIN"){
+        hay_consulta_industria = true;
+        console.log(listaIND.val())
+        retorno_consulta = retorno_consulta + " WHERE " + columnaIND + " IN (";
+        for (var i = 0; i < listaIND.length ; i++){
+            retorno_consulta = retorno_consulta + "'" + listaIND[i].value + "',";
+        }
+        retorno_consulta = retorno_consulta.substring(0, retorno_consulta.length-1) + ")";
+    }
+
+    if (listaSEC.val() !== "TSEC"){
+        console.log(listaSEC.val())
+
+        if (hay_consulta_industria){
+            retorno_consulta = retorno_consulta + " AND " + columnaSEC + " IN (";
+        } else {
+            retorno_consulta = retorno_consulta + " WHERE " + columnaSEC + " IN (";
+        } 
+        
+        for (var i = 0; i < listaSEC.length ; i++){
+            retorno_consulta = retorno_consulta + "'" + listaSEC[i].value + "',";
+        }
+        retorno_consulta = retorno_consulta.substring(0, retorno_consulta.length-1) + ")";
+    }
+
+    return retorno_consulta;
+}
