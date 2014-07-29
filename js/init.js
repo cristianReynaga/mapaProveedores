@@ -41,7 +41,6 @@ $("#busquedaEmprendedores").keyup(function () {
     busquedaKeyword($('#busquedaEmprendedores').val());
 });
 
-
 //inicializa el minimapa
 function init() {
     geocoder = new google.maps.Geocoder();
@@ -54,11 +53,5 @@ function init() {
     };
     minimapa = new google.maps.Map(document.getElementById('minimapa'), mapOptions);
 }
-
-//creo captcha
-Recaptcha.create("6Ld4iQsAAAAAAM3nfX_K0vXaUudl2Gk0lpTF3REf", 'captchadiv', {
-    lang: "es",
-    theme: "white"
-});
 
 google.maps.event.addDomListener(window, 'load', init);

@@ -50,7 +50,7 @@ function validarFormulario (validacion, paso){
                 siguienteFormulario('#paso3','#paso2')
                 break;
             case "#paso3":
-                resolverCaptcha();
+                siguienteFormulario('#paso4','#paso3')
                 break;
         } 
     } else {
@@ -58,18 +58,6 @@ function validarFormulario (validacion, paso){
     }
 }
 
-function resolverCaptcha(){
-    $.post('http://127.0.0.1/mapa-emprendedores/',
-        { challenge: Recaptcha.get_challenge(), response:Recaptcha.get_response() },
-        function (data) {
-            if (data.success) {
-                console.log("Captcha OK");
-                loadCaptcha();
-            } else {
-                console.log("Captcha erroneo");
-            }
-        });
-};
 
 function validarEmail(mailCheck) {
     if (mailCheck === ""){

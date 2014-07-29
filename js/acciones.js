@@ -10,15 +10,6 @@ function manejoBase(accion){
 			query =  "funciones.php?action=agregaRegistro&arg1=" + arg1 + "&arg2=" + arg2;
 	}
 
-	if (accion === "B"){
-		var arg1 = $('#lid').val(),
-			query =  "funciones.php?action=borraRegistro&arg1=" + arg1 ;
-	}
-
-	if (accion === "M"){
-		// Aun no hay un update definido pero va con los parametros de "A".
-	}
-
 	if (accion === "L"){
 		query =  "funciones.php?action=listarRegistro";
 	}
@@ -57,7 +48,7 @@ function muestroMarcadores (query) {
     });
 }
 
-// Corre la pantalla que debo mostrar en el sidebar
+// Corre las pantallas principales que debo mostrar en el sidebar
 function abroSlide(pantalla) {
     var pantallas = ["inicio","filtrar","crear","acerca"]; // mantener el orden
     var desplazamiento = new Array();
@@ -74,7 +65,7 @@ function abroSlide(pantalla) {
 }
 
 
-//Llena el listado inicial
+//Llena el listado de la pantalla INICIO
 function busquedaKeyword(key) {
     var contenido = $('#listado');
 
@@ -104,11 +95,13 @@ function busquedaKeyword(key) {
     }
 }
 
+// Cuando se selecciona una empresa (definir accion)
 function verDetallesEmpresa(idEmpresa){
     alert("ID clickeado: " , idEmpresa);
     console.log(idEmpresa);
 }
 
+// Maneja los estilos de las pantallas del formulario de alta.
 function siguienteFormulario(muestro, oculto){
     $(".aviso").attr("style", "display:none");
     $(oculto).attr("class", "pasoNoActivo");
@@ -116,9 +109,7 @@ function siguienteFormulario(muestro, oculto){
     return false;    
 }
 
-
-
-// Maneja los estilos de los filtros
+// Maneja los estilos de las vistas de los filtros activados y desactivados
 function seleccionoMarkers( tipo ){  // e.target.value
     
     if (tipo === "TIN" ) { // Todos saca la actividad de la clase.
@@ -171,16 +162,15 @@ function seleccionoMarkers( tipo ){  // e.target.value
         $('#sector_ftr button[value="TSEC"]').addClass("activo");
     }
 
-    /*QUERY*/
-    //preparo el query para todos los filtros
+    //preparo la query para todos los filtros
     var consulta = armoFiltrado ( $('#industria_ftr .activo:button') , "tipo_sigla" , $('#sector_ftr .activo:button'), "sector_sigla" );
-
-    //Tiro el query y oculto infowindows activos
-    var visual = visualizacion.getLayers();
+  
+    var visual = visualizacion.getLayers(); //Ejecuto la query y oculto infowindows activos
     visual[1].setQuery( consulta );
     visual[1].infowindow.set("visibility", false); // Known bug: https://github.com/CartoDB/cartodb.js/issues/26
 }
 
+// vacía todos los campos del formulario de alta.
 function resetAllFields (){
     $("#nombre_frm").val("");
     $("#desc_frm").val("");
@@ -199,6 +189,7 @@ function resetAllFields (){
     $("#resp_frm").val("");
 }
 
+// Maneja las vistas de los filtros por Industria y/o Sector
 function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
     var retorno_consulta = "SELECT * FROM mapa_emprendedor";
     var hay_consulta_industria = false;
