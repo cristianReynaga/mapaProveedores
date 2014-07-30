@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="es">
-<head>
+<head>    
     <title>Mapa Emprendedor - Buenos Aires Ciudad</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
@@ -46,6 +46,7 @@
 
             <div id="logo">
                 <span class="fino">Mapa </span> <span class="grueso">Emprendedor</span>
+                
             </div>
         
             <div id="panel">
@@ -60,9 +61,7 @@
                         </div>
 
                         <div id="listado">
-                            <ul class="nav nav-pills nav-stacked" id="resultados">
-
-                            </ul>
+                            <ul class="nav nav-pills nav-stacked" id="resultados"></ul>
                         </div>
 
                     </div>
@@ -106,7 +105,7 @@
                     </div>
 
                     <div id="crear">
-                            <form id="alta_frm"  method="GET">
+                            <form id="alta_frm"  method="POST" action="">
 
                                 <div id="paso1" class="pasoActivo">  <!-- Paso 1 - Información Básica -->
                                     <div class="form-group">
@@ -258,16 +257,16 @@
         
                                         <br> <a href="#" onclick="
                                             document.getElementById('captcha').src='captcha.php?'+Math.random();
-                                            document.getElementById('captcha-form').focus();"
+                                            document.getElementById('captcha_txt').focus();"
                                             id="change-image">Recargar imagen.</a>
 
-                                        <input type="text" name="captcha" id="captcha-form" class="form-control" autocomplete="off">
+                                        <input type="text" name="captcha" id="captcha_txt" class="form-control" autocomplete="off">
 
                                         <p>Al decidir formar parte del mapa del ecosistema emprendedor de la C.A.B.A., presto consentimiento a la publicación de los datos de mi emprendimiento en dicho mapa.</p>
 
                                         <p>Los datos serán validados y aparecerán en el mapa a la brevedad</p>
 
-                                        <input type="submit" class="btn btn-success" value="Terminar">
+                                        <input type="button" onclick="javascript:finalizacion();" class="btn btn-success" value="Terminar">
 
                                     </div>
                                 </div>
