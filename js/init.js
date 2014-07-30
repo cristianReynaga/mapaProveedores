@@ -2,17 +2,25 @@
 // variables de geocodificacion
 var geocoder;
 var minimapa;
-
+var capas;
+var capaInfowindows;
 // var de sql para las busquedas
 var sql = cartodb.SQL({
     user: 'gcba'
 });
 
+function mapToPosition(lat,lon){
+    lon = position.coords.longitude;
+    lat = position.coords.latitude;
+    map.setView(new L.LatLng(lat,lon), 7);
+}
+
 
 // Instacio el mapa
 var visualizacion = cartodb.createVis(mapa, 'http://gcba.cartodb.com/api/v2/viz/3aabb182-0dd4-11e4-9d39-0e73339ffa50/viz.json')
     .done(function(vis,layers) {
-        //no hago nada por el momento
+        capas = vis.map;
+        capaInfowindows = layers[1];
     });
 
 // Bindeo listeners a botones activos top menu sidebar

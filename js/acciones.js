@@ -10,10 +10,6 @@ function manejoBase(accion){
 			query =  "funciones.php?action=agregaRegistro&arg1=" + arg1 + "&arg2=" + arg2;
 	}
 
-	if (accion === "L"){
-		query =  "funciones.php?action=listarRegistro";
-	}
-	
 	var resultado = consultaSQL(query, accion);
 }
 
@@ -97,9 +93,26 @@ function busquedaKeyword(key) {
 
 // Cuando se selecciona una empresa (definir accion)
 function verDetallesEmpresa(idEmpresa){
-    alert("ID clickeado: " , idEmpresa);
-    console.log(idEmpresa);
+    var nro = idEmpresa.split("empID");
+
+    var sql_statement = "SELECT * FROM mapa_emprendedor WHERE cartodb_id = " + nro[1];
+
+    $.getJSON('http://gcba.cartodb.com/api/v2/sql/?q='+sql_statement, function(data) {
+        // zoom al marker
+        capas.setZoom(16);
+        capas.setCenter([data.rows[0].lat, data.rows[0].lon]);
+        openInfowindow(capaInfowindows,[data.rows[0].lat, data.rows[0].lon],data.rows[0].cartodb_id,0);
+
+    });
 }
+
+
+function openInfowindow(layer, latlng, cartodb_id) {
+    layer.trigger('featureClick', null, latlng, null, { cartodb_id: cartodb_id }, 0);
+    console.log ( layer.trigger('featureClick', null, latlng, null, { cartodb_id: cartodb_id }, 0)  );
+}
+
+
 
 // Maneja los estilos de las pantallas del formulario de alta.
 function siguienteFormulario(muestro, oculto){
