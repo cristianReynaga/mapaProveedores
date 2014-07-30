@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="es">
-<head>
+<head>    
     <title>Mapa Emprendedor - Buenos Aires Ciudad</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
@@ -15,7 +15,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
     <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
-    <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
     <![endif]-->
@@ -47,6 +46,7 @@
 
             <div id="logo">
                 <span class="fino">Mapa </span> <span class="grueso">Emprendedor</span>
+                
             </div>
         
             <div id="panel">
@@ -61,9 +61,7 @@
                         </div>
 
                         <div id="listado">
-                            <ul class="nav nav-pills nav-stacked" id="resultados">
-
-                            </ul>
+                            <ul class="nav nav-pills nav-stacked" id="resultados"></ul>
                         </div>
 
                     </div>
@@ -107,8 +105,8 @@
                     </div>
 
                     <div id="crear">
+                            <form id="alta_frm"  method="POST" action="">
 
-                            <form id="alta_frm" onsubmit="return resolverCaptcha()" method="get">
                                 <div id="paso1" class="pasoActivo">  <!-- Paso 1 - Información Básica -->
                                     <div class="form-group">
                                         <label for="nombre_frm">Nombre</label>
@@ -235,18 +233,46 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <div id="captchadiv"></div>
-                                    </div>
 
-                                    <div class="disclaimer"> Al decidir formar parte del mapa del ecosistema emprendedor de la C.A.B.A., presto consentimiento a la publicación de los datos de mi emprendimiento en dicho mapa.</div>
+
+                                    </div>
 
                                     <div class="btn btn-default anterior" onclick="siguienteFormulario('#paso2','#paso3')"> Anterior </div>
 
-                                    <div class="btn btn-success siguiente" onclick="validoPaso(3)"> Enviar </div>
+                                    <div class="btn btn-default siguiente" onclick="validoPaso(3)"> Siguiente </div>
 
                                     <span class="aviso paso3"> Por favor verifique los campos completados sean correctos y vuelva a intentar </span>
 
                                 </div>
+
+                                <div id="paso4" class="pasoNoActivo"><!-- Paso 4 - Gracias y cerrar -->
+
+                                    <div class="form-group">
+                                        <h3>Solo un paso mas.</h3>
+
+                                        <p>Complete en el siguente campo la palabra que se muestra debajo.</p>
+
+                                        <img src="captcha.php" id="captcha" />
+
+        
+                                        <br> <a href="#" onclick="
+                                            document.getElementById('captcha').src='captcha.php?'+Math.random();
+                                            document.getElementById('captcha_txt').focus();"
+                                            id="change-image">Recargar imagen.</a>
+
+                                        <input type="text" name="captcha" id="captcha_txt" class="form-control" autocomplete="off">
+
+                                        <p>Al decidir formar parte del mapa del ecosistema emprendedor de la C.A.B.A., presto consentimiento a la publicación de los datos de mi emprendimiento en dicho mapa.</p>
+
+                                        <p>Los datos serán validados y aparecerán en el mapa a la brevedad</p>
+
+                                        <input type="button" onclick="javascript:finalizacion();" class="btn btn-success" value="Terminar">
+
+                                    </div>
+                                </div>
+
+
+
                             </form>
                     </div>
 
@@ -273,11 +299,18 @@
         <a href="#close" class="cartodb-popup-close-button close">x</a>
         <div class="cartodb-popup-content-wrapper">
           <div class="cartodb-popup-content">
-          <p style="font-weight: bold; font-size: 1.3em;">{{nombre}}</p>
-            {{#calle}}
-            <h4>Dirección</h4>
-            <p>{{calle}} {{altura}}</p>
-            {{/calle}}
+
+            <div class="row">
+              <div class="label">
+                <label>Nombre</label>
+              </div>
+              <div class="info">
+                <p>{{nombre}}</p>
+              </div>
+            </div>
+
+            <h4>calle</h4>
+            <p>{{calle}}</p>
             {{#piso_dpto}}
               <h4>piso_dpto</h4>
               <p>{{piso_dpto}}</p>
@@ -286,14 +319,14 @@
               <h4>telefono</h4>
               <p>{{telefono}}</p>
             {{/telefono}}
-            <h4>Tipo</h4>
             <p>{{tipo}}</p>
-            <h4>Descripcion</h4>
             <p>{{descripcion}}</p>
-            {{#tags}}
+            <h4>localidad</h4>
+            <p>{{localidad}}</p>
+            <h4>servicios</h4>
+            <p>{{servicios}}</p>
             <h4>tags</h4>
             <p>{{tags}}</p>
-            {{/tags}}
           </div>
         </div>
         <div class="cartodb-popup-tip-container"></div>
