@@ -169,6 +169,7 @@ function resetAllFields (){
     $("#tele_frm").val("")
     $("#web_frm").val("")
     $("#resp_frm").val("");
+    $("#captcha_txt").val("");
 }
 
 // Maneja las vistas de los filtros por Industria y/o Sector
@@ -207,8 +208,44 @@ function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
 // manejo de formulario de alta.
 function finalizacion() {
      $.post("proceso.php",{ 
-        captcha:$("#captcha_txt").val()
+        captcha: $("#captcha").val(),
+        captcha_txt: $("#captcha_txt").val(),
+        nombre_frm:  $("#nombre_frm").val(),
+        desc_frm: $("#desc_frm").val(),
+        serv_frm: $("#serv_frm").val(),
+        acti_frm: $("#acti_frm").val(),
+        tags_frm: $("#tags_frm").val(),
+        tipo_frm: $("#tipo_frm").val(),
+        sector_frm: $("#sector_frm").val(),
+        direccion_frm: $("#direccion_frm").val(),
+        latLong_frm: $("#latLong_frm").val(),
+        piso_frm: $("#piso_frm").val(),
+        mailIns_frm: $("#mailIns_frm").val(),
+        mailRes_frm: $("#mailRes_frm").val(),
+        tele_frm: $("#tele_frm").val(),
+        web_frm: $("#web_frm").val(),
+        resp_frm: $("#resp_frm").val()
+    }, function(data) {
+        console.log (data);
+            if(data == "MAL" || data == ""){
+                alert("Vuelva a ingresar el código");
+                //nuevoCaptcha();
+            }else{
+                // muestro pantalla de gracias y volver;
+                siguienteFormulario('#paso5' ,'#paso4');
+
+            }
+
         });
 }
 
+function nuevoCaptcha(){
+    document.getElementById('captcha').src='captcha.php?'+Math.random();
+    document.getElementById('captcha_txt').focus();
+}
 
+function volverAlta (){
+    resetAllFields ();
+    siguienteFormulario('#paso1' ,'#paso5');
+    nuevoCaptcha();
+}

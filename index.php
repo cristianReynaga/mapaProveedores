@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE HTML>
 <html lang="es">
 <head>    
@@ -46,7 +47,6 @@
 
             <div id="logo">
                 <span class="fino">Mapa </span> <span class="grueso">Emprendedor</span>
-                
             </div>
         
             <div id="panel">
@@ -245,7 +245,7 @@
 
                                 </div>
 
-                                <div id="paso4" class="pasoNoActivo"><!-- Paso 4 - Gracias y cerrar -->
+                                <div id="paso4" class="pasoNoActivo"><!-- Paso 4 - CAPTCHA -->
 
                                     <div class="form-group">
                                         <h3>Solo un paso mas.</h3>
@@ -254,21 +254,32 @@
 
                                         <img src="captcha.php" id="captcha" />
 
-        
-                                        <br> <a href="#" onclick="
-                                            document.getElementById('captcha').src='captcha.php?'+Math.random();
-                                            document.getElementById('captcha_txt').focus();"
-                                            id="change-image">Recargar imagen.</a>
+                                        <br> <a href="#" onclick="javascript:nuevoCaptcha()" id="change-image">Recargar imagen.</a>
 
                                         <input type="text" name="captcha" id="captcha_txt" class="form-control" autocomplete="off">
 
                                         <p>Al decidir formar parte del mapa del ecosistema emprendedor de la C.A.B.A., presto consentimiento a la publicación de los datos de mi emprendimiento en dicho mapa.</p>
 
-                                        <p>Los datos serán validados y aparecerán en el mapa a la brevedad</p>
+                                        <input type="button" onclick="javascript:finalizacion();" class="btn btn-success" value="Enviar datos">
 
-                                        <input type="button" onclick="javascript:finalizacion();" class="btn btn-success" value="Terminar">
+                                        <span class="aviso paso4"> Por favor verifique los campos completados sean correctos y vuelva a intentar </span>
 
                                     </div>
+                                </div>
+
+                                <div id="paso5" class="pasoNoActivo"><!-- Paso 5 - Gracias y cerrar -->
+
+                                    <div class="form-group">
+                                        <h3>GRACIAS.</h3>
+
+                                        <p>Los datos serán validados y aparecerán en el mapa a la brevedad</p>
+
+                                        <input type="button" onclick="javascript:volverAlta();" class="btn btn-success" value="Cerrar">
+
+                                    </div>
+
+
+
                                 </div>
 
 
