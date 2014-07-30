@@ -7,7 +7,7 @@ $config = getConfig();
 $cartodb =  new CartoDBClient($config);
 
 
-$captcha = $_POST['captcha'];
+//$captcha = $_POST['captcha'];
 $captcha_txt = $_POST['captcha_txt'];
 $nombre_frm =  $_POST['nombre_frm'];
 $desc_frm = $_POST['desc_frm'];

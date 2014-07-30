@@ -208,7 +208,7 @@ function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
 // manejo de formulario de alta.
 function finalizacion() {
      $.post("proceso.php",{ 
-        captcha: $("#captcha").val(),
+        //captcha: $("#captcha").val(),
         captcha_txt: $("#captcha_txt").val(),
         nombre_frm:  $("#nombre_frm").val(),
         desc_frm: $("#desc_frm").val(),
