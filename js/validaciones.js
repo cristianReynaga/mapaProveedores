@@ -34,7 +34,8 @@ function validoPaso(nro){
         if ( validarEmail(dato)) { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
         dato  = $("#mailRes_frm").val();
         if ( validarEmail(dato)) { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
-        validarFormulario(pantallaValidada, "#paso3");                 
+        validarFormulario(pantallaValidada, "#paso3");
+        nuevoCaptcha();
     }
 }
 

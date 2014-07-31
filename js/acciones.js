@@ -208,7 +208,6 @@ function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
 // manejo de formulario de alta.
 function finalizacion() {
      $.post("proceso.php",{ 
-        //captcha: $("#captcha").val(),
         captcha_txt: $("#captcha_txt").val(),
         nombre_frm:  $("#nombre_frm").val(),
         desc_frm: $("#desc_frm").val(),
@@ -227,13 +226,15 @@ function finalizacion() {
         resp_frm: $("#resp_frm").val()
     }, function(data) {
         console.log (data);
-            if(data == "MAL" || data == ""){
-                alert("Vuelva a ingresar el código");
-                //nuevoCaptcha();
-            }else{
-                // muestro pantalla de gracias y volver;
-                siguienteFormulario('#paso5' ,'#paso4');
+        var datos = data.toString();
 
+            if(datos[0] == "B"){
+                console.log ("grabo datos");
+                $(".aviso").attr("style", "display:none");
+                siguienteFormulario('#paso5' ,'#paso4');
+            }else{
+                console.log ("ocurrio un error");
+                $(".aviso").attr("style", "display:inline");
             }
 
         });
@@ -248,4 +249,5 @@ function volverAlta (){
     resetAllFields ();
     siguienteFormulario('#paso1' ,'#paso5');
     nuevoCaptcha();
+    abroSlide("inicio");
 }

@@ -5385,13 +5385,17 @@ html, body {
       margin-bottom: 10px; }
     #paneles #crear .aviso {
       float: left;
-      font-size: 0.7em;
-      margin-top: 10px; }
+      font-size: 0.8em;
+      margin-top: 10px;
+      padding: 5px;
+      background-color: #990000; }
     #paneles #crear .paso1 {
       display: none; }
     #paneles #crear .paso2 {
       display: none; }
     #paneles #crear .paso3 {
+      display: none; }
+    #paneles #crear .paso4 {
       display: none; }
     #paneles #crear .pasoActivo {
       display: inline; }

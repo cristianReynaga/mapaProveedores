@@ -172,6 +172,8 @@
                                         </select>
                                     </div>
 
+
+
                                     <div class="btn btn-default siguiente" onclick="validoPaso(1)"> Siguiente </div>
 
                                     <span class="aviso paso1"> Por favor complete <b>todos</b> los campos </span>
@@ -181,14 +183,14 @@
                                 <div id="paso2" class="pasoNoActivo"><!-- Paso 2 - Ubicacion -->
                                     <div class="form-group">
                                         <label for="direccion_frm">Dirección</label>
-                                        <input type="text" id="direccion_frm" class="form-control" placeholder="Calle y altura o esquina">
+                                        <input type="text" id="direccion_frm" name="direccion_frm" class="form-control" placeholder="Calle y altura o esquina">
                                         <div class="btn btn-danger validar" onclick="buscarDireccion()"> Validar la dirección </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="piso_frm">Piso y departamento</label>
-                                        <input type="text" id="piso_frm" class="form-control" placeholder="Piso y departamento">
-                                        <input type="text" id="latLong_frm" hidden value="">
+                                        <input type="text" id="piso_frm" name="piso_frm" class="form-control" placeholder="Piso y departamento">
+                                        <input type="text" id="latLong_frm" name="latLong_frm" hidden value="">
                                     </div>
 
                                     <div class="form-group">
@@ -209,27 +211,27 @@
                                 <div id="paso3" class="pasoNoActivo"> <!-- Paso 3 - Datos de contacto -->
                                     <div class="form-group">
                                         <label for="mailIns_frm">Mail institucional</label>
-                                        <input type="email" class="form-control" id="mailIns_frm" placeholder="E-mail">
+                                        <input type="email" class="form-control" id="mailIns_frm" name="mailIns_frm" placeholder="E-mail">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="tele_frm">Teléfono</label>
-                                        <input type="tel" id="tele_frm" class="form-control" placeholder="Telefonos">
+                                        <input type="tel" id="tele_frm" name="tele_frm" class="form-control" placeholder="Telefonos">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="web_frm">Página web</label>
-                                        <input type="url" id="web_frm" class="form-control" placeholder="http://">
+                                        <input type="url" id="web_frm" name="web_frm" class="form-control" placeholder="http://">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="resp_frm">Responsable del proyecto</label>
-                                        <input type="text" id="resp_frm" class="form-control" placeholder="Nombre del responsable">
+                                        <input type="text" id="resp_frm" name="resp_frm" class="form-control" placeholder="Nombre del responsable">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="mailRes_frm">Mail del responsable</label>
-                                        <input type="email" class="form-control" id="mailRes_frm" placeholder="E-mail del responsable">
+                                        <input type="email" class="form-control" id="mailRes_frm" name="mailRes_frm" placeholder="E-mail del responsable">
                                     </div>
 
                                     <div class="form-group">
@@ -256,13 +258,13 @@
 
                                         <br> <a href="#" onclick="javascript:nuevoCaptcha()" id="change-image">Recargar imagen.</a>
 
-                                        <input type="text" name="captcha" id="captcha_txt" class="form-control" autocomplete="off">
-
+                                        <input type="text" name="captcha" id="captcha_txt"  class="form-control" autocomplete="off"/><br />
+                                        
                                         <p>Al decidir formar parte del mapa del ecosistema emprendedor de la C.A.B.A., presto consentimiento a la publicación de los datos de mi emprendimiento en dicho mapa.</p>
 
                                         <input type="button" onclick="javascript:finalizacion();" class="btn btn-success" value="Enviar datos">
 
-                                        <span class="aviso paso4"> Por favor verifique los campos completados sean correctos y vuelva a intentar </span>
+                                        <span class="aviso paso4"> Por favor verifique que el código esté bien ingresado </span>
 
                                     </div>
                                 </div>

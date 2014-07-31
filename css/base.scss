@@ -217,9 +217,7 @@ html, body {
         }
 
         .minimapa{
- //           width: $width-sidebar - 50;
             height: $width-sidebar / 2;
-
         }
 
         .validar{
@@ -237,14 +235,17 @@ html, body {
 
         .aviso {
             float: left;
-            font-size: 0.7em;
+            font-size: 0.8em;
             margin-top: 10px;
-
-            
+            padding: 5px;
+            background-color: #990000;
         }
+
         .paso1 { display: none; }   
         .paso2 { display: none; }
         .paso3 { display: none; }
+        .paso4 { display: none; }
+        
         .pasoActivo{
             display: inline;
         }
