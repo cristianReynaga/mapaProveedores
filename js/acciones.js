@@ -227,13 +227,11 @@ function finalizacion() {
     }, function(data) {
         console.log (data);
         var datos = data.toString();
-
             if(datos[0] == "B"){
-                console.log ("grabo datos");
                 $(".aviso").attr("style", "display:none");
                 siguienteFormulario('#paso5' ,'#paso4');
             }else{
-                console.log ("ocurrio un error");
+                nuevoCaptcha();
                 $(".aviso").attr("style", "display:inline");
             }
 
@@ -248,6 +246,4 @@ function nuevoCaptcha(){
 function volverAlta (){
     resetAllFields ();
     siguienteFormulario('#paso1' ,'#paso5');
-    nuevoCaptcha();
-    abroSlide("inicio");
 }
