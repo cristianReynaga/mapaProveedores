@@ -6,34 +6,25 @@ require_once 'libs/cartodb.config.php';
 $config = getConfig();
 $cartodb = new CartoDBClient($config);
 
-// Check if the $key and $secret work fine and you are authorized
 if (!$cartodb->authorized) {
   error_log("uauth");
-  print ($config['key']);
-  print "\n";
-  print ($config['secret']);
-  print "\n";
-  print ($cartodb->authorized);
-
-  print 'There is a problem authenticating, check the key and secret.';
-  exit();
 }
 
-$acti_frm = $_POST['acti_frm'];
-$desc_frm = $_POST['desc_frm'];
-$direccion_frm = $_POST['direccion_frm'];
-$latLong_frm = $_POST['latLong_frm'];
-$mailIns_frm =	 $_POST['mailIns_frm'];
-$mailRes_frm =	 $_POST['mailRes_frm'];
-$nombre_frm = $_POST['nombre_frm'];
-$piso_frm =	 $_POST['piso_frm'];
-$resp_frm =	 $_POST['resp_frm'];
-$sector_frm = $_POST['sector_frm'];
-$serv_frm = $_POST['serv_frm'];
-$tags_frm =  $_POST['tags_frm'];
-$tele_frm = 	$_POST['tele_frm'];
-$tipo_frm = $_POST['tipo_frm'];
-$web_frm =	 $_POST['web_frm'];
+$acti_frm = urlencode($_POST['acti_frm']);
+$desc_frm = urlencode($_POST['desc_frm']);
+$direccion_frm = urlencode($_POST['direccion_frm']);
+$latLong_frm = urlencode($_POST['latLong_frm']);
+$mailIns_frm =	 urlencode($_POST['mailIns_frm']);
+$mailRes_frm =	 urlencode($_POST['mailRes_frm']);
+$nombre_frm = urlencode($_POST['nombre_frm']);
+$piso_frm =	 urlencode($_POST['piso_frm']);
+$resp_frm =	 urlencode($_POST['resp_frm']);
+$sector_frm = urlencode($_POST['sector_frm']);
+$serv_frm = urlencode($_POST['serv_frm']);
+$tags_frm =  urlencode($_POST['tags_frm']);
+$tele_frm = 	urlencode($_POST['tele_frm']);
+$tipo_frm = urlencode($_POST['tipo_frm']);
+$web_frm =	 urlencode($_POST['web_frm']);
 
 
 /* Valido Captcha */
@@ -42,19 +33,30 @@ if (!empty($_REQUEST['captcha_txt'])) {
     if (empty($_SESSION['captcha']) || trim(strtolower($_REQUEST['captcha_txt'])) != $_SESSION['captcha']) {
         echo "M";
     }else{
-        echo "B";
-        //$result = $cartodb->runSql( "INSERT INTO mapa_emprendedor ( nombre ) VALUES ('TEST')",true);
+        echo "YES";
+//        echo "B";
+        $SQLQ = "INSERT%20INTO%20mapa_emprendedor%20(nombre)%20VALUES%20('" . $nombre_frm ."')&api_key=15ea5821068feecc0584c70d07355848537c2182";
+        $url = "http://gcba.cartodb.com/api/v2/sql?q=" . $SQLQ ;
+
+        print_r($url);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+        $output = curl_exec($ch);   
+        $output = json_decode($output);
+
+        if(curl_getinfo($ch, CURLINFO_HTTP_CODE) !== 200) {
+
+          var_dump($output);
+        }
+
+        curl_close($ch);
+
     }
     $request_captcha = htmlspecialchars($_REQUEST['captcha_txt']);
     unset($_SESSION['captcha']);
 }
 
-
-
-
-$url = "http://gcba.cartodb.com/api/v2/sql?q=INSERT INTO mapa_emprendedor (nombre) VALUES ('NOMBRESSSSS')&api_key=15ea5821068feecc0584c70d07355848537c2182";
-$var = file_get_contents($url);
-
-print_r($var);
 ?>
 
