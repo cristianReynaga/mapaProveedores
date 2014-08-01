@@ -83,6 +83,8 @@ function buscarDireccion() {
                 position : results[0].geometry.location             
             });
             $("#latLong_frm").val(marker.position.B  + "," +  marker.position.k);
+            $("#lat_frm").val(marker.position.B);
+            $("#lon_frm").val(marker.position.k);
         } else {
             console.log('No se pudo geocodificar la direccion. Error : ' + status);
         }

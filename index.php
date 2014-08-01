@@ -137,16 +137,16 @@
                                         <label for="tipo_frm">Tipo</label>
                                         <select class="form-control" id="tipo_frm" name="tipo_frm">
                                             <option value="Seleccione" selected>Seleccione el tipo</option>
-                                            <option value="Aceleradora">Aceleradora</option>
-                                            <option value="Emprendimiento">Emprendimiento</option>
-                                            <option value="Espacio de Coworking">Espacio de Coworking</option>
-                                            <option value="Fondo de Inversión">Fondo de Inversión</option>
-                                            <option value="Gobierno Nacional">Gobierno Nacional</option>
-                                            <option value="Incubadora">Incubadora</option>
-                                            <option value="Inversor">Inversor</option>
-                                            <option value="Makerspace">Makerspace</option>
-                                            <option value="Organización">Organización</option>
-                                            <option value="Universidad">Universidad</option>
+                                            <option value="ACE">Aceleradora</option>
+                                            <option value="EMP">Emprendimiento</option>
+                                            <option value="ESP">Espacio de Coworking</option>
+                                            <option value="FON">Fondo de Inversión</option>
+                                            <option value="GOB">Gobierno Nacional</option>
+                                            <option value="INC">Incubadora</option>
+                                            <option value="INV">Inversor</option>
+                                            <option value="MAR">Makerspace</option>
+                                            <option value="ORG">Organización</option>
+                                            <option value="UNI">Universidad</option>
                                         </select>
                                     </div>
 
@@ -191,6 +191,8 @@
                                         <label for="piso_frm">Piso y departamento</label>
                                         <input type="text" id="piso_frm" name="piso_frm" class="form-control" placeholder="Piso y departamento">
                                         <input type="text" id="latLong_frm" name="latLong_frm" hidden value="">
+                                        <input type="text" id="lat_frm" name="lat_frm" hidden value="">
+                                        <input type="text" id="lon_frm" name="lon_frm" hidden value="">
                                     </div>
 
                                     <div class="form-group">
@@ -259,10 +261,19 @@
                                         <br> <a href="#" onclick="javascript:nuevoCaptcha()" id="change-image">Recargar imagen.</a>
 
                                         <input type="text" name="captcha" id="captcha_txt"  class="form-control" autocomplete="off"/><br />
+
+                                        <input type="text" id="sector_sigla_frm" name="sector_sigla_frm" hidden value="">
+                                        <input type="text" id="tipo_sigla_frm" name="tipo_sigla_frm" hidden value="">
+                                        
                                         
                                         <p>Al decidir formar parte del mapa del ecosistema emprendedor de la C.A.B.A., presto consentimiento a la publicación de los datos de mi emprendimiento en dicho mapa.</p>
 
-                                        <input type="button" onclick="javascript:finalizacion();" class="btn btn-success" value="Enviar datos">
+
+                                        <div class="btn btn-default anterior" onclick="siguienteFormulario('#paso3','#paso4')"> Anterior </div>
+
+                                        
+
+                                        <input type="button" onclick="javascript:finalizacion();" class="btn btn-success siguiente" value="Enviar datos">
 
                                         <span class="aviso paso4"> Por favor verifique que el código esté bien ingresado </span>
 

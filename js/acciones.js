@@ -170,6 +170,8 @@ function resetAllFields (){
     $("#web_frm").val("")
     $("#resp_frm").val("");
     $("#captcha_txt").val("");
+    $("#lat_frm").val("");
+    $("#lon_frm").val("");
 }
 
 // Maneja las vistas de los filtros por Industria y/o Sector
@@ -207,6 +209,11 @@ function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
 
 // manejo de formulario de alta.
 function finalizacion() {
+
+    tipo_sigla_frm 
+    $("#tipo_frm option:selected").text()
+
+
      $.post("proceso.php",{ 
         captcha_txt: $("#captcha_txt").val(),
         nombre_frm:  $("#nombre_frm").val(),
@@ -218,12 +225,17 @@ function finalizacion() {
         sector_frm: $("#sector_frm").val(),
         direccion_frm: $("#direccion_frm").val(),
         latLong_frm: $("#latLong_frm").val(),
+        lat_frm: $("#lat_frm").val(),
+        lon_frm: $("#lon_frm").val(),
         piso_frm: $("#piso_frm").val(),
         mailIns_frm: $("#mailIns_frm").val(),
         mailRes_frm: $("#mailRes_frm").val(),
         tele_frm: $("#tele_frm").val(),
         web_frm: $("#web_frm").val(),
-        resp_frm: $("#resp_frm").val()
+        resp_frm: $("#resp_frm").val(),
+        sector_sigla_frm: $("#sector_frm option:selected").text(),
+        tipo_sigla_frm: $("#tipo_frm option:selected").text()
+
     }, function(data) {
         console.log (data);
         var datos = data.toString();
