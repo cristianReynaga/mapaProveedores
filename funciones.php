@@ -1,10 +1,42 @@
 <?php
+/**
+ * Setup de credenciales para CartoDB y queries a la API
+ *
+ * @author  	Nicolas Lound <nicolas.lound@gmail.com>, Vladimir Martemianov <vmartemianov@gmail.com>
+ * @license 	MIT
+ * @link    	https://github.com/gcba/mapa-emprendedores
+ * @version 	0.1
+ *
+ */
 
+	/**
+	* @abstract		Clase de creada por CartoDB para establecer comunicación su API.
+	* @package 		https://github.com/Vizzuality/cartodbclient-php
+	*/
 	require_once 'libs/cartodb.class.php';
+
+	/**
+	* @abstract		Setup de credenciales de autenticación contra la API de CartoDB.
+	*/
+
 	require_once 'libs/cartodb.config.php';
 
+	/**
+	* @var 	type: function, traigo credenciales en un array para inicializarlas en el objeto $cartodb.
+	*/
+
 	$config = getConfig();
+
+	/**
+	* @var 	type: object, instancia de la clase CartoDBClient.
+	*/
+
 	$cartodb =  new CartoDBClient($config);
+	
+	/**
+	* @var 	type: object :( no se que hace esto.
+	*/
+
 	$action = $_REQUEST["action"];
 
 	if (!$cartodb->authorized) {

@@ -5347,7 +5347,13 @@ html, body {
         height: 40px;
         background-color: #ffffff;
         border: 0px;
-        border-radius: 0px; }
+        border-radius: 0px;
+        margin-top: 1px;
+        margin-bottom: -1px;
+        padding-top: 7px; }
+    #paneles #inicio .contenido {
+      padding-left: 20px;
+      padding-right: 20px; }
   #paneles #filtrar {
     min-height: 450px;
     width: 355px;
