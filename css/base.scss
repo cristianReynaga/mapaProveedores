@@ -200,7 +200,19 @@ html, body {
             color: #333333;
             background-color: #FFFFFF;
         }
-        
+
+        #captchaDiv{
+            width: 100%;
+        }
+
+        #change-image{
+            float: right;
+            position: relative;
+            top: 15px;
+            width: 86px;
+            cursor: pointer;
+        }
+
         .cartelMinimapa{
             font-size: 0.7em;
             text-align: right;
@@ -287,7 +299,6 @@ html, body {
 .leaflet-container .leaflet-control-attribution{
     margin-right: 270px !important;
 }
-
 
 
 

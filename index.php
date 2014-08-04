@@ -256,9 +256,15 @@
 
                                         <p>Complete en el siguente campo la palabra que se muestra debajo.</p>
 
-                                        <img src="captcha.php" id="captcha" />
+                                        <div id="captchaDiv">
 
-                                        <br> <a href="#" onclick="javascript:nuevoCaptcha()" id="change-image">Recargar imagen.</a>
+                                            <img src="captcha.php" id="captcha" />
+                                            <span onclick="javascript:nuevoCaptcha()" id="change-image">
+                                                Recargar imagen
+                                            </span>
+
+
+                                        </div><br>
 
                                         <input type="text" name="captcha" id="captcha_txt"  class="form-control" autocomplete="off"/><br />
 

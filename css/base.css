@@ -5363,6 +5363,14 @@ html, body {
       width: 355px;
       color: #333333;
       background-color: #FFFFFF; }
+    #paneles #crear #captchaDiv {
+      width: 100%; }
+    #paneles #crear #change-image {
+      float: right;
+      position: relative;
+      top: 15px;
+      width: 86px;
+      cursor: pointer; }
     #paneles #crear .cartelMinimapa {
       font-size: 0.7em;
       text-align: right; }
