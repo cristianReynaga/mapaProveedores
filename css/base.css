@@ -5244,6 +5244,24 @@ html, body {
   margin: 0;
   padding: 0; }
 
+#ba-evoluciona {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  height: 95px;
+  width: 95px;
+  pointer-events: none;
+  background: url("img/ba-evoluciona.png") no-repeat;
+  z-index: 600; }
+
+#ba-social {
+  position: fixed;
+  left: 10px;
+  top: 120px;
+  height: 20px;
+  width: 100px;
+  z-index: 600; }
+
 #contenidos {
   position: absolute;
   top: 0;
@@ -5429,7 +5447,7 @@ html, body {
   bottom: 0px !important; }
 
 .leaflet-container .leaflet-control-attribution {
-  margin-right: 270px !important; }
+  margin-right: 355px !important; }
 
 div.cartodb-popup.emprendedores {
   width: 617px;

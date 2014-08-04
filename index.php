@@ -23,8 +23,32 @@
 </head>
 
 <body>
+    <!-- Sociales -->
+    <div id="fb-root"></div>
+<div id="fb-root"></div>
+<div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <!-- Main -->
+    <div id="ba-evoluciona"> </div>
+    <div id="ba-social">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.buenosaires.gob.ar/mapaemprendedor" data-text="Descubrí el #MapaEmprendedor de #BuenosAires" data-via="BAemprende" data-count="none">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+        <div class="fb-share-button" data-href="http://www.buenosaires.gob.ar/mapaemprendedor" data-type="button"></div>
+
+    </div>
     <div id="contenidos">
+
+
         <div id="mapa"></div>
 
         <div id="sidebar"> 
