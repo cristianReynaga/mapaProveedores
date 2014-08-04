@@ -75,13 +75,10 @@ function verDetallesEmpresa(idEmpresa){
     });
 }
 
-
 function openInfowindow(layer, latlng, cartodb_id) {
     layer.trigger('featureClick', null, latlng, null, { cartodb_id: cartodb_id }, 0);
     console.log ( layer.trigger('featureClick', null, latlng, null, { cartodb_id: cartodb_id }, 0)  );
 }
-
-
 
 // Maneja los estilos de las pantallas del formulario de alta.
 function siguienteFormulario(muestro, oculto){
@@ -162,13 +159,16 @@ function resetAllFields (){
     $("#tipo_frm").val("Seleccione");
     $("#sector_frm").val("Seleccione");
     $("#direccion_frm").val("");
-    $("#latLong_frm").val("");
+    $("#latlon_frm").val("");
     $("#piso_frm").val("");
     $("#mailIns_frm").val("");
     $("#mailRes_frm").val("");
     $("#tele_frm").val("")
     $("#web_frm").val("")
     $("#resp_frm").val("");
+    $("#captcha_txt").val("");
+    $("#lat_frm").val("");
+    $("#lon_frm").val("");
 }
 
 // Maneja las vistas de los filtros por Industria y/o Sector
@@ -206,9 +206,53 @@ function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
 
 // manejo de formulario de alta.
 function finalizacion() {
+
+    tipo_sigla_frm 
+    $("#tipo_frm option:selected").text()
+
+
      $.post("proceso.php",{ 
-        captcha:$("#captcha_txt").val()
+        captcha_txt: $("#captcha_txt").val(),
+        nombre_frm:  $("#nombre_frm").val(),
+        desc_frm: $("#desc_frm").val(),
+        serv_frm: $("#serv_frm").val(),
+        acti_frm: $("#acti_frm").val(),
+        tags_frm: $("#tags_frm").val(),
+        tipo_frm: $("#tipo_frm option:selected").text(),
+        sector_frm: $("#sector_frm option:selected").text(),
+        direccion_frm: $("#direccion_frm").val(),
+        latlon_frm: $("#latlon_frm").val(),
+        lat_frm: $("#lat_frm").val(),
+        lon_frm: $("#lon_frm").val(),
+        piso_frm: $("#piso_frm").val(),
+        mailIns_frm: $("#mailIns_frm").val(),
+        mailRes_frm: $("#mailRes_frm").val(),
+        tele_frm: $("#tele_frm").val(),
+        web_frm: $("#web_frm").val(),
+        resp_frm: $("#resp_frm").val(),
+        sector_sigla_frm: $("#sector_frm").val(),
+        tipo_sigla_frm: $("#tipo_frm").val()
+
+    }, function(data) {
+        data = $.trim( data );
+            if(data == "B"){
+                $(".aviso").attr("style", "display:none");
+                siguienteFormulario('#paso5' ,'#paso4');
+            }else{
+                nuevoCaptcha();
+                $(".aviso").attr("style", "display:inline");
+            }
+
         });
 }
 
+function nuevoCaptcha(){
+    $("#captcha_txt").val("");
+    document.getElementById('captcha').src='captcha.php?'+Math.random();
+    document.getElementById('captcha_txt').focus();
+}
 
+function volverAlta (){
+    resetAllFields ();
+    siguienteFormulario('#paso1' ,'#paso5');
+}

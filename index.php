@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE HTML>
 <html lang="es">
 <head>    
@@ -46,7 +47,6 @@
 
             <div id="logo">
                 <span class="fino">Mapa </span> <span class="grueso">Emprendedor</span>
-                
             </div>
         
             <div id="panel">
@@ -137,16 +137,16 @@
                                         <label for="tipo_frm">Tipo</label>
                                         <select class="form-control" id="tipo_frm" name="tipo_frm">
                                             <option value="Seleccione" selected>Seleccione el tipo</option>
-                                            <option value="Aceleradora">Aceleradora</option>
-                                            <option value="Emprendimiento">Emprendimiento</option>
-                                            <option value="Espacio de Coworking">Espacio de Coworking</option>
-                                            <option value="Fondo de Inversión">Fondo de Inversión</option>
-                                            <option value="Gobierno Nacional">Gobierno Nacional</option>
-                                            <option value="Incubadora">Incubadora</option>
-                                            <option value="Inversor">Inversor</option>
-                                            <option value="Makerspace">Makerspace</option>
-                                            <option value="Organización">Organización</option>
-                                            <option value="Universidad">Universidad</option>
+                                            <option value="ACE">Aceleradora</option>
+                                            <option value="EMP">Emprendimiento</option>
+                                            <option value="ESP">Espacio de Coworking</option>
+                                            <option value="FON">Fondo de Inversión</option>
+                                            <option value="GOB">Gobierno Nacional</option>
+                                            <option value="INC">Incubadora</option>
+                                            <option value="INV">Inversor</option>
+                                            <option value="MAR">Makerspace</option>
+                                            <option value="ORG">Organización</option>
+                                            <option value="UNI">Universidad</option>
                                         </select>
                                     </div>
 
@@ -172,6 +172,8 @@
                                         </select>
                                     </div>
 
+
+
                                     <div class="btn btn-default siguiente" onclick="validoPaso(1)"> Siguiente </div>
 
                                     <span class="aviso paso1"> Por favor complete <b>todos</b> los campos </span>
@@ -181,14 +183,16 @@
                                 <div id="paso2" class="pasoNoActivo"><!-- Paso 2 - Ubicacion -->
                                     <div class="form-group">
                                         <label for="direccion_frm">Dirección</label>
-                                        <input type="text" id="direccion_frm" class="form-control" placeholder="Calle y altura o esquina">
+                                        <input type="text" id="direccion_frm" name="direccion_frm" class="form-control" placeholder="Calle y altura o esquina">
                                         <div class="btn btn-danger validar" onclick="buscarDireccion()"> Validar la dirección </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="piso_frm">Piso y departamento</label>
-                                        <input type="text" id="piso_frm" class="form-control" placeholder="Piso y departamento">
-                                        <input type="text" id="latLong_frm" hidden value="">
+                                        <input type="text" id="piso_frm" name="piso_frm" class="form-control" placeholder="Piso y departamento">
+                                        <input type="text" id="latlon_frm" name="latlon_frm" hidden value="">
+                                        <input type="text" id="lat_frm" name="lat_frm" hidden value="">
+                                        <input type="text" id="lon_frm" name="lon_frm" hidden value="">
                                     </div>
 
                                     <div class="form-group">
@@ -201,7 +205,7 @@
                                         <div class="btn btn-default siguiente" onclick="validoPaso(2)"> Siguiente </div>
                                     </div>
 
-                                    <span class="aviso paso2"> Por favor valide la dirección del emprendimiento </span>
+                                    <span class="aviso paso2"> Por favor complete la direccion y luego valídela</span>
 
                                 </div>
 
@@ -209,27 +213,27 @@
                                 <div id="paso3" class="pasoNoActivo"> <!-- Paso 3 - Datos de contacto -->
                                     <div class="form-group">
                                         <label for="mailIns_frm">Mail institucional</label>
-                                        <input type="email" class="form-control" id="mailIns_frm" placeholder="E-mail">
+                                        <input type="email" class="form-control" id="mailIns_frm" name="mailIns_frm" placeholder="E-mail">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="tele_frm">Teléfono</label>
-                                        <input type="tel" id="tele_frm" class="form-control" placeholder="Telefonos">
+                                        <input type="tel" id="tele_frm" name="tele_frm" class="form-control" placeholder="Telefonos">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="web_frm">Página web</label>
-                                        <input type="url" id="web_frm" class="form-control" placeholder="http://">
+                                        <input type="url" id="web_frm" name="web_frm" class="form-control" placeholder="http://">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="resp_frm">Responsable del proyecto</label>
-                                        <input type="text" id="resp_frm" class="form-control" placeholder="Nombre del responsable">
+                                        <input type="text" id="resp_frm" name="resp_frm" class="form-control" placeholder="Nombre del responsable">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="mailRes_frm">Mail del responsable</label>
-                                        <input type="email" class="form-control" id="mailRes_frm" placeholder="E-mail del responsable">
+                                        <input type="email" class="form-control" id="mailRes_frm" name="mailRes_frm" placeholder="E-mail del responsable">
                                     </div>
 
                                     <div class="form-group">
@@ -245,30 +249,56 @@
 
                                 </div>
 
-                                <div id="paso4" class="pasoNoActivo"><!-- Paso 4 - Gracias y cerrar -->
+                                <div id="paso4" class="pasoNoActivo"><!-- Paso 4 - CAPTCHA -->
 
                                     <div class="form-group">
                                         <h3>Solo un paso mas.</h3>
 
                                         <p>Complete en el siguente campo la palabra que se muestra debajo.</p>
 
-                                        <img src="captcha.php" id="captcha" />
+                                        <div id="captchaDiv">
 
-        
-                                        <br> <a href="#" onclick="
-                                            document.getElementById('captcha').src='captcha.php?'+Math.random();
-                                            document.getElementById('captcha_txt').focus();"
-                                            id="change-image">Recargar imagen.</a>
+                                            <img src="captcha.php" id="captcha" />
+                                            <span onclick="javascript:nuevoCaptcha()" id="change-image">
+                                                Recargar imagen
+                                            </span>
 
-                                        <input type="text" name="captcha" id="captcha_txt" class="form-control" autocomplete="off">
 
+                                        </div><br>
+
+                                        <input type="text" name="captcha" id="captcha_txt"  class="form-control" autocomplete="off"/><br />
+
+                                        <input type="text" id="sector_sigla_frm" name="sector_sigla_frm" hidden value="">
+                                        <input type="text" id="tipo_sigla_frm" name="tipo_sigla_frm" hidden value="">
+                                        
+                                        
                                         <p>Al decidir formar parte del mapa del ecosistema emprendedor de la C.A.B.A., presto consentimiento a la publicación de los datos de mi emprendimiento en dicho mapa.</p>
+
+
+                                        <div class="btn btn-default anterior" onclick="siguienteFormulario('#paso3','#paso4')"> Anterior </div>
+
+                                        
+
+                                        <input type="button" onclick="javascript:finalizacion();" class="btn btn-success siguiente" value="Enviar datos">
+
+                                        <span class="aviso paso4"> Por favor verifique que el código esté bien ingresado </span>
+
+                                    </div>
+                                </div>
+
+                                <div id="paso5" class="pasoNoActivo"><!-- Paso 5 - Gracias y cerrar -->
+
+                                    <div class="form-group">
+                                        <h3>GRACIAS.</h3>
 
                                         <p>Los datos serán validados y aparecerán en el mapa a la brevedad</p>
 
-                                        <input type="button" onclick="javascript:finalizacion();" class="btn btn-success" value="Terminar">
+                                        <input type="button" onclick="javascript:volverAlta();" class="btn btn-success" value="Cerrar">
 
                                     </div>
+
+
+
                                 </div>
 
 

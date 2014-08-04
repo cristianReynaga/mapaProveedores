@@ -42,8 +42,6 @@ $("#filtrar .btn-default").click(function(e) {
     return false; //para que no recarge chrome (known issue)
 });
 
-
-
 // Listener de busqueda por keyword
 $("#busquedaEmprendedores").keyup(function () {
     busquedaKeyword($('#busquedaEmprendedores').val());

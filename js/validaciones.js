@@ -22,9 +22,7 @@ function validoPaso(nro){
     }
 
     if (nro === 2){
-            dato = $("#direccion_frm").val();
-            if (dato.length > 5) { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
-            dato = $("#latLong_frm").val();
+            dato = $("#latlon_frm").val();
             if (dato.length != "") { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
             validarFormulario(pantallaValidada, "#paso2");
     }
@@ -34,7 +32,8 @@ function validoPaso(nro){
         if ( validarEmail(dato)) { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
         dato  = $("#mailRes_frm").val();
         if ( validarEmail(dato)) { pantallaValidada.push(true); } else {pantallaValidada.push(false);}
-        validarFormulario(pantallaValidada, "#paso3");                 
+        validarFormulario(pantallaValidada, "#paso3");
+        nuevoCaptcha();
     }
 }
 
@@ -81,7 +80,9 @@ function buscarDireccion() {
                 map : minimapa,
                 position : results[0].geometry.location             
             });
-            $("#latLong_frm").val(marker.position.B  + "," +  marker.position.k);
+            $("#latlon_frm").val(marker.position.B  + "," +  marker.position.k);
+            $("#lat_frm").val(marker.position.B);
+            $("#lon_frm").val(marker.position.k);
         } else {
             console.log('No se pudo geocodificar la direccion. Error : ' + status);
         }
