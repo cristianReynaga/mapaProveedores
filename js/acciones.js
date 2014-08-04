@@ -75,13 +75,10 @@ function verDetallesEmpresa(idEmpresa){
     });
 }
 
-
 function openInfowindow(layer, latlng, cartodb_id) {
     layer.trigger('featureClick', null, latlng, null, { cartodb_id: cartodb_id }, 0);
     console.log ( layer.trigger('featureClick', null, latlng, null, { cartodb_id: cartodb_id }, 0)  );
 }
-
-
 
 // Maneja los estilos de las pantallas del formulario de alta.
 function siguienteFormulario(muestro, oculto){
@@ -237,9 +234,8 @@ function finalizacion() {
         tipo_sigla_frm: $("#tipo_frm").val()
 
     }, function(data) {
-        console.log (data);
-        var datos = data.toString();
-            if(datos[0] == "B"){
+        data = $.trim( data );
+            if(data == "B"){
                 $(".aviso").attr("style", "display:none");
                 siguienteFormulario('#paso5' ,'#paso4');
             }else{
@@ -251,6 +247,7 @@ function finalizacion() {
 }
 
 function nuevoCaptcha(){
+    $("#captcha_txt").val("");
     document.getElementById('captcha').src='captcha.php?'+Math.random();
     document.getElementById('captcha_txt').focus();
 }
