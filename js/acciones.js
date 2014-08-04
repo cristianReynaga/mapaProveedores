@@ -162,7 +162,7 @@ function resetAllFields (){
     $("#tipo_frm").val("Seleccione");
     $("#sector_frm").val("Seleccione");
     $("#direccion_frm").val("");
-    $("#latLong_frm").val("");
+    $("#latlon_frm").val("");
     $("#piso_frm").val("");
     $("#mailIns_frm").val("");
     $("#mailRes_frm").val("");
@@ -221,10 +221,10 @@ function finalizacion() {
         serv_frm: $("#serv_frm").val(),
         acti_frm: $("#acti_frm").val(),
         tags_frm: $("#tags_frm").val(),
-        tipo_frm: $("#tipo_frm").val(),
-        sector_frm: $("#sector_frm").val(),
+        tipo_frm: $("#tipo_frm option:selected").text(),
+        sector_frm: $("#sector_frm option:selected").text(),
         direccion_frm: $("#direccion_frm").val(),
-        latLong_frm: $("#latLong_frm").val(),
+        latlon_frm: $("#latlon_frm").val(),
         lat_frm: $("#lat_frm").val(),
         lon_frm: $("#lon_frm").val(),
         piso_frm: $("#piso_frm").val(),
@@ -233,8 +233,8 @@ function finalizacion() {
         tele_frm: $("#tele_frm").val(),
         web_frm: $("#web_frm").val(),
         resp_frm: $("#resp_frm").val(),
-        sector_sigla_frm: $("#sector_frm option:selected").text(),
-        tipo_sigla_frm: $("#tipo_frm option:selected").text()
+        sector_sigla_frm: $("#sector_frm").val(),
+        tipo_sigla_frm: $("#tipo_frm").val()
 
     }, function(data) {
         console.log (data);

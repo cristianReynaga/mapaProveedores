@@ -190,7 +190,7 @@
                                     <div class="form-group">
                                         <label for="piso_frm">Piso y departamento</label>
                                         <input type="text" id="piso_frm" name="piso_frm" class="form-control" placeholder="Piso y departamento">
-                                        <input type="text" id="latLong_frm" name="latLong_frm" hidden value="">
+                                        <input type="text" id="latlon_frm" name="latlon_frm" hidden value="">
                                         <input type="text" id="lat_frm" name="lat_frm" hidden value="">
                                         <input type="text" id="lon_frm" name="lon_frm" hidden value="">
                                     </div>
@@ -205,7 +205,7 @@
                                         <div class="btn btn-default siguiente" onclick="validoPaso(2)"> Siguiente </div>
                                     </div>
 
-                                    <span class="aviso paso2"> Por favor valide la dirección del emprendimiento </span>
+                                    <span class="aviso paso2"> Por favor complete la direccion y luego valídela</span>
 
                                 </div>
 
