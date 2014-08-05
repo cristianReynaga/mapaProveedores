@@ -1,6 +1,19 @@
-'use strict'
+/**
+ * Contiene todas las funciones de UI de la app
+ *
+ * @author      Nicolas Lound <nicolas.lound@gmail.com>
+ * @license     MIT
+ * @link        https://github.com/gcba/mapa-emprendedores
+ * @version     0.1
+ *
+ */
 
-// Ejecuta la query 
+
+'use strict'
+/**
+ * @abstract    Arma el listado de emprendimientos
+ * @param       string
+ */
 function muestroMarcadores (query) {
     var q = "SELECT * FROM mapa_emprendedor";
     sql.execute(q).done(function (data) {
@@ -13,7 +26,10 @@ function muestroMarcadores (query) {
     });
 }
 
-// Corre las pantallas principales que debo mostrar en el sidebar
+/**
+ * @abstract    Corre las pantallas principales que debo mostrar en el sidebar
+ * @param       string ["inicio"|"filtrar"|"crear"|"acerca"]
+ */
 function abroSlide(pantalla) {
     var pantallas = ["inicio","filtrar","crear","acerca"]; // mantener el orden
     var desplazamiento = new Array();
@@ -30,12 +46,14 @@ function abroSlide(pantalla) {
 }
 
 
-//Llena el listado de la pantalla INICIO
+/**
+ * @abstract    Llena el listado de la pantalla INICIO
+ * @param       string
+ */
 function busquedaKeyword(key) {
     var contenido = $('#listado');
 
     if ( $('#busquedaEmprendedores').val() != ''){
-        console.log (key);
         key = key.toLowerCase();
         var q = "SELECT * FROM mapa_emprendedor WHERE pendiente_revision = true AND LOWER(tags) LIKE '%" + key + "%' OR LOWER(nombre) LIKE '%" + key + "%' OR LOWER(tipo) LIKE '%" + key + "%'";
         sql.execute(q).done(function(data) {
@@ -60,7 +78,11 @@ function busquedaKeyword(key) {
     }
 }
 
-// Cuando se selecciona una empresa (definir accion)
+
+/**
+ * @abstract    Cuando se selecciona una empresa se hace zoom sobre el marcador y se abre el infowindows
+ * @param       string
+ */
 function verDetallesEmpresa(idEmpresa){
     var nro = idEmpresa.split("empID");
 
@@ -75,12 +97,18 @@ function verDetallesEmpresa(idEmpresa){
     });
 }
 
+/**
+ * @abstract    Abre infowindow y resposiciona la ventana al centro
+ * @param       obj;geom;int
+ */
 function openInfowindow(layer, latlng, cartodb_id) {
     layer.trigger('featureClick', null, latlng, null, { cartodb_id: cartodb_id }, 0);
-    console.log ( layer.trigger('featureClick', null, latlng, null, { cartodb_id: cartodb_id }, 0)  );
 }
 
-// Maneja los estilos de las pantallas del formulario de alta.
+/**
+ * @abstract    Maneja la visibilidad de las pantallas del formulario de alta.
+ * @param       string; string 
+ */
 function siguienteFormulario(muestro, oculto){
     $(".aviso").attr("style", "display:none");
     $(oculto).attr("class", "pasoNoActivo");
@@ -88,7 +116,10 @@ function siguienteFormulario(muestro, oculto){
     return false;    
 }
 
-// Maneja los estilos de las vistas de los filtros activados y desactivados
+/**
+ * @abstract    Manejador de estilos de las vistas de los filtros
+ * @param       string 
+ */
 function seleccionoMarkers( tipo ){  // e.target.value
     
     if (tipo === "TIN" ) { // Todos saca la actividad de la clase.
@@ -119,7 +150,6 @@ function seleccionoMarkers( tipo ){  // e.target.value
         }
     }
 
-
     var listadoUNO =  $('#industria_ftr button');
     var condicionUNO = new Array();
     var listadoDOS =  $('#sector_ftr button');
@@ -149,7 +179,10 @@ function seleccionoMarkers( tipo ){  // e.target.value
     visual[1].infowindow.set("visibility", false); // Known bug: https://github.com/CartoDB/cartodb.js/issues/26
 }
 
-// vacía todos los campos del formulario de alta.
+/**
+ * @abstract    Vacía todos los campos del formulario de alta.
+ * @param       string 
+ */
 function resetAllFields (){
     $("#nombre_frm").val("");
     $("#desc_frm").val("");
@@ -171,7 +204,10 @@ function resetAllFields (){
     $("#lon_frm").val("");
 }
 
-// Maneja las vistas de los filtros por Industria y/o Sector
+/**
+ * @abstract    refresca las vistas de los filtros por Industria y/o Sector
+ */
+
 function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
     var retorno_consulta = "SELECT * FROM mapa_emprendedor";
     var hay_consulta_industria = false;
@@ -204,7 +240,9 @@ function armoFiltrado ( listaIND , columnaIND , listaSEC , columnaSEC ){
     return retorno_consulta;
 }
 
-// manejo de formulario de alta.
+/**
+ * @abstract    llama al alta de una empresa via php
+ */
 function finalizacion() {
 
     tipo_sigla_frm 
@@ -246,12 +284,18 @@ function finalizacion() {
         });
 }
 
+/**
+ * @abstract    refresca el captcha
+ */
 function nuevoCaptcha(){
     $("#captcha_txt").val("");
     document.getElementById('captcha').src='captcha.php?'+Math.random();
     document.getElementById('captcha_txt').focus();
 }
 
+/**
+ * @abstract    Resetea las vistas y llama a vacias los campos del formulario de alta
+ */
 function volverAlta (){
     resetAllFields ();
     siguienteFormulario('#paso1' ,'#paso5');

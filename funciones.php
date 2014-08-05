@@ -34,7 +34,7 @@
 	$cartodb =  new CartoDBClient($config);
 	
 	/**
-	* @var 	type: object :( no se que hace esto.
+	* @var 	type: object, captura la accion que le pido por php [buscaRegistro | agregaRegistro | listarRegistro | filtro]
 	*/
 
 	$action = $_REQUEST["action"];

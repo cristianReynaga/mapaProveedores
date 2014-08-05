@@ -1,4 +1,17 @@
 'use strict'
+
+/**
+ * funciones y variables de inicializacion del mapa
+ *
+ * @author      Nicolas Lound <nicolas.lound@gmail.com>
+ * @license     MIT
+ * @link        https://github.com/gcba/mapa-emprendedores
+ * @version     0.1
+ *
+ */
+
+
+
 // variables de geocodificacion
 var geocoder;
 var minimapa;
@@ -9,14 +22,19 @@ var sql = cartodb.SQL({
     user: 'gcba'
 });
 
+
+/**
+* @abstract     mueve el mapa a la lat long pasada
+*/
 function mapToPosition(lat,lon){
     lon = position.coords.longitude;
     lat = position.coords.latitude;
     map.setView(new L.LatLng(lat,lon), 7);
 }
 
-
-// Instacio el mapa
+/**
+* @abstract     Instancia el mapa
+*/
 var visualizacion = cartodb.createVis(mapa, 'http://gcba.cartodb.com/api/v2/viz/3aabb182-0dd4-11e4-9d39-0e73339ffa50/viz.json')
     .done(function(vis,layers) {
         capas = vis.map;
@@ -36,18 +54,26 @@ $("#menuSidebar .btn-default").click(function(e) {
 });
 
 
-// Bindeo listeners a botones de filtros
+/**
+* @abstract     Bindeo listeners a botones de filtros
+*/
+
 $("#filtrar .btn-default").click(function(e) {
     seleccionoMarkers (e.target.value);
     return false; //para que no recarge chrome (known issue)
 });
 
-// Listener de busqueda por keyword
+/**
+* @abstract     Listener de busqueda por keyword
+*/
+
 $("#busquedaEmprendedores").keyup(function () {
     busquedaKeyword($('#busquedaEmprendedores').val());
 });
 
-//inicializa el minimapa
+/**
+* @abstract     inicializa el minimapa
+*/
 function init() {
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(-34.609879, -58.391900);

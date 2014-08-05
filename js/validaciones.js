@@ -1,4 +1,17 @@
-//validacion de formulario
+/**
+ * Contiene todas las funciones validacion del formulario de alta
+ *
+ * @author      Nicolas Lound <nicolas.lound@gmail.com>
+ * @license     MIT
+ * @link        https://github.com/gcba/mapa-emprendedores
+ * @version     0.1
+ *
+ */
+
+/**
+ * @abstract    validacion de formulario
+ * @param       int
+*/
 function validoPaso(nro){
     var pantallaValidada = new Array();
     var dato;
@@ -37,6 +50,10 @@ function validoPaso(nro){
     }
 }
 
+/**
+ * @abstract    avanza en el formulario una vez validados los datos
+ * @param       array[boolean] ; string
+ */
 
 function validarFormulario (validacion, paso){
     if  ( validacion.indexOf(false) < 0  ){
@@ -57,7 +74,10 @@ function validarFormulario (validacion, paso){
     }
 }
 
-
+/**
+ * @abstract    valida que sea un mail válido [TRUE|FALSE]
+ * @param       string
+ */
 function validarEmail(mailCheck) {
     if (mailCheck === ""){
         return true;
@@ -68,6 +88,9 @@ function validarEmail(mailCheck) {
  
 }
 
+/**
+ * @abstract    avanza en el formulario una vez validados los datos
+ */
 function buscarDireccion() {
     google.maps.event.trigger(minimapa, 'resize'); 
     var direccion = document.getElementById('direccion_frm').value;
