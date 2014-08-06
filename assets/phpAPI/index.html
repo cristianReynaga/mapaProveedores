@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Mapa de Emprendedores - Buenos Aires Ciudad</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="El mapa en donde los emprendedores de la Ciudad de Buenos Aires se juntan." />
+    <meta name="keywords" content="mapa, buenos aires, emprendedores, ciudad de buenos aires" />
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="js/jquery-1.11.1.min.js"></script>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
+    <![endif]-->
+    <link rel="icon" href="favicon.ico"/>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="http://www.buenosaires.gob.ar" target="_blank">
+                        <div class="logo"></div>
+                    </a>
+                </div>
+                <div class="col-md-6 slogan">En todo estás vos</div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Main -->
+    <div id="contenidos">
+        <div id="mapa"> </div>
+        <div id="sidebar">
+            <ul class="nav nav-pills">
+              <li class="active"><a href="#">Inicio</a></li>
+              <li><a href="#">Filtrar</a></li>
+              <li><a href="#">Crear</a></li>
+              <li><a href="#">Acerca</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+<!-- init form -->
+    <div id="formulario">
+        <form role="form">
+            <div class="form-group">
+                <label for="nombre_frm">Nombre</label>
+                <input type="text" id="nombre_frm" class="form-control" placeholder="Nombre del emprendimiento">
+            </div>
+
+            <div class="form-group">
+                <label for="direccion_frm">Direccion</label>
+                <input type="text" id="direccion_frm" class="form-control" placeholder="Calle y altura">
+            </div>
+
+            <div class="form-group">
+                <label for="piso_frm">Piso y departamento</label>
+                <input type="text" id="piso_frm" class="form-control" placeholder="Piso y departamento">
+            </div>
+
+            <div class="form-group">
+                <label for="desc_frm">Descripción</label>
+                <textarea class="form-control" rows="3" id="desc_frm" placeholder="">Ingrese una breve descripción del emprendimiento</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="acti_frm">Inicio de actividades</label>
+                <select class="form-control" id="acti_frm"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="mailIns_frm">Mail institucional</label>
+                <input type="email" class="form-control" id="mailIns_frm" placeholder="E-mail">
+            </div>
+
+            <div class="form-group">
+                <label for="mailRes_frm">Mail del responsable</label>
+                <input type="email" class="form-control" id="mailRes_frm" placeholder="E-mail del responsable">
+            </div>
+
+            <div class="form-group">
+                <label for="resp_frm">Responsable del proyecto</label>
+                <input type="text" id="resp_frm" class="form-control" placeholder="Nombre del responsable">
+            </div>
+
+            <div class="form-group">
+                <label for="resp_frm">Servicios</label>
+                <input type="text" id="serv_frm" class="form-control" placeholder="Servicios">
+            </div>
+
+            <div class="form-group">
+                <label for="tags_frm">Tags</label>
+                <input type="text" id="tags_frm" class="form-control" placeholder="Tags separados por coma">
+            </div>
+
+            <div class="form-group">
+                <label for="tele_frm">Teléfono</label>
+                <input type="tel" id="tele_frm" class="form-control" placeholder="Telefonos">
+            </div>
+
+            <div class="form-group">
+                <label for="tipo_frm">Tipo</label>
+                <select class="form-control" id="tipo_frm"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="web_frm">Web</label>
+                <input type="url" id="web_frm" class="form-control" placeholder="HTTP://">
+            </div>
+
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option1"> Universidad
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option2"> Marker Space
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option3"> Incubadora
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option4"> Aceleradora
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option5"> Fondo de Inversión
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option6"> Emprendimiento
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option7"> Espacio de coworking
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="options" id="option8"> Organizacion
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-default">
+                Enviar
+            </button>
+
+        </form>
+    </div>
+
+    <script src="js/init.js"></script>
+
+</body>
+</html>

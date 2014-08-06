@@ -1,0 +1,6 @@
+assets/
+bower_components/
+node_modules/
+.sass-cache/
+.git/
+.DS_Store

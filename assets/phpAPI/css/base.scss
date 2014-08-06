@@ -1,0 +1,139 @@
+@import "../bower_components/bourbon/dist/bourbon";
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/mixins";
+
+@include font-face('Gotham', 'fonts/Gotham-Medium');
+@include font-face('Gotham Black', 'fonts/Gotham-Black');
+
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+
+
+html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-backface-visibility: hidden;
+    moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -webkit-touch-callout: none;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height:100%;
+    width: 100%;
+    font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #FFFFFF;
+}
+
+
+
+
+header {
+    overflow: hidden;
+    z-index: 999;
+    position: fixed;
+    color: #FFF;
+    top: 0px;
+    width: 100%;
+    height: 50px; 
+    background-color: #ffcc00;
+    .logo {
+        float: left;
+        margin-top: 8px;
+        width:172px;
+        height:33px;
+        @include retina-image("img/logo-normal", 172px 34px);
+    }
+    .slogan {
+        padding-top: 8px;
+        text-align: right;
+        float: right;
+        font-family: 'Gotham Black';
+        margin-top: 0.75em;
+        font-size: 0.85em;
+        letter-spacing:-1px;
+        color:#000000;
+        text-transform: uppercase;
+    }
+}
+
+
+#contenidos{
+    z-index: 999;
+    overflow: horizontal;
+    padding-top: 50px;
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+}
+
+#mapa{
+    z-index: 500;
+    float: left;
+    width: 100%;
+    padding-right: 270px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar{
+    width: 270px;
+    height: 100%;
+    background-color: #0070eb;
+    alpha: 0.8;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    li{
+        max-width: 24%;
+    }
+    a{
+        background: transparent;
+        border: 0px;
+        outline: none;        
+    }
+}
+
+#cartodb-gmaps-attribution{
+    right: 270px !important;
+}
+
+#formulario{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #FFFFFF;
+    background-color: #333333;
+    z-index: 999;
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+    label, input{
+        font-size: 0.7em;
+    }
+}
+
+
+
+footer {
+    overflow: hidden;
+    position: fixed;
+    color: #FFF;
+    bottom: 0px;
+    width: 100%;
+    height: 50px; 
+    background-color: #333333;
+
+    .modernizacion {
+        padding-top: 20px;
+        text-align: left; 
+    }
+    .gobierno {
+        padding-top: 20px;
+        text-align: right;
+    }
+
+
+}
+
